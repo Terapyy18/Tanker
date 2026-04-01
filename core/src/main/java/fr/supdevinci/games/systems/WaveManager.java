@@ -15,9 +15,14 @@ public class WaveManager {
     private int remainingToSpawn = 0;
     private float spawnTimer = 0;
     private float pauseTimer = 2f; // initial pause before wave 1
-    private boolean bossSpawned = false;
 
     private final List<SpawnRequest> pendingSpawns = new ArrayList<SpawnRequest>();
+    private final List<EnemyType> bossesToSpawnQueue = new ArrayList<>();
+    private fr.supdevinci.games.Difficulty difficulty;
+
+    public WaveManager(fr.supdevinci.games.Difficulty difficulty) {
+        this.difficulty = difficulty;
+    }
 
     public static class SpawnRequest {
         public final EnemyType type;
@@ -44,7 +49,7 @@ public class WaveManager {
             } else if (aliveEnemyCount == 0) {
                 // Wave complete
                 waveInProgress = false;
-                if (currentWave >= GameConfig.TOTAL_WAVES) {
+                if (difficulty != fr.supdevinci.games.Difficulty.INFINITE && currentWave >= GameConfig.TOTAL_WAVES) {
                     gameComplete = true;
                     victory = true;
                 } else {
@@ -62,8 +67,23 @@ public class WaveManager {
     private void startNextWave() {
         currentWave++;
         waveInProgress = true;
-        bossSpawned = false;
-        remainingToSpawn = calculateEnemyCount(currentWave);
+        
+        bossesToSpawnQueue.clear();
+        if (currentWave % 10 == 0) {
+            int numBosses = currentWave / 10;
+            // Cap to infinite bosses, pattern: BOSS -> BOSS_2 -> BOSS_3 -> BOSS_3...
+            for (int i = 1; i <= numBosses; i++) {
+                if (i == 1) {
+                    bossesToSpawnQueue.add(EnemyType.BOSS);
+                } else if (i == 2) {
+                    bossesToSpawnQueue.add(EnemyType.BOSS_2);
+                } else {
+                    bossesToSpawnQueue.add(EnemyType.BOSS_3);
+                }
+            }
+        }
+
+        remainingToSpawn = calculateEnemyCount(currentWave) + bossesToSpawnQueue.size();
         spawnTimer = 0;
     }
 
@@ -80,9 +100,8 @@ public class WaveManager {
     }
 
     private EnemyType chooseType() {
-        if (currentWave == GameConfig.TOTAL_WAVES && !bossSpawned) {
-            bossSpawned = true;
-            return EnemyType.BOSS;
+        if (!bossesToSpawnQueue.isEmpty()) {
+            return bossesToSpawnQueue.remove(0);
         }
 
         List<EnemyType> available = new ArrayList<EnemyType>();
@@ -94,10 +113,11 @@ public class WaveManager {
     }
 
     public int calculateEnemyCount(int wave) {
-        if (wave == GameConfig.TOTAL_WAVES) {
-            return 1 + 5; // 1 boss + 5 minions
+        int enemies = GameConfig.WAVE_BASE_ENEMIES + wave * GameConfig.WAVE_ENEMY_GROWTH;
+        if (difficulty == fr.supdevinci.games.Difficulty.HARD) {
+            enemies = (int)(enemies * 1.5f);
         }
-        return GameConfig.WAVE_BASE_ENEMIES + wave * GameConfig.WAVE_ENEMY_GROWTH;
+        return enemies;
     }
 
     public List<SpawnRequest> getPendingSpawns() {

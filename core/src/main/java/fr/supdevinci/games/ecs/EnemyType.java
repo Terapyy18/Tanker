@@ -7,7 +7,9 @@ public enum EnemyType {
     FAST    (15f,  8f,  0.7f, 0.7f, 15, 5f,  4.0f, 3f,   new Color(1.0f, 0.6f, 0.1f, 1f)),
     HEAVY   (80f,  3f,  1.8f, 1.8f, 25, 20f, 4.0f, 15f,  new Color(0.6f, 0.2f, 0.8f, 1f)),
     SHOOTER (40f,  4f,  1.2f, 1.2f, 20, 8f,  1.5f, 10f,  new Color(1.0f, 0.9f, 0.2f, 1f)),
-    BOSS    (500f, 2f,  4.0f, 4.0f, 100, 30f, 1.0f, 20f, new Color(0.5f, 0.0f, 0.0f, 1f));
+    BOSS    (500f, 2f,  4.0f, 4.0f, 100, 30f, 1.0f, 20f, new Color(0.5f, 0.0f, 0.0f, 1f)),
+    BOSS_2  (600f, 3f,  4.5f, 4.5f, 150, 40f, 0.5f, 15f, new Color(0.7f, 0.1f, 0.1f, 1f)),
+    BOSS_3  (800f, 1.5f, 5.0f, 5.0f, 200, 50f, 1.5f, 30f, new Color(0.4f, 0.0f, 0.2f, 1f));
 
     private final float health;
     private final float speed;

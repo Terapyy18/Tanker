@@ -54,14 +54,18 @@ public class BodyFactory {
     }
 
     public Body createPlayerBulletBody(World world, float x, float y, float vx, float vy) {
-        return createBulletBody(world, x, y, vx, vy, PhysicsConstants.CATEGORY_BULLET_PLAYER, PhysicsConstants.MASK_BULLET_PLAYER);
+        return createBulletBody(world, x, y, vx, vy, GameConfig.BULLET_RADIUS, PhysicsConstants.CATEGORY_BULLET_PLAYER, PhysicsConstants.MASK_BULLET_PLAYER);
     }
 
     public Body createEnemyBulletBody(World world, float x, float y, float vx, float vy) {
-        return createBulletBody(world, x, y, vx, vy, PhysicsConstants.CATEGORY_BULLET_ENEMY, PhysicsConstants.MASK_BULLET_ENEMY);
+        return createBulletBody(world, x, y, vx, vy, GameConfig.BULLET_RADIUS, PhysicsConstants.CATEGORY_BULLET_ENEMY, PhysicsConstants.MASK_BULLET_ENEMY);
     }
 
-    private Body createBulletBody(World world, float x, float y, float vx, float vy, short category, short mask) {
+    public Body createEnemyHeavyBulletBody(World world, float x, float y, float vx, float vy) {
+        return createBulletBody(world, x, y, vx, vy, GameConfig.BULLET_RADIUS * 2.5f, PhysicsConstants.CATEGORY_BULLET_ENEMY, PhysicsConstants.MASK_BULLET_ENEMY);
+    }
+
+    private Body createBulletBody(World world, float x, float y, float vx, float vy, float radius, short category, short mask) {
         BodyDef bd = new BodyDef();
         bd.type = BodyDef.BodyType.DynamicBody;
         bd.position.set(x, y);
@@ -70,7 +74,7 @@ public class BodyFactory {
         Body body = world.createBody(bd);
 
         CircleShape shape = new CircleShape();
-        shape.setRadius(GameConfig.BULLET_RADIUS);
+        shape.setRadius(radius);
 
         FixtureDef fd = new FixtureDef();
         fd.shape = shape;

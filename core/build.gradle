@@ -7,6 +7,10 @@ dependencies {
 
   testImplementation "junit:junit:4.13.2"
   testImplementation "org.mockito:mockito-core:4.11.0"
+  testImplementation "org.junit.jupiter:junit-jupiter-api:5.10.0"
+  testRuntimeOnly "org.junit.jupiter:junit-jupiter-engine:5.10.0"
+  testRuntimeOnly "org.junit.platform:junit-platform-launcher"
+  testRuntimeOnly "org.junit.vintage:junit-vintage-engine:5.10.0"
 
   if(enableGraalNative == 'true') {
     implementation "io.github.berstanio:gdx-svmhelper-annotations:$graalHelperVersion"
@@ -15,4 +19,8 @@ dependencies {
 
 jar {
   duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+}
+
+test {
+  useJUnitPlatform()
 }

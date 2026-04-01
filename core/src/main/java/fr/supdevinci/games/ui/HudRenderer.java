@@ -29,6 +29,41 @@ public class HudRenderer {
         this.waveManager = waveManager;
     }
 
+    public void renderUpgradeMenu() {
+        float w = Gdx.graphics.getWidth();
+        float h = Gdx.graphics.getHeight();
+        
+        // Draw overlay
+        Gdx.gl.glEnable(com.badlogic.gdx.graphics.GL20.GL_BLEND);
+        Gdx.gl.glBlendFunc(com.badlogic.gdx.graphics.GL20.GL_SRC_ALPHA, com.badlogic.gdx.graphics.GL20.GL_ONE_MINUS_SRC_ALPHA);
+        shapeRenderer.setProjectionMatrix(hudCamera.combined);
+        shapeRenderer.begin(ShapeRenderer.ShapeType.Filled);
+        shapeRenderer.setColor(0, 0, 0, 0.7f);
+        shapeRenderer.rect(0, 0, w, h);
+        
+        // Buttons
+        shapeRenderer.setColor(0.2f, 0.2f, 0.4f, 1f);
+        shapeRenderer.rect(w / 2f - 250, h / 2f - 50, 200, 100); // Burst button
+        shapeRenderer.rect(w / 2f + 50, h / 2f - 50, 200, 100);  // HP button
+        shapeRenderer.end();
+        Gdx.gl.glDisable(com.badlogic.gdx.graphics.GL20.GL_BLEND);
+        
+        batch.setProjectionMatrix(hudCamera.combined);
+        batch.begin();
+        font.setColor(Color.WHITE);
+        font.getData().setScale(3f);
+        font.draw(batch, "LEVEL 5 UPGRADE!", w / 2f - 150, h / 2f + 150);
+        
+        font.getData().setScale(1.5f);
+        font.draw(batch, "Rafale (Tir continu)", w / 2f - 240, h / 2f + 20);
+        font.draw(batch, "Hold Left Click", w / 2f - 220, h / 2f - 20);
+        
+        font.draw(batch, "Blindage Lourd", w / 2f + 70, h / 2f + 20);
+        font.draw(batch, "+200 HP Max", w / 2f + 90, h / 2f - 20);
+        font.getData().setScale(1.5f); // Used by HUD renderer
+        batch.end();
+    }
+
     public void render() {
         float w = Gdx.graphics.getWidth();
         float h = Gdx.graphics.getHeight();

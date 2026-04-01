@@ -22,6 +22,12 @@ public final class GameConfig {
     public static final float BULLET_RADIUS = 0.2f;
     public static final float BULLET_LIFETIME = 3f;
     public static final float ENEMY_BULLET_SPEED = 15f;
+    
+    // Heavy Bullets
+    public static final float HEAVY_BULLET_SPEED = 20f;
+    public static final float HEAVY_BULLET_RADIUS = 0.4f;
+    public static final float HEAVY_FIRE_RATE = 2.0f;
+    public static final float HEAVY_DAMAGE_MULT = 3.0f;
 
     // EXP
     public static final float BASE_EXP_TO_LEVEL = 100f;

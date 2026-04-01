@@ -72,14 +72,15 @@ public class GameOverScreen implements Screen {
 
         // Restart prompt
         font.setColor(Color.GRAY);
-        String restart = "Press SPACE to restart";
+        String restart = "Press SPACE for Main Menu";
         layout.setText(font, restart);
         font.draw(batch, restart, (w - layout.width) / 2f, h * 0.2f);
 
         batch.end();
 
         if (Gdx.input.isKeyJustPressed(Input.Keys.SPACE)) {
-            game.setScreen(new GameScreen(game));
+            // Need to import and use MainMenuScreen
+            game.setScreen(new fr.supdevinci.games.screens.MainMenuScreen(game));
         }
     }
 

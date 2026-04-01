@@ -8,12 +8,15 @@ import fr.supdevinci.games.GameConfig;
 public class Bullet extends Entity {
     private final float damage;
     private final boolean playerBullet;
+    private final boolean isHeavy;
     private float lifetime;
 
-    public Bullet(Body body, float damage, boolean playerBullet) {
-        super(body, GameConfig.BULLET_RADIUS * 2, GameConfig.BULLET_RADIUS * 2);
+    public Bullet(Body body, float damage, boolean playerBullet, boolean isHeavy) {
+        super(body, isHeavy ? GameConfig.HEAVY_BULLET_RADIUS * 2 : GameConfig.BULLET_RADIUS * 2,
+                    isHeavy ? GameConfig.HEAVY_BULLET_RADIUS * 2 : GameConfig.BULLET_RADIUS * 2);
         this.damage = damage;
         this.playerBullet = playerBullet;
+        this.isHeavy = isHeavy;
         this.lifetime = GameConfig.BULLET_LIFETIME;
     }
 
@@ -32,11 +35,17 @@ public class Bullet extends Entity {
         Vector2 pos = body.getPosition();
 
         if (playerBullet) {
-            renderer.setColor(0.9f, 0.95f, 1.0f, 1f);
+            if (isHeavy) {
+                renderer.setColor(1.0f, 0.5f, 0.0f, 1f); // Orange for heavy
+            } else {
+                renderer.setColor(0.9f, 0.95f, 1.0f, 1f);
+            }
         } else {
             renderer.setColor(1.0f, 0.3f, 0.2f, 1f);
         }
-        renderer.circle(pos.x, pos.y, GameConfig.BULLET_RADIUS, 8);
+        
+        float radius = isHeavy ? GameConfig.HEAVY_BULLET_RADIUS : GameConfig.BULLET_RADIUS;
+        renderer.circle(pos.x, pos.y, radius, isHeavy ? 12 : 8);
     }
 
     public float getDamage() { return damage; }
