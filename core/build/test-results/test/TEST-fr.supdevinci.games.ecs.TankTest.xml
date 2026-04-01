@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="fr.supdevinci.games.ecs.TankTest" tests="13" skipped="0" failures="0" errors="0" timestamp="2026-04-01T09:38:45.839Z" hostname="DESKTOP-LIIE73V" time="0.021">
+<testsuite name="fr.supdevinci.games.ecs.TankTest" tests="13" skipped="0" failures="0" errors="0" timestamp="2026-04-01T11:06:56.667Z" hostname="DESKTOP-LIIE73V" time="0.019">
   <properties/>
-  <testcase name="testFireCooldown" classname="fr.supdevinci.games.ecs.TankTest" time="0.006"/>
+  <testcase name="testFireCooldown" classname="fr.supdevinci.games.ecs.TankTest" time="0.005"/>
   <testcase name="testCanFireInitially" classname="fr.supdevinci.games.ecs.TankTest" time="0.0"/>
-  <testcase name="testTakeFatalDamage" classname="fr.supdevinci.games.ecs.TankTest" time="0.0"/>
-  <testcase name="testMultipleLevelUps" classname="fr.supdevinci.games.ecs.TankTest" time="0.001"/>
+  <testcase name="testTakeFatalDamage" classname="fr.supdevinci.games.ecs.TankTest" time="0.001"/>
+  <testcase name="testMultipleLevelUps" classname="fr.supdevinci.games.ecs.TankTest" time="0.0"/>
   <testcase name="testArmorCap" classname="fr.supdevinci.games.ecs.TankTest" time="0.0"/>
   <testcase name="testTakeDamageWithArmor" classname="fr.supdevinci.games.ecs.TankTest" time="0.0"/>
-  <testcase name="testApplyLevelUpIncreasesStats" classname="fr.supdevinci.games.ecs.TankTest" time="0.001"/>
-  <testcase name="testDeadTankCannotFire" classname="fr.supdevinci.games.ecs.TankTest" time="0.0"/>
-  <testcase name="testTakeExactLethalDamage" classname="fr.supdevinci.games.ecs.TankTest" time="0.001"/>
-  <testcase name="testInitialStats" classname="fr.supdevinci.games.ecs.TankTest" time="0.0"/>
-  <testcase name="testLevelUpFullHeals" classname="fr.supdevinci.games.ecs.TankTest" time="0.001"/>
+  <testcase name="testApplyLevelUpIncreasesStats" classname="fr.supdevinci.games.ecs.TankTest" time="0.0"/>
+  <testcase name="testDeadTankCannotFire" classname="fr.supdevinci.games.ecs.TankTest" time="0.001"/>
+  <testcase name="testTakeExactLethalDamage" classname="fr.supdevinci.games.ecs.TankTest" time="0.0"/>
+  <testcase name="testInitialStats" classname="fr.supdevinci.games.ecs.TankTest" time="0.001"/>
+  <testcase name="testLevelUpFullHeals" classname="fr.supdevinci.games.ecs.TankTest" time="0.0"/>
   <testcase name="testTakeDamage" classname="fr.supdevinci.games.ecs.TankTest" time="0.0"/>
-  <testcase name="testSetAngle" classname="fr.supdevinci.games.ecs.TankTest" time="0.001"/>
+  <testcase name="testSetAngle" classname="fr.supdevinci.games.ecs.TankTest" time="0.0"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

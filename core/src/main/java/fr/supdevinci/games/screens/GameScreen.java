@@ -5,6 +5,7 @@ import com.badlogic.gdx.Input;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
+import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Rectangle;
@@ -44,12 +45,14 @@ public class GameScreen implements Screen {
     private HudRenderer hudRenderer;
 
     private boolean upgrading = false;
+    private boolean paused = false;
     private float victoryTimer = 0f;
 
     private OrthographicCamera camera;
     private ExtendViewport viewport;
     private ShapeRenderer shapeRenderer;
     private com.badlogic.gdx.graphics.g2d.SpriteBatch batch;
+    private Texture background;
 
     public GameScreen(Main game, Difficulty difficulty) {
         this.game = game;
@@ -63,6 +66,8 @@ public class GameScreen implements Screen {
         bodyFactory = new BodyFactory();
         bodyFactory.createWalls(physicsWorld.getWorld());
 
+        background = new Texture(Gdx.files.internal("BG_menu.png"));
+
         // Camera
         camera = new OrthographicCamera();
         viewport = new ExtendViewport(GameConfig.VIEWPORT_WIDTH, GameConfig.VIEWPORT_HEIGHT, camera);
@@ -72,7 +77,7 @@ public class GameScreen implements Screen {
 
         // Player
         Body tankBody = bodyFactory.createTankBody(physicsWorld.getWorld(),
-            GameConfig.MAP_WIDTH / 2f, GameConfig.MAP_HEIGHT / 2f);
+                GameConfig.MAP_WIDTH / 2f, GameConfig.MAP_HEIGHT / 2f);
         tank = new Tank(tankBody);
         tank.applyDifficulty(difficulty);
 
@@ -101,36 +106,33 @@ public class GameScreen implements Screen {
         Gdx.gl.glClearColor(0.08f, 0.08f, 0.12f, 1f);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
-        if (upgrading) {
-            shapeRenderer.setProjectionMatrix(camera.combined);
-            shapeRenderer.begin(ShapeRenderer.ShapeType.Filled);
-            renderMap();
-            for (ExpOrb orb : expOrbs) orb.render(shapeRenderer);
-            for (Enemy enemy : enemies) enemy.render(shapeRenderer);
-            for (Bullet bullet : bullets) bullet.render(shapeRenderer);
-            shapeRenderer.end();
-            
-            batch.setProjectionMatrix(camera.combined);
-            batch.begin();
-            tank.render(shapeRenderer, batch); // Draw tank sprite
-            batch.end();
-            
-            shapeRenderer.begin(ShapeRenderer.ShapeType.Filled);
-            tank.render(shapeRenderer); // Draw bars
-            shapeRenderer.end();
+        // Toggle pause on ESC (but not during upgrade menu)
+        if (Gdx.input.isKeyJustPressed(Input.Keys.ESCAPE) && !upgrading) {
+            paused = !paused;
+        }
 
+        if (paused) {
+            // Render frozen world
+            renderWorld();
+            hudRenderer.render();
+            // Draw pause overlay
+            renderPauseMenu();
+            return;
+        }
+        if (upgrading) {
+            renderWorld();
             hudRenderer.renderUpgradeMenu();
 
             if (Gdx.input.isButtonJustPressed(Input.Buttons.LEFT)) {
                 float mx = Gdx.input.getX();
                 float my = Gdx.graphics.getHeight() - Gdx.input.getY();
-                
+
                 float w = Gdx.graphics.getWidth();
                 float h = Gdx.graphics.getHeight();
-                
+
                 Rectangle btnBurst = new Rectangle(w / 2f - 250, h / 2f - 50, 200, 100);
                 Rectangle btnHp = new Rectangle(w / 2f + 50, h / 2f - 50, 200, 100);
-                
+
                 if (btnBurst.contains(mx, my)) {
                     tank.enableBurstFire();
                     upgrading = false;
@@ -152,9 +154,8 @@ public class GameScreen implements Screen {
         tank.setAngle(angle);
 
         // Fire on click
-        boolean firing = tank.isBurstFireUnlocked() ? 
-                         Gdx.input.isButtonPressed(Input.Buttons.LEFT) : 
-                         Gdx.input.isButtonJustPressed(Input.Buttons.LEFT);
+        boolean firing = tank.isBurstFireUnlocked() ? Gdx.input.isButtonPressed(Input.Buttons.LEFT)
+                : Gdx.input.isButtonJustPressed(Input.Buttons.LEFT);
 
         if (firing && tank.canFire()) {
             fireBullet();
@@ -212,54 +213,108 @@ public class GameScreen implements Screen {
         }
 
         // --- Render ---
-        Gdx.gl.glClearColor(0.08f, 0.08f, 0.12f, 1f);
-        Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
-
-        shapeRenderer.setProjectionMatrix(camera.combined);
-
-        // Map ground + grid
-        shapeRenderer.begin(ShapeRenderer.ShapeType.Filled);
-        renderMap();
-
-        // Entities
-        for (ExpOrb orb : expOrbs) orb.render(shapeRenderer);
-        for (Enemy enemy : enemies) enemy.render(shapeRenderer);
-        for (Bullet bullet : bullets) bullet.render(shapeRenderer);
-        shapeRenderer.end();
-
-        // Draw Tank Sprite
-        batch.setProjectionMatrix(camera.combined);
-        batch.begin();
-        tank.render(shapeRenderer, batch);
-        batch.end();
-
-        // Draw Tank Bars
-        shapeRenderer.begin(ShapeRenderer.ShapeType.Filled);
-        tank.render(shapeRenderer);
-        shapeRenderer.end();
-
-        // Map border
-        shapeRenderer.begin(ShapeRenderer.ShapeType.Line);
-        shapeRenderer.setColor(0.5f, 0.5f, 0.5f, 1f);
-        shapeRenderer.rect(0, 0, GameConfig.MAP_WIDTH, GameConfig.MAP_HEIGHT);
-        shapeRenderer.end();
+        renderWorld();
 
         // HUD
         hudRenderer.render();
     }
 
     private void renderMap() {
-        // Ground
-        shapeRenderer.setColor(0.12f, 0.14f, 0.12f, 1f);
-        shapeRenderer.rect(0, 0, GameConfig.MAP_WIDTH, GameConfig.MAP_HEIGHT);
+        // Map border - keep this to see the limits
+    }
 
-        // Grid
-        shapeRenderer.setColor(0.16f, 0.18f, 0.16f, 1f);
-        for (float x = 0; x <= GameConfig.MAP_WIDTH; x += 10) {
-            shapeRenderer.rectLine(x, 0, x, GameConfig.MAP_HEIGHT, 0.05f);
-        }
-        for (float y = 0; y <= GameConfig.MAP_HEIGHT; y += 10) {
-            shapeRenderer.rectLine(0, y, GameConfig.MAP_WIDTH, y, 0.05f);
+    /** Render the game world (entities + map) without any UI. Used by pause. */
+    private void renderWorld() {
+        // 1. Background
+        batch.setProjectionMatrix(camera.combined);
+        batch.begin();
+        batch.draw(background, 0, 0, GameConfig.MAP_WIDTH, GameConfig.MAP_HEIGHT);
+        batch.end();
+
+        // 2. Shape entities
+        shapeRenderer.setProjectionMatrix(camera.combined);
+        shapeRenderer.begin(ShapeRenderer.ShapeType.Filled);
+        renderMap();
+        for (ExpOrb orb : expOrbs)
+            orb.render(shapeRenderer);
+        for (Enemy enemy : enemies)
+            enemy.render(shapeRenderer);
+        for (Bullet bullet : bullets)
+            bullet.render(shapeRenderer);
+        shapeRenderer.end();
+
+        // 3. Tank Sprite
+        batch.begin();
+        tank.render(shapeRenderer, batch);
+        batch.end();
+
+        // 4. Tank Bars (top Layer)
+        shapeRenderer.begin(ShapeRenderer.ShapeType.Filled);
+        tank.render(shapeRenderer);
+        shapeRenderer.end();
+
+        // 5. World Border
+        shapeRenderer.begin(ShapeRenderer.ShapeType.Line);
+        shapeRenderer.setColor(0.5f, 0.5f, 0.5f, 1f);
+        shapeRenderer.rect(0, 0, GameConfig.MAP_WIDTH, GameConfig.MAP_HEIGHT);
+        shapeRenderer.end();
+    }
+
+    private void renderPauseMenu() {
+        float w = Gdx.graphics.getWidth();
+        float h = Gdx.graphics.getHeight();
+
+        // Dim overlay
+        Gdx.gl.glEnable(GL20.GL_BLEND);
+        Gdx.gl.glBlendFunc(GL20.GL_SRC_ALPHA, GL20.GL_ONE_MINUS_SRC_ALPHA);
+        com.badlogic.gdx.graphics.g2d.SpriteBatch uiBatch = new com.badlogic.gdx.graphics.g2d.SpriteBatch();
+        com.badlogic.gdx.graphics.OrthographicCamera uiCam = new com.badlogic.gdx.graphics.OrthographicCamera();
+        uiCam.setToOrtho(false, w, h);
+        uiCam.update();
+
+        ShapeRenderer ui = new ShapeRenderer();
+        ui.setProjectionMatrix(uiCam.combined);
+        ui.begin(ShapeRenderer.ShapeType.Filled);
+        ui.setColor(0, 0, 0, 0.65f);
+        ui.rect(0, 0, w, h);
+        // Panel
+        float panW = 320, panH = 200;
+        float panX = w / 2f - panW / 2f, panY = h / 2f - panH / 2f;
+        ui.setColor(0.12f, 0.14f, 0.20f, 1f);
+        ui.rect(panX, panY, panW, panH);
+        // Buttons
+        Rectangle btnResume = new Rectangle(panX + 30, panY + 90, 260, 50);
+        Rectangle btnMenu = new Rectangle(panX + 30, panY + 25, 260, 50);
+        ui.setColor(0.2f, 0.55f, 0.2f, 1f);
+        ui.rect(btnResume.x, btnResume.y, btnResume.width, btnResume.height);
+        ui.setColor(0.55f, 0.15f, 0.15f, 1f);
+        ui.rect(btnMenu.x, btnMenu.y, btnMenu.width, btnMenu.height);
+        ui.end();
+        Gdx.gl.glDisable(GL20.GL_BLEND);
+
+        com.badlogic.gdx.graphics.g2d.BitmapFont pauseFont = new com.badlogic.gdx.graphics.g2d.BitmapFont();
+        uiBatch.setProjectionMatrix(uiCam.combined);
+        uiBatch.begin();
+        pauseFont.getData().setScale(2.5f);
+        pauseFont.setColor(com.badlogic.gdx.graphics.Color.WHITE);
+        pauseFont.draw(uiBatch, "PAUSE", panX + 95, panY + 185);
+        pauseFont.getData().setScale(1.5f);
+        pauseFont.draw(uiBatch, "Reprendre   (ESC)", panX + 45, panY + 123);
+        pauseFont.draw(uiBatch, "Menu Principal", panX + 65, panY + 58);
+        uiBatch.end();
+        pauseFont.dispose();
+        ui.dispose();
+        uiBatch.dispose();
+
+        // Input handling
+        if (Gdx.input.isButtonJustPressed(Input.Buttons.LEFT)) {
+            float mx = Gdx.input.getX();
+            float my = h - Gdx.input.getY();
+            if (btnResume.contains(mx, my)) {
+                paused = false;
+            } else if (btnMenu.contains(mx, my)) {
+                game.setScreen(new fr.supdevinci.games.screens.MainMenuScreen(game));
+            }
         }
     }
 
@@ -296,10 +351,10 @@ public class GameScreen implements Screen {
     private void fireEnemyBullet(Enemy enemy) {
         Vector2 ePos = enemy.getPosition();
         Vector2 dir = new Vector2(tank.getPosition()).sub(ePos).nor();
-        
+
         boolean isBoss = enemy.getType().name().startsWith("BOSS");
         float bulletSpeed = isBoss ? GameConfig.ENEMY_BULLET_SPEED * 1.5f : GameConfig.ENEMY_BULLET_SPEED;
-        
+
         float bx = ePos.x + dir.x * enemy.getWidth();
         float by = ePos.y + dir.y * enemy.getHeight();
         float vx = dir.x * bulletSpeed;
@@ -311,7 +366,7 @@ public class GameScreen implements Screen {
         } else {
             bulletBody = bodyFactory.createEnemyBulletBody(physicsWorld.getWorld(), bx, by, vx, vy);
         }
-        
+
         // Pass isHeavy=isBoss to render it orange and bigger
         Bullet bullet = new Bullet(bulletBody, enemy.getType().getBulletDamage(), false, isBoss);
         bullets.add(bullet);
@@ -365,15 +420,18 @@ public class GameScreen implements Screen {
 
     @Override
     public void resize(int width, int height) {
-        if (width <= 0 || height <= 0) return;
+        if (width <= 0 || height <= 0)
+            return;
         viewport.update(width, height);
     }
 
     @Override
-    public void pause() {}
+    public void pause() {
+    }
 
     @Override
-    public void resume() {}
+    public void resume() {
+    }
 
     @Override
     public void hide() {
@@ -382,10 +440,17 @@ public class GameScreen implements Screen {
 
     @Override
     public void dispose() {
-        if (shapeRenderer != null) shapeRenderer.dispose();
-        if (batch != null) batch.dispose();
-        if (hudRenderer != null) hudRenderer.dispose();
-        if (physicsWorld != null) physicsWorld.dispose();
-        if (tank != null) tank.dispose();
+        if (shapeRenderer != null)
+            shapeRenderer.dispose();
+        if (batch != null)
+            batch.dispose();
+        if (background != null)
+            background.dispose();
+        if (hudRenderer != null)
+            hudRenderer.dispose();
+        if (physicsWorld != null)
+            physicsWorld.dispose();
+        if (tank != null)
+            tank.dispose();
     }
 }

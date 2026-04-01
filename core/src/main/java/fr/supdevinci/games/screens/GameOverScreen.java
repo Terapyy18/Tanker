@@ -8,6 +8,7 @@ import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.GlyphLayout;
+import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import fr.supdevinci.games.Main;
 
@@ -22,6 +23,8 @@ public class GameOverScreen implements Screen {
     private BitmapFont font;
     private OrthographicCamera camera;
     private GlyphLayout layout;
+    private Texture background;
+    private com.badlogic.gdx.graphics.glutils.ShapeRenderer shapeRenderer;
 
     public GameOverScreen(Main game, boolean victory, int waveReached, int levelReached) {
         this.game = game;
@@ -39,6 +42,8 @@ public class GameOverScreen implements Screen {
         font.getData().setScale(1.5f);
         camera = new OrthographicCamera();
         layout = new GlyphLayout();
+        background = new Texture(Gdx.files.internal("BG_menu.png"));
+        shapeRenderer = new com.badlogic.gdx.graphics.glutils.ShapeRenderer();
     }
 
     @Override
@@ -52,6 +57,20 @@ public class GameOverScreen implements Screen {
         camera.update();
 
         batch.setProjectionMatrix(camera.combined);
+        batch.begin();
+        batch.draw(background, 0, 0, w, h);
+        batch.end();
+
+        // Dark overlay for better text readability
+        Gdx.gl.glEnable(GL20.GL_BLEND);
+        Gdx.gl.glBlendFunc(GL20.GL_SRC_ALPHA, GL20.GL_ONE_MINUS_SRC_ALPHA);
+        shapeRenderer.setProjectionMatrix(camera.combined);
+        shapeRenderer.begin(com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType.Filled);
+        shapeRenderer.setColor(0, 0, 0, 0.4f);
+        shapeRenderer.rect(0, 0, w, h);
+        shapeRenderer.end();
+        Gdx.gl.glDisable(GL20.GL_BLEND);
+
         batch.begin();
 
         // Title
@@ -85,13 +104,16 @@ public class GameOverScreen implements Screen {
     }
 
     @Override
-    public void resize(int width, int height) {}
+    public void resize(int width, int height) {
+    }
 
     @Override
-    public void pause() {}
+    public void pause() {
+    }
 
     @Override
-    public void resume() {}
+    public void resume() {
+    }
 
     @Override
     public void hide() {
@@ -100,8 +122,15 @@ public class GameOverScreen implements Screen {
 
     @Override
     public void dispose() {
-        if (batch != null) batch.dispose();
-        if (titleFont != null) titleFont.dispose();
-        if (font != null) font.dispose();
+        if (batch != null)
+            batch.dispose();
+        if (titleFont != null)
+            titleFont.dispose();
+        if (font != null)
+            font.dispose();
+        if (background != null)
+            background.dispose();
+        if (shapeRenderer != null)
+            shapeRenderer.dispose();
     }
 }

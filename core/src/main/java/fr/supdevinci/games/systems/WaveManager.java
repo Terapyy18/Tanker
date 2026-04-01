@@ -132,6 +132,7 @@ public class WaveManager {
     public boolean isVictory() { return victory; }
     public boolean isBetweenWaves() { return !waveInProgress && !gameComplete && currentWave > 0; }
     public float getPauseTimer() { return pauseTimer; }
+    public boolean isInfinite() { return difficulty == fr.supdevinci.games.Difficulty.INFINITE; }
 
     public List<EnemyType> getAvailableTypes(int wave) {
         List<EnemyType> available = new ArrayList<EnemyType>();

@@ -8,7 +8,10 @@ import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.Body;
+import com.badlogic.gdx.physics.box2d.Fixture;
+import com.badlogic.gdx.physics.box2d.PolygonShape;
 import fr.supdevinci.games.GameConfig;
+import fr.supdevinci.games.physics.PhysicsConstants;
 
 public class Tank extends Entity {
     private float health;
@@ -161,6 +164,33 @@ public class Tank extends Entity {
         if (level == 5) {
             heavyFireRate *= 0.8f; // 20% faster charge at level 5
         }
+
+        // Adjust physical hitbox size based on level (Level 1 is smaller sprite, Level 2/3 fill more of the frame)
+        float newSize = GameConfig.PLAYER_WIDTH;
+        if (level >= 2) newSize = 4.0f; // Increase size for Tank2 and Tank3 assets
+        
+        if (newSize != width && body != null) {
+            width = newSize;
+            height = newSize; // Keeping it square for simplicity as assets are square-ish
+            
+            // Recreate fixture to match new size
+            if (body.getFixtureList().size > 0) {
+                body.destroyFixture(body.getFixtureList().first());
+            }
+            
+            PolygonShape shape = new PolygonShape();
+            shape.setAsBox(width / 2f, height / 2f);
+            
+            com.badlogic.gdx.physics.box2d.FixtureDef fd = new com.badlogic.gdx.physics.box2d.FixtureDef();
+            fd.shape = shape;
+            fd.density = 1f;
+            fd.friction = 0.3f;
+            fd.restitution = 0.1f;
+            fd.filter.categoryBits = PhysicsConstants.CATEGORY_PLAYER;
+            fd.filter.maskBits = PhysicsConstants.MASK_PLAYER;
+            body.createFixture(fd);
+            shape.dispose();
+        }
     }
 
     public void render(ShapeRenderer renderer, SpriteBatch batch) {
@@ -171,19 +201,15 @@ public class Tank extends Entity {
         int levelIndex = Math.min(customLevel - 1, 2);
         Texture currentTex = textures[levelIndex];
 
-        // Visual size (bigger than physics hitbox)
-        float drawW = width * 3.5f;
-        float drawH = height * 3.5f;
-
         // Canon in PNG points UP (+Y) so we offset angle by -90° to align with our angle system (0° = right)
         float drawAngle = angle - 90f;
 
         batch.draw(currentTex,
-            pos.x - drawW / 2f, pos.y - drawH / 2f,  // position
-            drawW / 2f, drawH / 2f,                    // origin (center of image)
-            drawW, drawH,                               // size
-            1f, 1f,                                     // scale
-            drawAngle,                                  // corrected rotation
+            pos.x - width / 2f, pos.y - height / 2f,  // position
+            width / 2f, height / 2f,                    // origin (center)
+            width, height,                               // size matches hitbox
+            1f, 1f,                                      // scale
+            drawAngle,                                   // corrected rotation
             0, 0, currentTex.getWidth(), currentTex.getHeight(), false, false);
     }
 

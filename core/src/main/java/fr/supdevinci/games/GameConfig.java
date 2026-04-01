@@ -10,8 +10,8 @@ public final class GameConfig {
     public static final float VIEWPORT_HEIGHT = 30f;
 
     // Player
-    public static final float PLAYER_WIDTH = 2f;
-    public static final float PLAYER_HEIGHT = 1.5f;
+    public static final float PLAYER_WIDTH = 4f;    // matches visual asset
+    public static final float PLAYER_HEIGHT = 4f;   // matches visual asset
     public static final float PLAYER_SPEED = 10f;
     public static final float PLAYER_MAX_HEALTH = 100f;
     public static final float PLAYER_DAMAGE = 25f;
@@ -45,7 +45,7 @@ public final class GameConfig {
 
     // Level-up bonuses
     public static final float LEVEL_HEALTH_BONUS = 0.10f;
-    public static final float LEVEL_SPEED_BONUS = 0.05f;
+    public static final float LEVEL_SPEED_BONUS = 0.02f;  // tiny +2% speed per level
     public static final float LEVEL_DAMAGE_BONUS = 0.08f;
     public static final float LEVEL_FIRE_RATE_BONUS = 0.05f;
     public static final float LEVEL_ARMOR_BONUS = 0.03f;
