@@ -14,7 +14,7 @@ public class WaveManager {
     private boolean victory = false;
     private int remainingToSpawn = 0;
     private float spawnTimer = 0;
-    private float pauseTimer = 2f; // initial pause before wave 1
+    private float pauseTimer = 2f; // pause initiale avant la vague 1
 
     private final List<SpawnRequest> pendingSpawns = new ArrayList<SpawnRequest>();
     private final List<EnemyType> bossesToSpawnQueue = new ArrayList<>();
@@ -47,7 +47,7 @@ public class WaveManager {
                     spawnTimer = GameConfig.SPAWN_INTERVAL;
                 }
             } else if (aliveEnemyCount == 0) {
-                // Wave complete
+                // Vague terminée
                 waveInProgress = false;
                 if (difficulty != fr.supdevinci.games.Difficulty.INFINITE && currentWave >= GameConfig.TOTAL_WAVES) {
                     gameComplete = true;
@@ -71,7 +71,7 @@ public class WaveManager {
         bossesToSpawnQueue.clear();
         if (currentWave % 10 == 0) {
             int numBosses = currentWave / 10;
-            // Cap to infinite bosses, pattern: BOSS -> BOSS_2 -> BOSS_3 -> BOSS_3...
+            // Limite pour les boss infinis, schéma : BOSS -> BOSS_2 -> BOSS_3 -> BOSS_3...
             for (int i = 1; i <= numBosses; i++) {
                 if (i == 1) {
                     bossesToSpawnQueue.add(EnemyType.BOSS);

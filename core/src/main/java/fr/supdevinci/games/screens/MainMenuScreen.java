@@ -52,24 +52,24 @@ public class MainMenuScreen extends ScreenAdapter {
 
         camera.update();
 
-        // Draw Background
+        // Dessiner l'arrière-plan
         batch.setProjectionMatrix(camera.combined);
         batch.begin();
         batch.draw(background, 0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
         batch.end();
 
-        // Mouse position for hover effects
+        // Position de la souris pour les effets de survol
         float mx = Gdx.input.getX();
         float my = Gdx.graphics.getHeight() - Gdx.input.getY();
 
-        // Enable transparency for buttons
+        // Activer la transparence pour les boutons
         Gdx.gl.glEnable(GL20.GL_BLEND);
         Gdx.gl.glBlendFunc(GL20.GL_SRC_ALPHA, GL20.GL_ONE_MINUS_SRC_ALPHA);
         renderer.setProjectionMatrix(camera.combined);
         
         renderer.begin(ShapeRenderer.ShapeType.Filled);
         
-        // Render buttons with hover check
+        // Rendre les boutons avec vérification de survol
         drawMenuButton(renderer, btnNormal, 0.2f, 0.4f, 0.2f, btnNormal.contains(mx, my));
         drawMenuButton(renderer, btnHard, 0.6f, 0.2f, 0.2f, btnHard.contains(mx, my));
         drawMenuButton(renderer, btnInfinite, 0.4f, 0.2f, 0.8f, btnInfinite.contains(mx, my));
@@ -94,7 +94,7 @@ public class MainMenuScreen extends ScreenAdapter {
         batch.end();
 
         if (Gdx.input.isButtonJustPressed(Input.Buttons.LEFT)) {
-            // Re-use mx/my calculated above
+            // Utiliser mx/my calculés ci-dessus
             if (btnNormal.contains(mx, my)) {
                 game.setScreen(new GameScreen(game, Difficulty.NORMAL));
             } else if (btnHard.contains(mx, my)) {
@@ -109,7 +109,7 @@ public class MainMenuScreen extends ScreenAdapter {
 
     private void drawMenuButton(ShapeRenderer renderer, Rectangle rect, float r, float g, float b, boolean hovered) {
         float alpha = hovered ? 0.95f : 0.75f;
-        float factor = hovered ? 1.2f : 1.0f; // Brighter when hovered
+        float factor = hovered ? 1.2f : 1.0f; // Plus lumineux au survol
         renderer.setColor(Math.min(1, r * factor), Math.min(1, g * factor), Math.min(1, b * factor), alpha);
         renderer.rect(rect.x, rect.y, rect.width, rect.height);
     }

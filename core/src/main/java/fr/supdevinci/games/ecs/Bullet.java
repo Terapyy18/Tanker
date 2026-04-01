@@ -36,7 +36,7 @@ public class Bullet extends Entity {
 
         if (playerBullet) {
             if (isHeavy) {
-                renderer.setColor(1.0f, 0.5f, 0.0f, 1f); // Orange for heavy
+                renderer.setColor(1.0f, 0.5f, 0.0f, 1f); // Orange pour les balles lourdes
             } else {
                 renderer.setColor(0.9f, 0.95f, 1.0f, 1f);
             }

@@ -5,54 +5,31 @@ import com.badlogic.gdx.Input;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
-import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
-import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Rectangle;
-import com.badlogic.gdx.math.Vector2;
-import com.badlogic.gdx.math.Vector3;
-import com.badlogic.gdx.physics.box2d.Body;
-import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.viewport.ExtendViewport;
 import fr.supdevinci.games.Difficulty;
 import fr.supdevinci.games.GameConfig;
+import fr.supdevinci.games.GameWorld;
 import fr.supdevinci.games.Main;
-import fr.supdevinci.games.ecs.*;
-import fr.supdevinci.games.physics.BodyFactory;
-import fr.supdevinci.games.physics.PhysicsWorld;
-import fr.supdevinci.games.systems.*;
+import fr.supdevinci.games.ecs.Tank;
+import fr.supdevinci.games.systems.CameraSystem;
 import fr.supdevinci.games.ui.HudRenderer;
-
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
 
 public class GameScreen implements Screen {
     private final Main game;
     private final Difficulty difficulty;
 
-    private PhysicsWorld physicsWorld;
-    private BodyFactory bodyFactory;
-    private Tank tank;
-    private final List<Enemy> enemies = new ArrayList<>();
-    private final List<Bullet> bullets = new ArrayList<>();
-    private final List<ExpOrb> expOrbs = new ArrayList<>();
-
-    private WaveManager waveManager;
-    private LevelSystem levelSystem;
-    private CollisionHandler collisionHandler;
+    private GameWorld world;
+    private GameRenderer renderer;
+    private GameInputHandler inputHandler;
     private CameraSystem cameraSystem;
     private HudRenderer hudRenderer;
 
-    private boolean upgrading = false;
-    private boolean paused = false;
-    private float victoryTimer = 0f;
-
     private OrthographicCamera camera;
     private ExtendViewport viewport;
-    private ShapeRenderer shapeRenderer;
-    private com.badlogic.gdx.graphics.g2d.SpriteBatch batch;
-    private Texture background;
 
     public GameScreen(Main game, Difficulty difficulty) {
         this.game = game;
@@ -61,377 +38,149 @@ public class GameScreen implements Screen {
 
     @Override
     public void show() {
-        // Physics
-        physicsWorld = new PhysicsWorld();
-        bodyFactory = new BodyFactory();
-        bodyFactory.createWalls(physicsWorld.getWorld());
-
-        background = new Texture(Gdx.files.internal("BG_menu.png"));
-
-        // Camera
         camera = new OrthographicCamera();
         viewport = new ExtendViewport(GameConfig.VIEWPORT_WIDTH, GameConfig.VIEWPORT_HEIGHT, camera);
         camera.position.set(GameConfig.MAP_WIDTH / 2f, GameConfig.MAP_HEIGHT / 2f, 0);
         camera.update();
+
+        world = new GameWorld(difficulty);
+        renderer = new GameRenderer(world);
+        inputHandler = new GameInputHandler(world, camera);
         cameraSystem = new CameraSystem(camera);
+        hudRenderer = new HudRenderer(world.getEntityManager().getTank(), world.getLevelSystem(), world.getWaveManager());
 
-        // Player
-        Body tankBody = bodyFactory.createTankBody(physicsWorld.getWorld(),
-                GameConfig.MAP_WIDTH / 2f, GameConfig.MAP_HEIGHT / 2f);
-        tank = new Tank(tankBody);
-        tank.applyDifficulty(difficulty);
-
-        // Systems
-        levelSystem = new LevelSystem(new LevelSystem.LevelUpListener() {
-            @Override
-            public void onLevelUp(int newLevel) {
-                tank.applyLevelUp(newLevel);
-                if (newLevel == 5) {
-                    upgrading = true;
-                }
-            }
-        });
-        waveManager = new WaveManager(difficulty);
-        collisionHandler = new CollisionHandler(levelSystem);
-        physicsWorld.getWorld().setContactListener(collisionHandler);
-
-        // Rendering
-        shapeRenderer = new ShapeRenderer();
-        batch = new com.badlogic.gdx.graphics.g2d.SpriteBatch();
-        hudRenderer = new HudRenderer(tank, levelSystem, waveManager);
+        Gdx.input.setInputProcessor(inputHandler);
     }
 
     @Override
     public void render(float delta) {
-        Gdx.gl.glClearColor(0.08f, 0.08f, 0.12f, 1f);
-        Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
+        // --- Mise à jour ---
+        inputHandler.update(delta);
+        world.update(delta);
 
-        // Toggle pause on ESC (but not during upgrade menu)
-        if (Gdx.input.isKeyJustPressed(Input.Keys.ESCAPE) && !upgrading) {
-            paused = !paused;
+        Tank tank = world.getEntityManager().getTank();
+        if (tank != null) {
+            cameraSystem.update(delta, tank.getPosition());
         }
 
-        if (paused) {
-            // Render frozen world
-            renderWorld();
-            hudRenderer.render();
-            // Draw pause overlay
+        // Vérifier la fin de partie / victoire
+        if (tank != null && !tank.isAlive()) {
+            game.setScreen(new GameOverScreen(game, false, world.getWaveManager().getCurrentWave(), world.getLevelSystem().getLevel()));
+            return;
+        }
+        if (world.getVictoryTimer() > 2.0f) {
+            game.setScreen(new GameOverScreen(game, true, world.getWaveManager().getCurrentWave(), world.getLevelSystem().getLevel()));
+            return;
+        }
+
+        // --- Rendu ---
+        renderer.render(viewport, camera);
+
+        if (world.isPaused()) {
             renderPauseMenu();
-            return;
-        }
-        if (upgrading) {
-            renderWorld();
+        } else if (world.isUpgrading()) {
             hudRenderer.renderUpgradeMenu();
-
-            if (Gdx.input.isButtonJustPressed(Input.Buttons.LEFT)) {
-                float mx = Gdx.input.getX();
-                float my = Gdx.graphics.getHeight() - Gdx.input.getY();
-
-                float w = Gdx.graphics.getWidth();
-                float h = Gdx.graphics.getHeight();
-
-                Rectangle btnBurst = new Rectangle(w / 2f - 250, h / 2f - 50, 200, 100);
-                Rectangle btnHp = new Rectangle(w / 2f + 50, h / 2f - 50, 200, 100);
-
-                if (btnBurst.contains(mx, my)) {
-                    tank.enableBurstFire();
-                    upgrading = false;
-                } else if (btnHp.contains(mx, my)) {
-                    tank.addExtraHealth(200f);
-                    upgrading = false;
-                }
-            }
-            return;
+            handleUpgradeInput();
+        } else {
+            hudRenderer.render();
         }
-
-        delta = Math.min(delta, 0.05f);
-
-        // --- Update ---
-        // Tank angle toward mouse
-        Vector3 mouseWorld = camera.unproject(new Vector3(Gdx.input.getX(), Gdx.input.getY(), 0));
-        Vector2 tankPos = tank.getPosition();
-        float angle = MathUtils.atan2(mouseWorld.y - tankPos.y, mouseWorld.x - tankPos.x) * MathUtils.radiansToDegrees;
-        tank.setAngle(angle);
-
-        // Fire on click
-        boolean firing = tank.isBurstFireUnlocked() ? Gdx.input.isButtonPressed(Input.Buttons.LEFT)
-                : Gdx.input.isButtonJustPressed(Input.Buttons.LEFT);
-
-        if (firing && tank.canFire()) {
-            fireBullet();
-        }
-        if (Gdx.input.isButtonJustPressed(Input.Buttons.RIGHT) && tank.canFireHeavy()) {
-            fireHeavyBullet();
-        }
-
-        tank.update(delta);
-        for (Enemy enemy : enemies) {
-            enemy.update(delta, tank.getPosition());
-        }
-        for (Bullet bullet : bullets) {
-            bullet.update(delta);
-        }
-        for (ExpOrb orb : expOrbs) {
-            orb.update(delta, tank.getPosition());
-        }
-
-        // Enemy shooting
-        for (Enemy enemy : enemies) {
-            if (enemy.wantsToShoot() && enemy.isAlive()) {
-                enemy.clearShootFlag();
-                fireEnemyBullet(enemy);
-            }
-        }
-
-        // Physics step
-        physicsWorld.step(delta);
-
-        // Remove dead entities
-        removeDeadEntities();
-
-        // Waves
-        waveManager.update(delta, tank.getPosition(), enemies.size());
-        List<WaveManager.SpawnRequest> spawns = waveManager.getPendingSpawns();
-        for (WaveManager.SpawnRequest req : spawns) {
-            spawnEnemy(req.type, req.x, req.y);
-        }
-
-        // Camera
-        cameraSystem.update(delta, tank.getPosition());
-
-        // Check game over / victory
-        if (!tank.isAlive()) {
-            game.setScreen(new GameOverScreen(game, false, waveManager.getCurrentWave(), levelSystem.getLevel()));
-            return;
-        }
-        if (waveManager.isGameComplete() && waveManager.isVictory()) {
-            victoryTimer += delta;
-            if (victoryTimer > 2.0f) { // 2 seconds delay
-                game.setScreen(new GameOverScreen(game, true, waveManager.getCurrentWave(), levelSystem.getLevel()));
-                return;
-            }
-        }
-
-        // --- Render ---
-        renderWorld();
-
-        // HUD
-        hudRenderer.render();
     }
 
-    private void renderMap() {
-        // Map border - keep this to see the limits
-    }
+    private void handleUpgradeInput() {
+        if (Gdx.input.isButtonJustPressed(Input.Buttons.LEFT)) {
+            float mx = Gdx.input.getX();
+            float my = Gdx.graphics.getHeight() - Gdx.input.getY();
 
-    /** Render the game world (entities + map) without any UI. Used by pause. */
-    private void renderWorld() {
-        // 1. Background
-        batch.setProjectionMatrix(camera.combined);
-        batch.begin();
-        batch.draw(background, 0, 0, GameConfig.MAP_WIDTH, GameConfig.MAP_HEIGHT);
-        batch.end();
+            float w = Gdx.graphics.getWidth();
+            float h = Gdx.graphics.getHeight();
 
-        // 2. Shape entities
-        shapeRenderer.setProjectionMatrix(camera.combined);
-        shapeRenderer.begin(ShapeRenderer.ShapeType.Filled);
-        renderMap();
-        for (ExpOrb orb : expOrbs)
-            orb.render(shapeRenderer);
-        for (Enemy enemy : enemies)
-            enemy.render(shapeRenderer);
-        for (Bullet bullet : bullets)
-            bullet.render(shapeRenderer);
-        shapeRenderer.end();
+            Rectangle btnBurst = new Rectangle(w / 2f - 250, h / 2f - 50, 200, 100);
+            Rectangle btnHp = new Rectangle(w / 2f + 50, h / 2f - 50, 200, 100);
 
-        // 3. Tank Sprite
-        batch.begin();
-        tank.render(shapeRenderer, batch);
-        batch.end();
-
-        // 4. Tank Bars (top Layer)
-        shapeRenderer.begin(ShapeRenderer.ShapeType.Filled);
-        tank.render(shapeRenderer);
-        shapeRenderer.end();
-
-        // 5. World Border
-        shapeRenderer.begin(ShapeRenderer.ShapeType.Line);
-        shapeRenderer.setColor(0.5f, 0.5f, 0.5f, 1f);
-        shapeRenderer.rect(0, 0, GameConfig.MAP_WIDTH, GameConfig.MAP_HEIGHT);
-        shapeRenderer.end();
+            Tank tank = world.getEntityManager().getTank();
+            if (btnBurst.contains(mx, my)) {
+                tank.enableBurstFire();
+                world.setUpgrading(false);
+            } else if (btnHp.contains(mx, my)) {
+                tank.addExtraHealth(200f);
+                world.setUpgrading(false);
+            }
+        }
     }
 
     private void renderPauseMenu() {
         float w = Gdx.graphics.getWidth();
         float h = Gdx.graphics.getHeight();
 
-        // Dim overlay
+        // Utiliser un batch/caméra temporaire pour l'UI si nécessaire
+        // ou simplement utiliser une superposition ShapeRenderer comme avant.
+        // Pour plus de concision et pour garder GameScreen propre, je garde le rendu du menu pause ici pour le moment mais simplifié.
+        
         Gdx.gl.glEnable(GL20.GL_BLEND);
         Gdx.gl.glBlendFunc(GL20.GL_SRC_ALPHA, GL20.GL_ONE_MINUS_SRC_ALPHA);
-        com.badlogic.gdx.graphics.g2d.SpriteBatch uiBatch = new com.badlogic.gdx.graphics.g2d.SpriteBatch();
-        com.badlogic.gdx.graphics.OrthographicCamera uiCam = new com.badlogic.gdx.graphics.OrthographicCamera();
+        
+        ShapeRenderer uiRenderer = new ShapeRenderer();
+        OrthographicCamera uiCam = new OrthographicCamera();
         uiCam.setToOrtho(false, w, h);
         uiCam.update();
-
-        ShapeRenderer ui = new ShapeRenderer();
-        ui.setProjectionMatrix(uiCam.combined);
-        ui.begin(ShapeRenderer.ShapeType.Filled);
-        ui.setColor(0, 0, 0, 0.65f);
-        ui.rect(0, 0, w, h);
-        // Panel
+        
+        uiRenderer.setProjectionMatrix(uiCam.combined);
+        uiRenderer.begin(ShapeRenderer.ShapeType.Filled);
+        uiRenderer.setColor(0, 0, 0, 0.65f);
+        uiRenderer.rect(0, 0, w, h);
+        
         float panW = 320, panH = 200;
         float panX = w / 2f - panW / 2f, panY = h / 2f - panH / 2f;
-        ui.setColor(0.12f, 0.14f, 0.20f, 1f);
-        ui.rect(panX, panY, panW, panH);
-        // Buttons
+        uiRenderer.setColor(0.12f, 0.14f, 0.20f, 1f);
+        uiRenderer.rect(panX, panY, panW, panH);
+        
         Rectangle btnResume = new Rectangle(panX + 30, panY + 90, 260, 50);
         Rectangle btnMenu = new Rectangle(panX + 30, panY + 25, 260, 50);
-        ui.setColor(0.2f, 0.55f, 0.2f, 1f);
-        ui.rect(btnResume.x, btnResume.y, btnResume.width, btnResume.height);
-        ui.setColor(0.55f, 0.15f, 0.15f, 1f);
-        ui.rect(btnMenu.x, btnMenu.y, btnMenu.width, btnMenu.height);
-        ui.end();
+        
+        uiRenderer.setColor(0.2f, 0.55f, 0.2f, 1f);
+        uiRenderer.rect(btnResume.x, btnResume.y, btnResume.width, btnResume.height);
+        uiRenderer.setColor(0.55f, 0.15f, 0.15f, 1f);
+        uiRenderer.rect(btnMenu.x, btnMenu.y, btnMenu.width, btnMenu.height);
+        uiRenderer.end();
         Gdx.gl.glDisable(GL20.GL_BLEND);
 
-        com.badlogic.gdx.graphics.g2d.BitmapFont pauseFont = new com.badlogic.gdx.graphics.g2d.BitmapFont();
+        SpriteBatch uiBatch = new SpriteBatch();
+        BitmapFont pauseFont = new BitmapFont();
         uiBatch.setProjectionMatrix(uiCam.combined);
         uiBatch.begin();
         pauseFont.getData().setScale(2.5f);
-        pauseFont.setColor(com.badlogic.gdx.graphics.Color.WHITE);
         pauseFont.draw(uiBatch, "PAUSE", panX + 95, panY + 185);
         pauseFont.getData().setScale(1.5f);
         pauseFont.draw(uiBatch, "Reprendre   (ESC)", panX + 45, panY + 123);
         pauseFont.draw(uiBatch, "Menu Principal", panX + 65, panY + 58);
         uiBatch.end();
-        pauseFont.dispose();
-        ui.dispose();
-        uiBatch.dispose();
 
-        // Input handling
         if (Gdx.input.isButtonJustPressed(Input.Buttons.LEFT)) {
             float mx = Gdx.input.getX();
             float my = h - Gdx.input.getY();
             if (btnResume.contains(mx, my)) {
-                paused = false;
+                world.setPaused(false);
             } else if (btnMenu.contains(mx, my)) {
-                game.setScreen(new fr.supdevinci.games.screens.MainMenuScreen(game));
+                game.setScreen(new MainMenuScreen(game));
             }
         }
-    }
-
-    private void fireBullet() {
-        tank.resetFireCooldown();
-        Vector2 pos = tank.getPosition();
-        float rad = tank.getAngle() * MathUtils.degreesToRadians;
-        float spawnDist = tank.getWidth() * 0.9f;
-        float bx = pos.x + spawnDist * MathUtils.cos(rad);
-        float by = pos.y + spawnDist * MathUtils.sin(rad);
-        float vx = GameConfig.BULLET_SPEED * MathUtils.cos(rad);
-        float vy = GameConfig.BULLET_SPEED * MathUtils.sin(rad);
-
-        Body bulletBody = bodyFactory.createPlayerBulletBody(physicsWorld.getWorld(), bx, by, vx, vy);
-        Bullet bullet = new Bullet(bulletBody, tank.getDamage(), true, false);
-        bullets.add(bullet);
-    }
-
-    private void fireHeavyBullet() {
-        tank.resetHeavyFireCooldown();
-        Vector2 pos = tank.getPosition();
-        float rad = tank.getAngle() * MathUtils.degreesToRadians;
-        float spawnDist = tank.getWidth() * 0.9f;
-        float bx = pos.x + spawnDist * MathUtils.cos(rad);
-        float by = pos.y + spawnDist * MathUtils.sin(rad);
-        float vx = GameConfig.HEAVY_BULLET_SPEED * MathUtils.cos(rad);
-        float vy = GameConfig.HEAVY_BULLET_SPEED * MathUtils.sin(rad);
-
-        Body bulletBody = bodyFactory.createPlayerBulletBody(physicsWorld.getWorld(), bx, by, vx, vy);
-        Bullet bullet = new Bullet(bulletBody, tank.getDamage() * GameConfig.HEAVY_DAMAGE_MULT, true, true);
-        bullets.add(bullet);
-    }
-
-    private void fireEnemyBullet(Enemy enemy) {
-        Vector2 ePos = enemy.getPosition();
-        Vector2 dir = new Vector2(tank.getPosition()).sub(ePos).nor();
-
-        boolean isBoss = enemy.getType().name().startsWith("BOSS");
-        float bulletSpeed = isBoss ? GameConfig.ENEMY_BULLET_SPEED * 1.5f : GameConfig.ENEMY_BULLET_SPEED;
-
-        float bx = ePos.x + dir.x * enemy.getWidth();
-        float by = ePos.y + dir.y * enemy.getHeight();
-        float vx = dir.x * bulletSpeed;
-        float vy = dir.y * bulletSpeed;
-
-        Body bulletBody;
-        if (isBoss) {
-            bulletBody = bodyFactory.createEnemyHeavyBulletBody(physicsWorld.getWorld(), bx, by, vx, vy);
-        } else {
-            bulletBody = bodyFactory.createEnemyBulletBody(physicsWorld.getWorld(), bx, by, vx, vy);
-        }
-
-        // Pass isHeavy=isBoss to render it orange and bigger
-        Bullet bullet = new Bullet(bulletBody, enemy.getType().getBulletDamage(), false, isBoss);
-        bullets.add(bullet);
-    }
-
-    private void spawnEnemy(EnemyType type, float x, float y) {
-        Body enemyBody = bodyFactory.createEnemyBody(physicsWorld.getWorld(), x, y, type);
-        Enemy enemy = new Enemy(enemyBody, type);
-        enemies.add(enemy);
-    }
-
-    private void removeDeadEntities() {
-        // Enemies
-        Iterator<Enemy> enemyIt = enemies.iterator();
-        while (enemyIt.hasNext()) {
-            Enemy e = enemyIt.next();
-            if (!e.isAlive()) {
-                Vector2 pos = e.getBody().getPosition();
-                spawnExpOrb(pos.x, pos.y, e.getType().getExpValue());
-                physicsWorld.getWorld().destroyBody(e.getBody());
-                enemyIt.remove();
-            }
-        }
-
-        // Bullets
-        Iterator<Bullet> bulletIt = bullets.iterator();
-        while (bulletIt.hasNext()) {
-            Bullet b = bulletIt.next();
-            if (!b.isAlive()) {
-                physicsWorld.getWorld().destroyBody(b.getBody());
-                bulletIt.remove();
-            }
-        }
-
-        // Exp orbs
-        Iterator<ExpOrb> orbIt = expOrbs.iterator();
-        while (orbIt.hasNext()) {
-            ExpOrb o = orbIt.next();
-            if (!o.isAlive()) {
-                physicsWorld.getWorld().destroyBody(o.getBody());
-                orbIt.remove();
-            }
-        }
-    }
-
-    private void spawnExpOrb(float x, float y, int expValue) {
-        Body orbBody = bodyFactory.createExpOrbBody(physicsWorld.getWorld(), x, y);
-        ExpOrb orb = new ExpOrb(orbBody, expValue);
-        expOrbs.add(orb);
+        
+        uiRenderer.dispose();
+        uiBatch.dispose();
+        pauseFont.dispose();
     }
 
     @Override
     public void resize(int width, int height) {
-        if (width <= 0 || height <= 0)
-            return;
+        if (width <= 0 || height <= 0) return;
         viewport.update(width, height);
     }
 
     @Override
-    public void pause() {
-    }
+    public void pause() {}
 
     @Override
-    public void resume() {
-    }
+    public void resume() {}
 
     @Override
     public void hide() {
@@ -440,17 +189,8 @@ public class GameScreen implements Screen {
 
     @Override
     public void dispose() {
-        if (shapeRenderer != null)
-            shapeRenderer.dispose();
-        if (batch != null)
-            batch.dispose();
-        if (background != null)
-            background.dispose();
-        if (hudRenderer != null)
-            hudRenderer.dispose();
-        if (physicsWorld != null)
-            physicsWorld.dispose();
-        if (tank != null)
-            tank.dispose();
+        if (renderer != null) renderer.dispose();
+        if (world != null) world.dispose();
+        if (hudRenderer != null) hudRenderer.dispose();
     }
 }

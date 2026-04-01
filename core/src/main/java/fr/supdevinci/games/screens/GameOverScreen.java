@@ -61,7 +61,7 @@ public class GameOverScreen implements Screen {
         batch.draw(background, 0, 0, w, h);
         batch.end();
 
-        // Dark overlay for better text readability
+        // Superposition sombre pour une meilleure lisibilité du texte
         Gdx.gl.glEnable(GL20.GL_BLEND);
         Gdx.gl.glBlendFunc(GL20.GL_SRC_ALPHA, GL20.GL_ONE_MINUS_SRC_ALPHA);
         shapeRenderer.setProjectionMatrix(camera.combined);
@@ -73,13 +73,13 @@ public class GameOverScreen implements Screen {
 
         batch.begin();
 
-        // Title
+        // Titre
         String title = victory ? "VICTORY!" : "GAME OVER";
         titleFont.setColor(victory ? Color.GOLD : Color.RED);
         layout.setText(titleFont, title);
         titleFont.draw(batch, title, (w - layout.width) / 2f, h * 0.65f);
 
-        // Stats
+        // Statistiques
         font.setColor(Color.WHITE);
         String waveLine = "Wave: " + waveReached;
         layout.setText(font, waveLine);
@@ -89,16 +89,16 @@ public class GameOverScreen implements Screen {
         layout.setText(font, levelLine);
         font.draw(batch, levelLine, (w - layout.width) / 2f, h * 0.38f);
 
-        // Restart prompt
+        // Invite de redémarrage
         font.setColor(Color.GRAY);
-        String restart = "Press SPACE for Main Menu";
+        String restart = "Appuyez sur ESPACE pour le Menu Principal";
         layout.setText(font, restart);
         font.draw(batch, restart, (w - layout.width) / 2f, h * 0.2f);
 
         batch.end();
 
         if (Gdx.input.isKeyJustPressed(Input.Keys.SPACE)) {
-            // Need to import and use MainMenuScreen
+            // Nécessite d'importer et d'utiliser MainMenuScreen
             game.setScreen(new fr.supdevinci.games.screens.MainMenuScreen(game));
         }
     }
