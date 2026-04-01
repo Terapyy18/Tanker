@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="fr.supdevinci.games.systems.LevelSystemTest" tests="10" skipped="0" failures="0" errors="0" timestamp="2026-04-01T09:38:45.862Z" hostname="DESKTOP-LIIE73V" time="0.008">
+<testsuite name="fr.supdevinci.games.systems.LevelSystemTest" tests="10" skipped="0" failures="0" errors="0" timestamp="2026-04-01T12:02:05.456Z" hostname="DESKTOP-LIIE73V" time="0.006">
   <properties/>
-  <testcase name="testNullListener" classname="fr.supdevinci.games.systems.LevelSystemTest" time="0.001"/>
+  <testcase name="testNullListener" classname="fr.supdevinci.games.systems.LevelSystemTest" time="0.0"/>
   <testcase name="testExpPercentage" classname="fr.supdevinci.games.systems.LevelSystemTest" time="0.0"/>
-  <testcase name="testIncrementalExpGain" classname="fr.supdevinci.games.systems.LevelSystemTest" time="0.001"/>
+  <testcase name="testIncrementalExpGain" classname="fr.supdevinci.games.systems.LevelSystemTest" time="0.0"/>
   <testcase name="testMultipleLevelUps" classname="fr.supdevinci.games.systems.LevelSystemTest" time="0.0"/>
   <testcase name="testExpToNextLevelUpdatesAfterLevelUp" classname="fr.supdevinci.games.systems.LevelSystemTest" time="0.001"/>
-  <testcase name="testLevelUp" classname="fr.supdevinci.games.systems.LevelSystemTest" time="0.0"/>
-  <testcase name="testAddExpWithoutLevelUp" classname="fr.supdevinci.games.systems.LevelSystemTest" time="0.001"/>
-  <testcase name="testInitialState" classname="fr.supdevinci.games.systems.LevelSystemTest" time="0.0"/>
+  <testcase name="testLevelUp" classname="fr.supdevinci.games.systems.LevelSystemTest" time="0.001"/>
+  <testcase name="testAddExpWithoutLevelUp" classname="fr.supdevinci.games.systems.LevelSystemTest" time="0.0"/>
+  <testcase name="testInitialState" classname="fr.supdevinci.games.systems.LevelSystemTest" time="0.001"/>
   <testcase name="testLevelUpWithRemainder" classname="fr.supdevinci.games.systems.LevelSystemTest" time="0.0"/>
   <testcase name="testExpFormulaGrowsExponentially" classname="fr.supdevinci.games.systems.LevelSystemTest" time="0.0"/>
   <system-out><![CDATA[]]></system-out>

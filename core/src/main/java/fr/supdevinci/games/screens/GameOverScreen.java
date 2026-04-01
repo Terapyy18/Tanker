@@ -8,6 +8,7 @@ import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.GlyphLayout;
+import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import fr.supdevinci.games.Main;
 
@@ -22,6 +23,8 @@ public class GameOverScreen implements Screen {
     private BitmapFont font;
     private OrthographicCamera camera;
     private GlyphLayout layout;
+    private Texture background;
+    private com.badlogic.gdx.graphics.glutils.ShapeRenderer shapeRenderer;
 
     public GameOverScreen(Main game, boolean victory, int waveReached, int levelReached) {
         this.game = game;
@@ -39,6 +42,8 @@ public class GameOverScreen implements Screen {
         font.getData().setScale(1.5f);
         camera = new OrthographicCamera();
         layout = new GlyphLayout();
+        background = new Texture(Gdx.files.internal("BG_menu.png"));
+        shapeRenderer = new com.badlogic.gdx.graphics.glutils.ShapeRenderer();
     }
 
     @Override
@@ -53,14 +58,28 @@ public class GameOverScreen implements Screen {
 
         batch.setProjectionMatrix(camera.combined);
         batch.begin();
+        batch.draw(background, 0, 0, w, h);
+        batch.end();
 
-        // Title
+        // Superposition sombre pour une meilleure lisibilité du texte
+        Gdx.gl.glEnable(GL20.GL_BLEND);
+        Gdx.gl.glBlendFunc(GL20.GL_SRC_ALPHA, GL20.GL_ONE_MINUS_SRC_ALPHA);
+        shapeRenderer.setProjectionMatrix(camera.combined);
+        shapeRenderer.begin(com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType.Filled);
+        shapeRenderer.setColor(0, 0, 0, 0.4f);
+        shapeRenderer.rect(0, 0, w, h);
+        shapeRenderer.end();
+        Gdx.gl.glDisable(GL20.GL_BLEND);
+
+        batch.begin();
+
+        // Titre
         String title = victory ? "VICTORY!" : "GAME OVER";
         titleFont.setColor(victory ? Color.GOLD : Color.RED);
         layout.setText(titleFont, title);
         titleFont.draw(batch, title, (w - layout.width) / 2f, h * 0.65f);
 
-        // Stats
+        // Statistiques
         font.setColor(Color.WHITE);
         String waveLine = "Wave: " + waveReached;
         layout.setText(font, waveLine);
@@ -70,28 +89,31 @@ public class GameOverScreen implements Screen {
         layout.setText(font, levelLine);
         font.draw(batch, levelLine, (w - layout.width) / 2f, h * 0.38f);
 
-        // Restart prompt
+        // Invite de redémarrage
         font.setColor(Color.GRAY);
-        String restart = "Press SPACE for Main Menu";
+        String restart = "Appuyez sur ESPACE pour le Menu Principal";
         layout.setText(font, restart);
         font.draw(batch, restart, (w - layout.width) / 2f, h * 0.2f);
 
         batch.end();
 
         if (Gdx.input.isKeyJustPressed(Input.Keys.SPACE)) {
-            // Need to import and use MainMenuScreen
+            // Nécessite d'importer et d'utiliser MainMenuScreen
             game.setScreen(new fr.supdevinci.games.screens.MainMenuScreen(game));
         }
     }
 
     @Override
-    public void resize(int width, int height) {}
+    public void resize(int width, int height) {
+    }
 
     @Override
-    public void pause() {}
+    public void pause() {
+    }
 
     @Override
-    public void resume() {}
+    public void resume() {
+    }
 
     @Override
     public void hide() {
@@ -100,8 +122,15 @@ public class GameOverScreen implements Screen {
 
     @Override
     public void dispose() {
-        if (batch != null) batch.dispose();
-        if (titleFont != null) titleFont.dispose();
-        if (font != null) font.dispose();
+        if (batch != null)
+            batch.dispose();
+        if (titleFont != null)
+            titleFont.dispose();
+        if (font != null)
+            font.dispose();
+        if (background != null)
+            background.dispose();
+        if (shapeRenderer != null)
+            shapeRenderer.dispose();
     }
 }

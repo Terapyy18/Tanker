@@ -27,7 +27,7 @@ public class ExpOrb extends Entity {
 
     @Override
     public void update(float delta) {
-        // Use update(delta, playerPos) instead
+        // Utiliser update(delta, playerPos) à la place
     }
 
     @Override
@@ -35,7 +35,7 @@ public class ExpOrb extends Entity {
         if (!alive || body == null) return;
         Vector2 pos = body.getPosition();
         renderer.setColor(0.0f, 0.9f, 0.9f, 1f);
-        // Diamond shape using rotated rect
+        // Forme de diamant utilisant un rectangle pivoté
         renderer.rect(pos.x - 0.2f, pos.y - 0.2f, 0.2f, 0.2f, 0.4f, 0.4f, 1f, 1f, 45f);
     }
 

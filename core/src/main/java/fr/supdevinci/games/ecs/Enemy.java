@@ -24,7 +24,7 @@ public class Enemy extends Entity {
     public void update(float delta, Vector2 targetPos) {
         if (!alive || body == null) return;
 
-        // Move toward target
+        // Se déplacer vers la cible
         Vector2 pos = body.getPosition();
         Vector2 dir = new Vector2(targetPos).sub(pos);
         if (dir.len2() > 0.1f) {
@@ -33,7 +33,7 @@ public class Enemy extends Entity {
             body.setLinearVelocity(dir);
         }
 
-        // Shooting logic
+        // Logique de tir
         if (type.canShoot()) {
             shootTimer -= delta;
             if (shootTimer <= 0) {
@@ -45,7 +45,7 @@ public class Enemy extends Entity {
 
     @Override
     public void update(float delta) {
-        // Use update(delta, targetPos) instead
+        // Utiliser update(delta, targetPos) à la place
     }
 
     public void takeDamage(float amount) {
@@ -61,12 +61,12 @@ public class Enemy extends Entity {
         if (!alive || body == null) return;
         Vector2 pos = body.getPosition();
 
-        // Tank base (rotated)
+        // Base du tank (pivotée)
         renderer.setColor(type.getColor());
         renderer.rect(pos.x - width / 2f, pos.y - height / 2f,
             width / 2f, height / 2f, width, height, 1f, 1f, angle);
 
-        // Cannon
+        // Canon
         float rad = angle * MathUtils.degreesToRadians;
         float cannonLength = width * 0.9f;
         Color darker = new Color(type.getColor()).mul(0.6f);
@@ -76,7 +76,7 @@ public class Enemy extends Entity {
             pos.x + cannonLength * MathUtils.cos(rad),
             pos.y + cannonLength * MathUtils.sin(rad), 0.3f);
 
-        // Boss gets extra visual indicator
+        // Le Boss reçoit un indicateur visuel supplémentaire
         if (type == EnemyType.BOSS) {
             renderer.setColor(1f, 0.1f, 0.1f, 1f);
             renderer.rect(pos.x - width / 2f + 0.3f, pos.y - height / 2f + 0.3f,

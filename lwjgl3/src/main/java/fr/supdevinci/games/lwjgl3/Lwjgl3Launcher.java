@@ -4,10 +4,10 @@ import com.badlogic.gdx.backends.lwjgl3.Lwjgl3Application;
 import com.badlogic.gdx.backends.lwjgl3.Lwjgl3ApplicationConfiguration;
 import fr.supdevinci.games.Main;
 
-/** Launches the desktop (LWJGL3) application. */
+/** Lance l'application de bureau (LWJGL3). */
 public class Lwjgl3Launcher {
     public static void main(String[] args) {
-        if (StartupHelper.startNewJvmIfRequired()) return; // This handles macOS support and helps on Windows.
+        if (StartupHelper.startNewJvmIfRequired()) return; // Cela gère le support macOS et aide sur Windows.
         createApplication();
     }
 
@@ -18,29 +18,29 @@ public class Lwjgl3Launcher {
     private static Lwjgl3ApplicationConfiguration getDefaultConfiguration() {
         Lwjgl3ApplicationConfiguration configuration = new Lwjgl3ApplicationConfiguration();
         configuration.setTitle("Tanker");
-        //// Vsync limits the frames per second to what your hardware can display, and helps eliminate
-        //// screen tearing. This setting doesn't always work on Linux, so the line after is a safeguard.
+        //// Le Vsync limite le nombre d'images par seconde à ce que votre matériel peut afficher, et aide à éliminer
+        //// le déchirement de l'écran (tearing). Ce paramètre ne fonctionne pas toujours sur Linux, la ligne suivante est donc une protection.
         configuration.useVsync(true);
-        //// Limits FPS to the refresh rate of the currently active monitor, plus 1 to try to match fractional
-        //// refresh rates. The Vsync setting above should limit the actual FPS to match the monitor.
+        //// Limite les FPS au taux de rafraîchissement du moniteur actuellement actif, plus 1 pour essayer de correspondre aux taux de
+        //// rafraîchissement fractionnaires. Le réglage Vsync ci-dessus devrait limiter les FPS réels pour correspondre au moniteur.
         configuration.setForegroundFPS(Lwjgl3ApplicationConfiguration.getDisplayMode().refreshRate + 1);
-        //// If you remove the above line and set Vsync to false, you can get unlimited FPS, which can be
-        //// useful for testing performance, but can also be very stressful to some hardware.
-        //// You may also need to configure GPU drivers to fully disable Vsync; this can cause screen tearing.
+        //// Si vous supprimez la ligne ci-dessus et réglez Vsync sur false, vous pouvez obtenir des FPS illimités, ce qui peut être
+        //// utile pour tester les performances, mais peut aussi être très stressant pour certains matériels.
+        //// Vous devrez peut-être également configurer les pilotes GPU pour désactiver complètement le Vsync ; cela peut causer du déchirement d'écran.
 
         configuration.setWindowedMode(1280, 720);
-        //// You can change these files; they are in lwjgl3/src/main/resources/ .
-        //// They can also be loaded from the root of assets/ .
+        //// Vous pouvez changer ces fichiers ; ils sont dans lwjgl3/src/main/resources/ .
+        //// Ils peuvent également être chargés depuis la racine de assets/ .
         configuration.setWindowIcon("libgdx128.png", "libgdx64.png", "libgdx32.png", "libgdx16.png");
 
-        //// This could improve compatibility with Windows machines with buggy OpenGL drivers, Macs
-        //// with Apple Silicon that have to emulate compatibility with OpenGL anyway, and more.
-        //// This uses the dependency `com.badlogicgames.gdx:gdx-lwjgl3-angle` to function.
-        //// You would need to add this line to lwjgl3/build.gradle , below the dependency on `gdx-backend-lwjgl3`:
+        //// Cela pourrait améliorer la compatibilité avec les machines Windows ayant des pilotes OpenGL défectueux, les Macs
+        //// avec Apple Silicon qui doivent de toute façon émuler la compatibilité avec OpenGL, et plus encore.
+        //// Cela utilise la dépendance `com.badlogicgames.gdx:gdx-lwjgl3-angle` pour fonctionner.
+        //// Vous devriez ajouter cette ligne à lwjgl3/build.gradle , sous la dépendance `gdx-backend-lwjgl3`:
         ////     implementation "com.badlogicgames.gdx:gdx-lwjgl3-angle:$gdxVersion"
-        //// You can choose to add the following line and the mentioned dependency if you want; they
-        //// are not intended for games that use GL30 (which is compatibility with OpenGL ES 3.0).
-        //// Know that it might not work well in some cases.
+        //// Vous pouvez choisir d'ajouter la ligne suivante et la dépendance mentionnée si vous voulez ; elles
+        //// ne sont pas destinées aux jeux qui utilisent GL30 (qui est la compatibilité avec OpenGL ES 3.0).
+        //// Sachez que cela pourrait ne pas bien fonctionner dans certains cas.
 //        configuration.setOpenGLEmulation(Lwjgl3ApplicationConfiguration.GLEmulation.ANGLE_GLES20, 0, 0);
 
         return configuration;

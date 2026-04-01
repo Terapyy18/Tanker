@@ -15,25 +15,25 @@ public class CollisionHandler implements ContactListener {
         Object dataA = contact.getFixtureA().getBody().getUserData();
         Object dataB = contact.getFixtureB().getBody().getUserData();
 
-        // Bullet hitting a wall (null userData)
+        // Une balle touche un mur (userData null)
         if (dataA instanceof Bullet && dataB == null) { ((Bullet) dataA).setAlive(false); return; }
         if (dataB instanceof Bullet && dataA == null) { ((Bullet) dataB).setAlive(false); return; }
 
         if (!(dataA instanceof Entity) || !(dataB instanceof Entity)) return;
 
-        // Player bullet hits enemy
+        // Une balle du joueur touche un ennemi
         if (dataA instanceof Bullet && dataB instanceof Enemy) { bulletHitEnemy((Bullet) dataA, (Enemy) dataB); return; }
         if (dataB instanceof Bullet && dataA instanceof Enemy) { bulletHitEnemy((Bullet) dataB, (Enemy) dataA); return; }
 
-        // Enemy bullet hits player
+        // Une balle ennemie touche le joueur
         if (dataA instanceof Bullet && dataB instanceof Tank) { bulletHitTank((Bullet) dataA, (Tank) dataB); return; }
         if (dataB instanceof Bullet && dataA instanceof Tank) { bulletHitTank((Bullet) dataB, (Tank) dataA); return; }
 
-        // Enemy contacts player
+        // Un ennemi touche le joueur
         if (dataA instanceof Enemy && dataB instanceof Tank) { enemyHitTank((Enemy) dataA, (Tank) dataB); return; }
         if (dataB instanceof Enemy && dataA instanceof Tank) { enemyHitTank((Enemy) dataB, (Tank) dataA); return; }
 
-        // Player contacts exp orb
+        // Le joueur touche une orbe d'expérience
         if (dataA instanceof Tank && dataB instanceof ExpOrb) { collectOrb((ExpOrb) dataB); return; }
         if (dataB instanceof Tank && dataA instanceof ExpOrb) { collectOrb((ExpOrb) dataA); return; }
     }

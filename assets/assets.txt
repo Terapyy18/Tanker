@@ -1,4 +1,6 @@
 .gitkeep
+BG_menu.png
 Tank2.png
 Tank3.png
+background.png
 tank_1.png
