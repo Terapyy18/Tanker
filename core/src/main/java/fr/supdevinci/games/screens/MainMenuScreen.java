@@ -66,15 +66,15 @@ public class MainMenuScreen extends ScreenAdapter {
         Gdx.gl.glEnable(GL20.GL_BLEND);
         Gdx.gl.glBlendFunc(GL20.GL_SRC_ALPHA, GL20.GL_ONE_MINUS_SRC_ALPHA);
         renderer.setProjectionMatrix(camera.combined);
-        
+
         renderer.begin(ShapeRenderer.ShapeType.Filled);
-        
+
         // Rendre les boutons avec vérification de survol
         drawMenuButton(renderer, btnNormal, 0.2f, 0.4f, 0.2f, btnNormal.contains(mx, my));
         drawMenuButton(renderer, btnHard, 0.6f, 0.2f, 0.2f, btnHard.contains(mx, my));
         drawMenuButton(renderer, btnInfinite, 0.4f, 0.2f, 0.8f, btnInfinite.contains(mx, my));
         drawMenuButton(renderer, btnQuit, 0.3f, 0.3f, 0.3f, btnQuit.contains(mx, my));
-        
+
         renderer.end();
         Gdx.gl.glDisable(GL20.GL_BLEND);
 
@@ -85,10 +85,10 @@ public class MainMenuScreen extends ScreenAdapter {
         font.draw(batch, "TANK SURVIVAL", Gdx.graphics.getWidth() / 2f - 180, Gdx.graphics.getHeight() - 100);
 
         font.getData().setScale(2f);
-        font.draw(batch, "NORMAL (10 Waves)", btnNormal.x + 130, btnNormal.y + 45);
-        font.draw(batch, "HARD (Plus d'ennemis, cadence lente)", btnHard.x + 30, btnHard.y + 45);
-        font.draw(batch, "INFINITE (Mode de survie sans fin)", btnInfinite.x + 40, btnInfinite.y + 45);
-        
+        font.draw(batch, "NORMAL", btnNormal.x + 10, btnNormal.y + 45);
+        font.draw(batch, "HARD", btnHard.x + 10, btnHard.y + 45);
+        font.draw(batch, "INFINITE", btnInfinite.x + 10, btnInfinite.y + 45);
+
         font.setColor(Color.LIGHT_GRAY);
         font.draw(batch, "QUITTER LE JEU", btnQuit.x + 160, btnQuit.y + 45);
         batch.end();
