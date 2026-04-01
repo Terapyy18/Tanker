@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="fr.supdevinci.games.systems.LevelSystemTest" tests="10" skipped="0" failures="0" errors="0" timestamp="2026-04-01T07:52:05.109Z" hostname="DESKTOP-LIIE73V" time="0.004">
+  <properties/>
+  <testcase name="testNullListener" classname="fr.supdevinci.games.systems.LevelSystemTest" time="0.002"/>
+  <testcase name="testExpPercentage" classname="fr.supdevinci.games.systems.LevelSystemTest" time="0.0"/>
+  <testcase name="testIncrementalExpGain" classname="fr.supdevinci.games.systems.LevelSystemTest" time="0.0"/>
+  <testcase name="testMultipleLevelUps" classname="fr.supdevinci.games.systems.LevelSystemTest" time="0.001"/>
+  <testcase name="testExpToNextLevelUpdatesAfterLevelUp" classname="fr.supdevinci.games.systems.LevelSystemTest" time="0.0"/>
+  <testcase name="testLevelUp" classname="fr.supdevinci.games.systems.LevelSystemTest" time="0.0"/>
+  <testcase name="testAddExpWithoutLevelUp" classname="fr.supdevinci.games.systems.LevelSystemTest" time="0.001"/>
+  <testcase name="testInitialState" classname="fr.supdevinci.games.systems.LevelSystemTest" time="0.0"/>
+  <testcase name="testLevelUpWithRemainder" classname="fr.supdevinci.games.systems.LevelSystemTest" time="0.0"/>
+  <testcase name="testExpFormulaGrowsExponentially" classname="fr.supdevinci.games.systems.LevelSystemTest" time="0.0"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
