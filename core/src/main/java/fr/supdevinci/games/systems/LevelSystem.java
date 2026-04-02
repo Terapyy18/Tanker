@@ -33,12 +33,19 @@ public class LevelSystem {
         return GameConfig.BASE_EXP_TO_LEVEL * (float) Math.pow(GameConfig.EXP_GROWTH_FACTOR, level - 1);
     }
 
-    public int getLevel() { return currentLevel; }
-    public float getCurrentExp() { return currentExp; }
-    public float getExpToNextLevel() { return expToNextLevel; }
+    public int getLevel() {
+        return currentLevel;
+    }
+
+    public float getCurrentExp() {
+        return currentExp;
+    }
+
+    public float getExpToNextLevel() {
+        return expToNextLevel;
+    }
 
     public float getExpPercentage() {
-        if (expToNextLevel <= 0) return 0;
         return currentExp / expToNextLevel;
     }
 }

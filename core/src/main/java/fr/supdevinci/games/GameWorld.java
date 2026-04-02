@@ -5,6 +5,7 @@ import fr.supdevinci.games.ecs.*;
 import fr.supdevinci.games.physics.BodyFactory;
 import fr.supdevinci.games.physics.PhysicsWorld;
 import fr.supdevinci.games.systems.CollisionHandler;
+import fr.supdevinci.games.systems.CollisionListener;
 import fr.supdevinci.games.systems.LevelSystem;
 import fr.supdevinci.games.systems.WaveManager;
 
@@ -38,7 +39,37 @@ public class GameWorld {
                 }
             }
         });
-        this.collisionHandler = new CollisionHandler(levelSystem);
+        this.collisionHandler = new CollisionHandler(new CollisionListener() {
+            @Override
+            public void onBulletHit(Bullet bullet, Damageable target) {
+                // Si c'est une balle du joueur, elle ne doit toucher que les ennemis (ou vice versa)
+                if (bullet.isPlayerBullet() && target instanceof Enemy) {
+                    bullet.setAlive(false);
+                    target.takeDamage(bullet.getDamage());
+                } else if (!bullet.isPlayerBullet() && target instanceof Tank) {
+                    bullet.setAlive(false);
+                    target.takeDamage(bullet.getDamage());
+                }
+            }
+
+            @Override
+            public void onBulletHitWall(Bullet bullet) {
+                bullet.setAlive(false);
+            }
+
+            @Override
+            public void onEnemyHitTank(Damageable enemy, Damageable tank) {
+                if (enemy instanceof Enemy && tank instanceof Tank) {
+                    tank.takeDamage(((Enemy) enemy).getType().getContactDamage());
+                }
+            }
+
+            @Override
+            public void onOrbCollected(ExpOrb orb) {
+                orb.setAlive(false);
+                levelSystem.addExp(orb.getExpValue());
+            }
+        });
         this.physicsWorld.getWorld().setContactListener(collisionHandler);
 
         // Écouteur de mort d'ennemi pour faire apparaître des orbes d'exp

@@ -10,6 +10,9 @@ import fr.supdevinci.games.ecs.Tank;
 import fr.supdevinci.games.systems.LevelSystem;
 import fr.supdevinci.games.systems.WaveManager;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class HudRenderer {
     private final SpriteBatch batch;
     private final BitmapFont font;
@@ -19,6 +22,10 @@ public class HudRenderer {
     private final LevelSystem levelSystem;
     private final WaveManager waveManager;
 
+    private final BarreUI healthBar;
+    private final BarreUI expBar;
+    private final List<BoutonUI> upgradeButtons = new ArrayList<>();
+
     public HudRenderer(Tank tank, LevelSystem levelSystem, WaveManager waveManager) {
         this.batch = new SpriteBatch();
         this.font = new BitmapFont();
@@ -27,6 +34,18 @@ public class HudRenderer {
         this.tank = tank;
         this.levelSystem = levelSystem;
         this.waveManager = waveManager;
+
+        this.healthBar = new BarreUI(new Color(0.3f, 0.1f, 0.1f, 1f), new Color(0.2f, 0.8f, 0.3f, 1f), 200, 20);
+        this.expBar = new BarreUI(new Color(0.1f, 0.1f, 0.3f, 1f), new Color(0.2f, 0.6f, 0.9f, 1f), 200, 15);
+
+        initUpgradeMenu();
+    }
+
+    private void initUpgradeMenu() {
+        float w = Gdx.graphics.getWidth(); // This might change on resize, but usually HUD is static or updated
+        float h = Gdx.graphics.getHeight();
+        upgradeButtons.add(new BoutonUI("Rafale", "Tir continu (Hold Left Click)", w / 2f - 250, h / 2f - 50, 200, 100));
+        upgradeButtons.add(new BoutonUI("Blindage Lourd", "+200 HP Max", w / 2f + 50, h / 2f - 50, 200, 100));
     }
 
     public void renderUpgradeMenu() {
@@ -40,11 +59,6 @@ public class HudRenderer {
         shapeRenderer.begin(ShapeRenderer.ShapeType.Filled);
         shapeRenderer.setColor(0, 0, 0, 0.7f);
         shapeRenderer.rect(0, 0, w, h);
-        
-        // Boutons
-        shapeRenderer.setColor(0.2f, 0.2f, 0.4f, 1f);
-        shapeRenderer.rect(w / 2f - 250, h / 2f - 50, 200, 100); // Bouton Rafale
-        shapeRenderer.rect(w / 2f + 50, h / 2f - 50, 200, 100);  // Bouton HP
         shapeRenderer.end();
         Gdx.gl.glDisable(com.badlogic.gdx.graphics.GL20.GL_BLEND);
         
@@ -53,15 +67,11 @@ public class HudRenderer {
         font.setColor(Color.WHITE);
         font.getData().setScale(3f);
         font.draw(batch, "LEVEL 5 UPGRADE!", w / 2f - 150, h / 2f + 150);
-        
-        font.getData().setScale(1.5f);
-        font.draw(batch, "Rafale (Tir continu)", w / 2f - 240, h / 2f + 20);
-        font.draw(batch, "Hold Left Click", w / 2f - 220, h / 2f - 20);
-        
-        font.draw(batch, "Blindage Lourd", w / 2f + 70, h / 2f + 20);
-        font.draw(batch, "+200 HP Max", w / 2f + 90, h / 2f - 20);
-        font.getData().setScale(1.5f); // Utilisé par le HudRenderer
         batch.end();
+
+        for (BoutonUI btn : upgradeButtons) {
+            btn.render(shapeRenderer, batch, font);
+        }
     }
 
     public void render() {
@@ -71,50 +81,32 @@ public class HudRenderer {
         hudCamera.update();
 
         // Barres
-        shapeRenderer.setProjectionMatrix(hudCamera.combined);
-        shapeRenderer.begin(ShapeRenderer.ShapeType.Filled);
-
-        float barX = 20;
-        float barWidth = 200;
-
-        // Barre de vie
-        float healthY = h - 40;
-        shapeRenderer.setColor(0.3f, 0.1f, 0.1f, 1f);
-        shapeRenderer.rect(barX, healthY, barWidth, 20);
+        float barX = 120; // x + barWidth / 2 = 20 + 200 / 2 = 120 (car BarreUI centre son dessin)
         float healthPct = tank.getMaxHealth() > 0 ? tank.getHealth() / tank.getMaxHealth() : 0;
-        shapeRenderer.setColor(0.2f, 0.8f, 0.3f, 1f);
-        shapeRenderer.rect(barX, healthY, barWidth * healthPct, 20);
+        healthBar.render(shapeRenderer, hudCamera.combined, barX, h - 40, healthPct);
 
-        // Barre d'EXP
-        float expY = h - 70;
-        shapeRenderer.setColor(0.1f, 0.1f, 0.3f, 1f);
-        shapeRenderer.rect(barX, expY, barWidth, 15);
         float expPct = levelSystem.getExpPercentage();
-        shapeRenderer.setColor(0.2f, 0.6f, 0.9f, 1f);
-        shapeRenderer.rect(barX, expY, barWidth * expPct, 15);
-
-        shapeRenderer.end();
+        expBar.render(shapeRenderer, hudCamera.combined, barX, h - 70, expPct);
 
         // Texte
         batch.setProjectionMatrix(hudCamera.combined);
         batch.begin();
+        font.getData().setScale(1f);
         font.setColor(Color.WHITE);
-        font.draw(batch, "HP: " + (int) tank.getHealth() + "/" + (int) tank.getMaxHealth(), barX + barWidth + 10, healthY + 16);
-        font.draw(batch, "Level " + levelSystem.getLevel(), barX + barWidth + 10, expY + 13);
+        font.draw(batch, "HP: " + (int) tank.getHealth() + "/" + (int) tank.getMaxHealth(), 230, h - 24);
+        font.draw(batch, "Level " + levelSystem.getLevel(), 230, h - 57);
 
-        String waveText = waveManager.isInfinite()
+        String waveStr = waveManager.isInfinite()
             ? "Wave " + waveManager.getCurrentWave()
-            : "Wave " + waveManager.getCurrentWave() + "/" + 10;
-        font.draw(batch, waveText, w - 150, h - 24);
+            : "Wave " + waveManager.getCurrentWave() + "/10";
+        font.draw(batch, waveStr, w - 150, h - 24);
 
-        // Notification entre les vagues
         if (waveManager.isBetweenWaves()) {
             String msg = "Wave " + (waveManager.getCurrentWave() + 1) + " incoming...";
             font.setColor(Color.YELLOW);
             font.draw(batch, msg, w / 2f - 60, h / 2f + 50);
         }
 
-        // Alerte de vague de Boss (uniquement en non-infini avec la vague 10)
         if (waveManager.isWaveInProgress() && waveManager.getCurrentWave() == 10 && !waveManager.isInfinite()) {
             font.setColor(Color.RED);
             font.draw(batch, "!! BOSS WAVE !!", w / 2f - 50, h - 24);
@@ -126,7 +118,6 @@ public class HudRenderer {
     }
 
     private void renderControlsPanel() {
-        // Panneau d'arrière-plan sombre semi-transparent
         Gdx.gl.glEnable(com.badlogic.gdx.graphics.GL20.GL_BLEND);
         Gdx.gl.glBlendFunc(com.badlogic.gdx.graphics.GL20.GL_SRC_ALPHA, com.badlogic.gdx.graphics.GL20.GL_ONE_MINUS_SRC_ALPHA);
         shapeRenderer.setProjectionMatrix(hudCamera.combined);
@@ -157,6 +148,8 @@ public class HudRenderer {
         font.getData().setScale(1f);
         batch.end();
     }
+
+    public List<BoutonUI> getUpgradeButtons() { return upgradeButtons; }
 
     public void dispose() {
         batch.dispose();

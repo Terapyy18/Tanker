@@ -4,10 +4,10 @@ import com.badlogic.gdx.physics.box2d.*;
 import fr.supdevinci.games.ecs.*;
 
 public class CollisionHandler implements ContactListener {
-    private final LevelSystem levelSystem;
+    private final CollisionListener listener;
 
-    public CollisionHandler(LevelSystem levelSystem) {
-        this.levelSystem = levelSystem;
+    public CollisionHandler(CollisionListener listener) {
+        this.listener = listener;
     }
 
     @Override
@@ -16,47 +16,26 @@ public class CollisionHandler implements ContactListener {
         Object dataB = contact.getFixtureB().getBody().getUserData();
 
         // Une balle touche un mur (userData null)
-        if (dataA instanceof Bullet && dataB == null) { ((Bullet) dataA).setAlive(false); return; }
-        if (dataB instanceof Bullet && dataA == null) { ((Bullet) dataB).setAlive(false); return; }
+        if (dataA instanceof Bullet && dataB == null) { listener.onBulletHitWall((Bullet) dataA); return; }
+        if (dataB instanceof Bullet && dataA == null) { listener.onBulletHitWall((Bullet) dataB); return; }
 
         if (!(dataA instanceof Entity) || !(dataB instanceof Entity)) return;
 
-        // Une balle du joueur touche un ennemi
-        if (dataA instanceof Bullet && dataB instanceof Enemy) { bulletHitEnemy((Bullet) dataA, (Enemy) dataB); return; }
-        if (dataB instanceof Bullet && dataA instanceof Enemy) { bulletHitEnemy((Bullet) dataB, (Enemy) dataA); return; }
-
-        // Une balle ennemie touche le joueur
-        if (dataA instanceof Bullet && dataB instanceof Tank) { bulletHitTank((Bullet) dataA, (Tank) dataB); return; }
-        if (dataB instanceof Bullet && dataA instanceof Tank) { bulletHitTank((Bullet) dataB, (Tank) dataA); return; }
+        // Une balle touche un Damageable
+        if (dataA instanceof Bullet && dataB instanceof Damageable) { bulletHitDamageable((Bullet) dataA, (Damageable) dataB); return; }
+        if (dataB instanceof Bullet && dataA instanceof Damageable) { bulletHitDamageable((Bullet) dataB, (Damageable) dataA); return; }
 
         // Un ennemi touche le joueur
-        if (dataA instanceof Enemy && dataB instanceof Tank) { enemyHitTank((Enemy) dataA, (Tank) dataB); return; }
-        if (dataB instanceof Enemy && dataA instanceof Tank) { enemyHitTank((Enemy) dataB, (Tank) dataA); return; }
+        if (dataA instanceof Enemy && dataB instanceof Tank) { listener.onEnemyHitTank((Enemy) dataA, (Tank) dataB); return; }
+        if (dataB instanceof Enemy && dataA instanceof Tank) { listener.onEnemyHitTank((Enemy) dataB, (Tank) dataA); return; }
 
         // Le joueur touche une orbe d'expérience
-        if (dataA instanceof Tank && dataB instanceof ExpOrb) { collectOrb((ExpOrb) dataB); return; }
-        if (dataB instanceof Tank && dataA instanceof ExpOrb) { collectOrb((ExpOrb) dataA); return; }
+        if (dataA instanceof Tank && dataB instanceof ExpOrb) { listener.onOrbCollected((ExpOrb) dataB); return; }
+        if (dataB instanceof Tank && dataA instanceof ExpOrb) { listener.onOrbCollected((ExpOrb) dataA); return; }
     }
 
-    private void bulletHitEnemy(Bullet bullet, Enemy enemy) {
-        if (!bullet.isPlayerBullet()) return;
-        bullet.setAlive(false);
-        enemy.takeDamage(bullet.getDamage());
-    }
-
-    private void bulletHitTank(Bullet bullet, Tank tank) {
-        if (bullet.isPlayerBullet()) return;
-        bullet.setAlive(false);
-        tank.takeDamage(bullet.getDamage());
-    }
-
-    private void enemyHitTank(Enemy enemy, Tank tank) {
-        tank.takeDamage(enemy.getType().getContactDamage());
-    }
-
-    private void collectOrb(ExpOrb orb) {
-        orb.setAlive(false);
-        levelSystem.addExp(orb.getExpValue());
+    private void bulletHitDamageable(Bullet bullet, Damageable target) {
+         listener.onBulletHit(bullet, target);
     }
 
     @Override

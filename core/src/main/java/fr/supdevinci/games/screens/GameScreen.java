@@ -8,6 +8,8 @@ import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
+import fr.supdevinci.games.ui.BoutonUI;
+import java.util.List;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.utils.viewport.ExtendViewport;
 import fr.supdevinci.games.Difficulty;
@@ -91,19 +93,19 @@ public class GameScreen implements Screen {
             float mx = Gdx.input.getX();
             float my = Gdx.graphics.getHeight() - Gdx.input.getY();
 
-            float w = Gdx.graphics.getWidth();
-            float h = Gdx.graphics.getHeight();
-
-            Rectangle btnBurst = new Rectangle(w / 2f - 250, h / 2f - 50, 200, 100);
-            Rectangle btnHp = new Rectangle(w / 2f + 50, h / 2f - 50, 200, 100);
-
             Tank tank = world.getEntityManager().getTank();
-            if (btnBurst.contains(mx, my)) {
-                tank.enableBurstFire();
-                world.setUpgrading(false);
-            } else if (btnHp.contains(mx, my)) {
-                tank.addExtraHealth(200f);
-                world.setUpgrading(false);
+            List<BoutonUI> buttons = hudRenderer.getUpgradeButtons();
+            
+            for (int i = 0; i < buttons.size(); i++) {
+                if (buttons.get(i).contient(mx, my)) {
+                    if (i == 0) {
+                        tank.enableBurstFire();
+                    } else if (i == 1) {
+                        tank.addExtraHealth(200f);
+                    }
+                    world.setUpgrading(false);
+                    break;
+                }
             }
         }
     }
