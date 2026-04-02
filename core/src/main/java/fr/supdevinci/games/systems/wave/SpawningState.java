@@ -10,8 +10,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class SpawningState implements WaveState {
+    public static final SpawningState INSTANCE = new SpawningState();
+
+    private SpawningState() {
+    }
+
     @Override
-    public void update(WaveContext ctx, float delta, Vector2 playerPos, int aliveEnemyCount) {
+    public WaveState update(WaveContext ctx, float delta, Vector2 playerPos, int aliveEnemyCount) {
         if (ctx.remainingToSpawn > 0) {
             ctx.spawnTimer -= delta;
             if (ctx.spawnTimer <= 0) {
@@ -19,7 +24,10 @@ public class SpawningState implements WaveState {
                 ctx.spawnTimer = GameConfig.SPAWN_INTERVAL;
             }
         }
-        // Transition à gérer dans WaveManager : si remainingToSpawn == 0, passer à WaitingClearState
+        if (ctx.remainingToSpawn == 0) {
+            return WaitingClearState.INSTANCE;
+        }
+        return this;
     }
 
     private void spawnNext(WaveContext ctx, Vector2 playerPos) {

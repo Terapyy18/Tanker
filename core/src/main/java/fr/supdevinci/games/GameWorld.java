@@ -58,16 +58,17 @@ public class GameWorld {
             }
 
             @Override
-            public void onEnemyHitTank(Damageable enemy, Damageable tank) {
-                if (enemy instanceof Enemy && tank instanceof Tank) {
-                    tank.takeDamage(((Enemy) enemy).getType().getContactDamage());
-                }
+            public void onContactDamage(ContactDamageSource source, ContactDamageTarget target) {
+                target.takeDamage(source.getContactDamage());
             }
 
             @Override
-            public void onOrbCollected(ExpOrb orb) {
-                orb.setAlive(false);
-                levelSystem.addExp(orb.getExpValue());
+            public void onCollected(Collector collector, Collectible collectible) {
+                if (collector instanceof Tank && collectible instanceof ExpOrb) {
+                    ExpOrb orb = (ExpOrb) collectible;
+                    orb.setAlive(false);
+                    levelSystem.addExp(orb.getExpValue());
+                }
             }
         });
         this.physicsWorld.getWorld().setContactListener(collisionHandler);

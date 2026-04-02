@@ -12,7 +12,7 @@ public class WaveManager {
 
     public WaveManager(fr.supdevinci.games.Difficulty difficulty) {
         this.ctx = new WaveContext(difficulty);
-        this.currentState = new PauseState();
+        this.currentState = PauseState.INSTANCE;
     }
 
     public static class SpawnRequest {
@@ -30,54 +30,11 @@ public class WaveManager {
     public void update(float delta, Vector2 playerPos, int aliveEnemyCount) {
         if (ctx.gameComplete) return;
 
-        currentState.update(ctx, delta, playerPos, aliveEnemyCount);
-        handleTransitions(aliveEnemyCount);
-    }
-
-    private void handleTransitions(int aliveEnemyCount) {
-        if (currentState instanceof PauseState) {
-            if (ctx.pauseTimer <= 0) {
-                startNextWave();
-                currentState = new SpawningState();
-            }
-        } else if (currentState instanceof SpawningState) {
-            if (ctx.remainingToSpawn == 0) {
-                currentState = new WaitingClearState();
-            }
-        } else if (currentState instanceof WaitingClearState) {
-            if (aliveEnemyCount == 0) {
-                if (ctx.difficulty != fr.supdevinci.games.Difficulty.INFINITE && ctx.currentWave >= fr.supdevinci.games.GameConfig.TOTAL_WAVES) {
-                    currentState = new VictoryState();
-                } else {
-                    ctx.pauseTimer = fr.supdevinci.games.GameConfig.WAVE_PAUSE_DURATION;
-                    currentState = new PauseState();
-                }
-            }
-        }
-    }
-
-    private void startNextWave() {
-        ctx.currentWave++;
-        ctx.bossesToSpawnQueue.clear();
-        if (ctx.currentWave % 10 == 0) {
-            int numBosses = ctx.currentWave / 10;
-            for (int i = 1; i <= numBosses; i++) {
-                if (i == 1) ctx.bossesToSpawnQueue.add(EnemyType.BOSS);
-                else if (i == 2) ctx.bossesToSpawnQueue.add(EnemyType.BOSS_2);
-                else ctx.bossesToSpawnQueue.add(EnemyType.BOSS_3);
-            }
-        }
-
-        ctx.remainingToSpawn = calculateEnemyCount(ctx.currentWave) + ctx.bossesToSpawnQueue.size();
-        ctx.spawnTimer = 0;
+        currentState = currentState.update(ctx, delta, playerPos, aliveEnemyCount);
     }
 
     public int calculateEnemyCount(int wave) {
-        int enemies = fr.supdevinci.games.GameConfig.WAVE_BASE_ENEMIES + wave * fr.supdevinci.games.GameConfig.WAVE_ENEMY_GROWTH;
-        if (ctx.difficulty == fr.supdevinci.games.Difficulty.HARD) {
-            enemies = (int)(enemies * 1.5f);
-        }
-        return enemies;
+        return ctx.calculateEnemyCount(wave);
     }
 
     public List<SpawnRequest> getPendingSpawns() {
@@ -93,4 +50,5 @@ public class WaveManager {
     public boolean isBetweenWaves() { return currentState instanceof PauseState && ctx.currentWave > 0; }
     public float getPauseTimer() { return ctx.pauseTimer; }
     public boolean isInfinite() { return ctx.difficulty == fr.supdevinci.games.Difficulty.INFINITE; }
+    public String getCurrentStateName() { return currentState.getName(); }
 }

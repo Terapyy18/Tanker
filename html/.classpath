@@ -61,7 +61,31 @@
 			<attribute name="gradle.buildServer" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="C:/Users/theod/.gradle/caches/modules-2/files-2.1/org.gwtproject/gwt-user/2.11.0/a6540aeeb3a20ca13ab33b4c77e1efaa83b7a1c1/gwt-user-2.11.0.jar" sourcepath="C:/Users/theod/.gradle/caches/modules-2/files-2.1/org.gwtproject/gwt-user/2.11.0/89d37a2b4396b7ca10f0a19642dbf1f911c03b54/gwt-user-2.11.0-sources.jar">
+	<classpathentry kind="lib" path="/home/mleroy/.gradle/caches/modules-2/files-2.1/com.badlogicgames.gdx/gdx-box2d/1.14.0/71bac822f28c1c2128ffcdb2f465ca603ced4e0d/gdx-box2d-1.14.0.jar" sourcepath="/home/mleroy/.gradle/caches/modules-2/files-2.1/com.badlogicgames.gdx/gdx-box2d/1.14.0/758e9c3f2cdb06f8fd8ff299fb8b1fcce07a8000/gdx-box2d-1.14.0-sources.jar">
+		<attributes>
+			<attribute name="gradle.buildServer" value="true"/>
+			<attribute name="groupId" value="com.badlogicgames.gdx"/>
+			<attribute name="artifactId" value="gdx-box2d"/>
+			<attribute name="version" value="1.14.0"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="/home/mleroy/.gradle/caches/modules-2/files-2.1/com.google.jsinterop/jsinterop-annotations/2.1.0/6cb78e3ba6c5020703751d52242bd3d1c135bba/jsinterop-annotations-2.1.0-sources.jar" sourcepath="/home/mleroy/.gradle/caches/modules-2/files-2.1/com.google.jsinterop/jsinterop-annotations/2.1.0/6cb78e3ba6c5020703751d52242bd3d1c135bba/jsinterop-annotations-2.1.0-sources.jar">
+		<attributes>
+			<attribute name="gradle.buildServer" value="true"/>
+			<attribute name="groupId" value="com.google.jsinterop"/>
+			<attribute name="artifactId" value="jsinterop-annotations"/>
+			<attribute name="version" value="2.1.0"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="/home/mleroy/.gradle/caches/modules-2/files-2.1/com.badlogicgames.gdx/gdx-backend-gwt/1.14.0/25ba77a0cdf11ffc6bc6c18e749b972b34cbe858/gdx-backend-gwt-1.14.0.jar" sourcepath="/home/mleroy/.gradle/caches/modules-2/files-2.1/com.badlogicgames.gdx/gdx-backend-gwt/1.14.0/9e2a94ab04c52a9a7de1d1c7178a20ecadae36ab/gdx-backend-gwt-1.14.0-sources.jar">
+		<attributes>
+			<attribute name="gradle.buildServer" value="true"/>
+			<attribute name="groupId" value="com.badlogicgames.gdx"/>
+			<attribute name="artifactId" value="gdx-backend-gwt"/>
+			<attribute name="version" value="1.14.0"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="/home/mleroy/.gradle/caches/modules-2/files-2.1/org.gwtproject/gwt-user/2.11.0/a6540aeeb3a20ca13ab33b4c77e1efaa83b7a1c1/gwt-user-2.11.0.jar" sourcepath="/home/mleroy/.gradle/caches/modules-2/files-2.1/org.gwtproject/gwt-user/2.11.0/89d37a2b4396b7ca10f0a19642dbf1f911c03b54/gwt-user-2.11.0-sources.jar">
 		<attributes>
 			<attribute name="gradle.buildServer" value="true"/>
 			<attribute name="groupId" value="org.gwtproject"/>
@@ -69,39 +93,7 @@
 			<attribute name="version" value="2.11.0"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="C:/Users/theod/.gradle/caches/modules-2/files-2.1/com.badlogicgames.gdx/gdx-backend-gwt/1.14.0/9e2a94ab04c52a9a7de1d1c7178a20ecadae36ab/gdx-backend-gwt-1.14.0-sources.jar" sourcepath="C:/Users/theod/.gradle/caches/modules-2/files-2.1/com.badlogicgames.gdx/gdx-backend-gwt/1.14.0/9e2a94ab04c52a9a7de1d1c7178a20ecadae36ab/gdx-backend-gwt-1.14.0-sources.jar">
-		<attributes>
-			<attribute name="gradle.buildServer" value="true"/>
-			<attribute name="groupId" value="com.badlogicgames.gdx"/>
-			<attribute name="artifactId" value="gdx-backend-gwt"/>
-			<attribute name="version" value="1.14.0"/>
-		</attributes>
-	</classpathentry>
-	<classpathentry kind="lib" path="C:/Users/theod/.gradle/caches/modules-2/files-2.1/javax.validation/validation-api/1.0.0.GA/b6bd7f9d78f6fdaa3c37dae18a4bd298915f328e/validation-api-1.0.0.GA.jar" sourcepath="C:/Users/theod/.gradle/caches/modules-2/files-2.1/javax.validation/validation-api/1.0.0.GA/7a561191db2203550fbfa40d534d4997624cd369/validation-api-1.0.0.GA-sources.jar">
-		<attributes>
-			<attribute name="gradle.buildServer" value="true"/>
-			<attribute name="groupId" value="javax.validation"/>
-			<attribute name="artifactId" value="validation-api"/>
-			<attribute name="version" value="1.0.0.GA"/>
-		</attributes>
-	</classpathentry>
-	<classpathentry kind="lib" path="C:/Users/theod/.gradle/caches/modules-2/files-2.1/com.badlogicgames.gdx/gdx-box2d-gwt/1.14.0/c9c84a5c373e3bb3842ce872d974014472f995c7/gdx-box2d-gwt-1.14.0-sources.jar" sourcepath="C:/Users/theod/.gradle/caches/modules-2/files-2.1/com.badlogicgames.gdx/gdx-box2d-gwt/1.14.0/c9c84a5c373e3bb3842ce872d974014472f995c7/gdx-box2d-gwt-1.14.0-sources.jar">
-		<attributes>
-			<attribute name="gradle.buildServer" value="true"/>
-			<attribute name="groupId" value="com.badlogicgames.gdx"/>
-			<attribute name="artifactId" value="gdx-box2d-gwt"/>
-			<attribute name="version" value="1.14.0"/>
-		</attributes>
-	</classpathentry>
-	<classpathentry kind="lib" path="C:/Users/theod/.gradle/caches/modules-2/files-2.1/org.gwtproject/gwt-servlet-jakarta/2.11.0/a6507693fa954a98bbe41d4447cc48c563d098a8/gwt-servlet-jakarta-2.11.0.jar" sourcepath="C:/Users/theod/.gradle/caches/modules-2/files-2.1/org.gwtproject/gwt-servlet-jakarta/2.11.0/1b0179bdc2c5c096ca889b15cf006f9bccc20d88/gwt-servlet-jakarta-2.11.0-sources.jar">
-		<attributes>
-			<attribute name="gradle.buildServer" value="true"/>
-			<attribute name="groupId" value="org.gwtproject"/>
-			<attribute name="artifactId" value="gwt-servlet-jakarta"/>
-			<attribute name="version" value="2.11.0"/>
-		</attributes>
-	</classpathentry>
-	<classpathentry kind="lib" path="C:/Users/theod/.gradle/caches/modules-2/files-2.1/com.badlogicgames.gdx/gdx/1.14.0/8accfce8d9313d9ddd23a2c9e315179783085ef2/gdx-1.14.0.jar" sourcepath="C:/Users/theod/.gradle/caches/modules-2/files-2.1/com.badlogicgames.gdx/gdx/1.14.0/4c0cf80420b4a1cc3b06167789f0768fbc12608b/gdx-1.14.0-sources.jar">
+	<classpathentry kind="lib" path="/home/mleroy/.gradle/caches/modules-2/files-2.1/com.badlogicgames.gdx/gdx/1.14.0/8accfce8d9313d9ddd23a2c9e315179783085ef2/gdx-1.14.0.jar" sourcepath="/home/mleroy/.gradle/caches/modules-2/files-2.1/com.badlogicgames.gdx/gdx/1.14.0/4c0cf80420b4a1cc3b06167789f0768fbc12608b/gdx-1.14.0-sources.jar">
 		<attributes>
 			<attribute name="gradle.buildServer" value="true"/>
 			<attribute name="groupId" value="com.badlogicgames.gdx"/>
@@ -109,39 +101,7 @@
 			<attribute name="version" value="1.14.0"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="C:/Users/theod/.gradle/caches/modules-2/files-2.1/jakarta.servlet/jakarta.servlet-api/6.1.0/1169a246913fe3823782af7943e7a103634867c5/jakarta.servlet-api-6.1.0.jar" sourcepath="C:/Users/theod/.gradle/caches/modules-2/files-2.1/jakarta.servlet/jakarta.servlet-api/6.1.0/d3f7a30a2f0436a74f96b1f583d11fbe808f28cb/jakarta.servlet-api-6.1.0-sources.jar">
-		<attributes>
-			<attribute name="gradle.buildServer" value="true"/>
-			<attribute name="groupId" value="jakarta.servlet"/>
-			<attribute name="artifactId" value="jakarta.servlet-api"/>
-			<attribute name="version" value="6.1.0"/>
-		</attributes>
-	</classpathentry>
-	<classpathentry kind="lib" path="C:/Users/theod/.gradle/caches/modules-2/files-2.1/org.w3c.css/sac/1.3/cdb2dcb4e22b83d6b32b93095f644c3462739e82/sac-1.3.jar" sourcepath="C:/Users/theod/.gradle/caches/modules-2/files-2.1/org.w3c.css/sac/1.3/d0eab9163d161293dcd1e291bc2b6b09b4b5c717/sac-1.3-sources.jar">
-		<attributes>
-			<attribute name="gradle.buildServer" value="true"/>
-			<attribute name="groupId" value="org.w3c.css"/>
-			<attribute name="artifactId" value="sac"/>
-			<attribute name="version" value="1.3"/>
-		</attributes>
-	</classpathentry>
-	<classpathentry kind="lib" path="C:/Users/theod/.gradle/caches/modules-2/files-2.1/javax.validation/validation-api/1.0.0.GA/7a561191db2203550fbfa40d534d4997624cd369/validation-api-1.0.0.GA-sources.jar" sourcepath="C:/Users/theod/.gradle/caches/modules-2/files-2.1/javax.validation/validation-api/1.0.0.GA/7a561191db2203550fbfa40d534d4997624cd369/validation-api-1.0.0.GA-sources.jar">
-		<attributes>
-			<attribute name="gradle.buildServer" value="true"/>
-			<attribute name="groupId" value="javax.validation"/>
-			<attribute name="artifactId" value="validation-api"/>
-			<attribute name="version" value="1.0.0.GA"/>
-		</attributes>
-	</classpathentry>
-	<classpathentry kind="lib" path="C:/Users/theod/.gradle/caches/modules-2/files-2.1/com.badlogicgames.gdx/gdx-box2d/1.14.0/758e9c3f2cdb06f8fd8ff299fb8b1fcce07a8000/gdx-box2d-1.14.0-sources.jar" sourcepath="C:/Users/theod/.gradle/caches/modules-2/files-2.1/com.badlogicgames.gdx/gdx-box2d/1.14.0/758e9c3f2cdb06f8fd8ff299fb8b1fcce07a8000/gdx-box2d-1.14.0-sources.jar">
-		<attributes>
-			<attribute name="gradle.buildServer" value="true"/>
-			<attribute name="groupId" value="com.badlogicgames.gdx"/>
-			<attribute name="artifactId" value="gdx-box2d"/>
-			<attribute name="version" value="1.14.0"/>
-		</attributes>
-	</classpathentry>
-	<classpathentry kind="lib" path="C:/Users/theod/.gradle/caches/modules-2/files-2.1/com.badlogicgames.gdx/gdx/1.14.0/4c0cf80420b4a1cc3b06167789f0768fbc12608b/gdx-1.14.0-sources.jar" sourcepath="C:/Users/theod/.gradle/caches/modules-2/files-2.1/com.badlogicgames.gdx/gdx/1.14.0/4c0cf80420b4a1cc3b06167789f0768fbc12608b/gdx-1.14.0-sources.jar">
+	<classpathentry kind="lib" path="/home/mleroy/.gradle/caches/modules-2/files-2.1/com.badlogicgames.gdx/gdx/1.14.0/4c0cf80420b4a1cc3b06167789f0768fbc12608b/gdx-1.14.0-sources.jar" sourcepath="/home/mleroy/.gradle/caches/modules-2/files-2.1/com.badlogicgames.gdx/gdx/1.14.0/4c0cf80420b4a1cc3b06167789f0768fbc12608b/gdx-1.14.0-sources.jar">
 		<attributes>
 			<attribute name="gradle.buildServer" value="true"/>
 			<attribute name="groupId" value="com.badlogicgames.gdx"/>
@@ -149,31 +109,7 @@
 			<attribute name="version" value="1.14.0"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="C:/Users/theod/.gradle/caches/modules-2/files-2.1/com.google.jsinterop/jsinterop-annotations/2.1.0/6cb78e3ba6c5020703751d52242bd3d1c135bba/jsinterop-annotations-2.1.0-sources.jar" sourcepath="C:/Users/theod/.gradle/caches/modules-2/files-2.1/com.google.jsinterop/jsinterop-annotations/2.1.0/6cb78e3ba6c5020703751d52242bd3d1c135bba/jsinterop-annotations-2.1.0-sources.jar">
-		<attributes>
-			<attribute name="gradle.buildServer" value="true"/>
-			<attribute name="groupId" value="com.google.jsinterop"/>
-			<attribute name="artifactId" value="jsinterop-annotations"/>
-			<attribute name="version" value="2.1.0"/>
-		</attributes>
-	</classpathentry>
-	<classpathentry kind="lib" path="C:/Users/theod/.gradle/caches/modules-2/files-2.1/com.badlogicgames.gdx/gdx-backend-gwt/1.14.0/25ba77a0cdf11ffc6bc6c18e749b972b34cbe858/gdx-backend-gwt-1.14.0.jar" sourcepath="C:/Users/theod/.gradle/caches/modules-2/files-2.1/com.badlogicgames.gdx/gdx-backend-gwt/1.14.0/9e2a94ab04c52a9a7de1d1c7178a20ecadae36ab/gdx-backend-gwt-1.14.0-sources.jar">
-		<attributes>
-			<attribute name="gradle.buildServer" value="true"/>
-			<attribute name="groupId" value="com.badlogicgames.gdx"/>
-			<attribute name="artifactId" value="gdx-backend-gwt"/>
-			<attribute name="version" value="1.14.0"/>
-		</attributes>
-	</classpathentry>
-	<classpathentry kind="lib" path="C:/Users/theod/.gradle/caches/modules-2/files-2.1/com.badlogicgames.gdx/gdx-jnigen-loader/2.5.2/f35e90affe07c46b4f5e5958a1a4c1820c4890e2/gdx-jnigen-loader-2.5.2.jar" sourcepath="C:/Users/theod/.gradle/caches/modules-2/files-2.1/com.badlogicgames.gdx/gdx-jnigen-loader/2.5.2/2a21b103d03be8d1ed81a021981376615f481cf5/gdx-jnigen-loader-2.5.2-sources.jar">
-		<attributes>
-			<attribute name="gradle.buildServer" value="true"/>
-			<attribute name="groupId" value="com.badlogicgames.gdx"/>
-			<attribute name="artifactId" value="gdx-jnigen-loader"/>
-			<attribute name="version" value="2.5.2"/>
-		</attributes>
-	</classpathentry>
-	<classpathentry kind="lib" path="C:/Users/theod/.gradle/caches/modules-2/files-2.1/javax.servlet/javax.servlet-api/3.1.0/3cd63d075497751784b2fa84be59432f4905bf7c/javax.servlet-api-3.1.0.jar" sourcepath="C:/Users/theod/.gradle/caches/modules-2/files-2.1/javax.servlet/javax.servlet-api/3.1.0/ab3976d4574c48d22dc1abf6a9e8bd0fdf928223/javax.servlet-api-3.1.0-sources.jar">
+	<classpathentry kind="lib" path="/home/mleroy/.gradle/caches/modules-2/files-2.1/javax.servlet/javax.servlet-api/3.1.0/3cd63d075497751784b2fa84be59432f4905bf7c/javax.servlet-api-3.1.0.jar" sourcepath="/home/mleroy/.gradle/caches/modules-2/files-2.1/javax.servlet/javax.servlet-api/3.1.0/ab3976d4574c48d22dc1abf6a9e8bd0fdf928223/javax.servlet-api-3.1.0-sources.jar">
 		<attributes>
 			<attribute name="gradle.buildServer" value="true"/>
 			<attribute name="groupId" value="javax.servlet"/>
@@ -181,15 +117,7 @@
 			<attribute name="version" value="3.1.0"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="C:/Users/theod/.gradle/caches/modules-2/files-2.1/com.badlogicgames.gdx/gdx-box2d/1.14.0/71bac822f28c1c2128ffcdb2f465ca603ced4e0d/gdx-box2d-1.14.0.jar" sourcepath="C:/Users/theod/.gradle/caches/modules-2/files-2.1/com.badlogicgames.gdx/gdx-box2d/1.14.0/758e9c3f2cdb06f8fd8ff299fb8b1fcce07a8000/gdx-box2d-1.14.0-sources.jar">
-		<attributes>
-			<attribute name="gradle.buildServer" value="true"/>
-			<attribute name="groupId" value="com.badlogicgames.gdx"/>
-			<attribute name="artifactId" value="gdx-box2d"/>
-			<attribute name="version" value="1.14.0"/>
-		</attributes>
-	</classpathentry>
-	<classpathentry kind="lib" path="C:/Users/theod/.gradle/caches/modules-2/files-2.1/com.google.jsinterop/jsinterop-annotations/2.1.0/be19a0d8365ea56982560212a1cfe11c27d2d8fc/jsinterop-annotations-2.1.0.jar" sourcepath="C:/Users/theod/.gradle/caches/modules-2/files-2.1/com.google.jsinterop/jsinterop-annotations/2.1.0/6cb78e3ba6c5020703751d52242bd3d1c135bba/jsinterop-annotations-2.1.0-sources.jar">
+	<classpathentry kind="lib" path="/home/mleroy/.gradle/caches/modules-2/files-2.1/com.google.jsinterop/jsinterop-annotations/2.1.0/be19a0d8365ea56982560212a1cfe11c27d2d8fc/jsinterop-annotations-2.1.0.jar" sourcepath="/home/mleroy/.gradle/caches/modules-2/files-2.1/com.google.jsinterop/jsinterop-annotations/2.1.0/6cb78e3ba6c5020703751d52242bd3d1c135bba/jsinterop-annotations-2.1.0-sources.jar">
 		<attributes>
 			<attribute name="gradle.buildServer" value="true"/>
 			<attribute name="groupId" value="com.google.jsinterop"/>
@@ -197,205 +125,79 @@
 			<attribute name="version" value="2.1.0"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="C:/Users/theod/.gradle/caches/modules-2/files-2.1/org.mortbay.jasper/apache-el/8.5.70/e280d60a1b02f85babcc20ed53d603def113f853/apache-el-8.5.70.jar" sourcepath="C:/Users/theod/.gradle/caches/modules-2/files-2.1/org.mortbay.jasper/apache-el/8.5.70/af128079d1e482d096b688e16f6ad0e383931afe/apache-el-8.5.70-sources.jar">
+	<classpathentry kind="lib" path="/home/mleroy/.gradle/caches/modules-2/files-2.1/jakarta.servlet/jakarta.servlet-api/6.1.0/1169a246913fe3823782af7943e7a103634867c5/jakarta.servlet-api-6.1.0.jar" sourcepath="/home/mleroy/.gradle/caches/modules-2/files-2.1/jakarta.servlet/jakarta.servlet-api/6.1.0/d3f7a30a2f0436a74f96b1f583d11fbe808f28cb/jakarta.servlet-api-6.1.0-sources.jar">
 		<attributes>
-			<attribute name="test" value="true"/>
 			<attribute name="gradle.buildServer" value="true"/>
-			<attribute name="groupId" value="org.mortbay.jasper"/>
-			<attribute name="artifactId" value="apache-el"/>
-			<attribute name="version" value="8.5.70"/>
+			<attribute name="groupId" value="jakarta.servlet"/>
+			<attribute name="artifactId" value="jakarta.servlet-api"/>
+			<attribute name="version" value="6.1.0"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="C:/Users/theod/.gradle/caches/modules-2/files-2.1/tapestry/tapestry/4.0.2/e855a807425d522e958cbce8697f21e9d679b1f7/tapestry-4.0.2.jar">
+	<classpathentry kind="lib" path="/home/mleroy/.gradle/caches/modules-2/files-2.1/javax.validation/validation-api/1.0.0.GA/7a561191db2203550fbfa40d534d4997624cd369/validation-api-1.0.0.GA-sources.jar" sourcepath="/home/mleroy/.gradle/caches/modules-2/files-2.1/javax.validation/validation-api/1.0.0.GA/7a561191db2203550fbfa40d534d4997624cd369/validation-api-1.0.0.GA-sources.jar">
 		<attributes>
-			<attribute name="test" value="true"/>
 			<attribute name="gradle.buildServer" value="true"/>
-			<attribute name="groupId" value="tapestry"/>
-			<attribute name="artifactId" value="tapestry"/>
-			<attribute name="version" value="4.0.2"/>
+			<attribute name="groupId" value="javax.validation"/>
+			<attribute name="artifactId" value="validation-api"/>
+			<attribute name="version" value="1.0.0.GA"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="C:/Users/theod/.gradle/caches/modules-2/files-2.1/org.eclipse.jdt/ecj/3.19.0/99ccdf7b2a75afb720270ab888bb21d6159ee631/ecj-3.19.0.jar" sourcepath="C:/Users/theod/.gradle/caches/modules-2/files-2.1/org.eclipse.jdt/ecj/3.19.0/f0daa5335f1c2248e243cb88a40876e7f637a887/ecj-3.19.0-sources.jar">
+	<classpathentry kind="lib" path="/home/mleroy/.gradle/caches/modules-2/files-2.1/org.w3c.css/sac/1.3/cdb2dcb4e22b83d6b32b93095f644c3462739e82/sac-1.3.jar" sourcepath="/home/mleroy/.gradle/caches/modules-2/files-2.1/org.w3c.css/sac/1.3/d0eab9163d161293dcd1e291bc2b6b09b4b5c717/sac-1.3-sources.jar">
 		<attributes>
-			<attribute name="test" value="true"/>
 			<attribute name="gradle.buildServer" value="true"/>
-			<attribute name="groupId" value="org.eclipse.jdt"/>
-			<attribute name="artifactId" value="ecj"/>
-			<attribute name="version" value="3.19.0"/>
+			<attribute name="groupId" value="org.w3c.css"/>
+			<attribute name="artifactId" value="sac"/>
+			<attribute name="version" value="1.3"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="C:/Users/theod/.gradle/caches/modules-2/files-2.1/com.google.code.gson/gson/2.6.2/f1bc476cc167b18e66c297df599b2377131a8947/gson-2.6.2.jar" sourcepath="C:/Users/theod/.gradle/caches/modules-2/files-2.1/com.google.code.gson/gson/2.6.2/6d8591dcd32b4b97808d3ed78d76c6272299309c/gson-2.6.2-sources.jar">
+	<classpathentry kind="lib" path="/home/mleroy/.gradle/caches/modules-2/files-2.1/com.badlogicgames.gdx/gdx-backend-gwt/1.14.0/9e2a94ab04c52a9a7de1d1c7178a20ecadae36ab/gdx-backend-gwt-1.14.0-sources.jar" sourcepath="/home/mleroy/.gradle/caches/modules-2/files-2.1/com.badlogicgames.gdx/gdx-backend-gwt/1.14.0/9e2a94ab04c52a9a7de1d1c7178a20ecadae36ab/gdx-backend-gwt-1.14.0-sources.jar">
 		<attributes>
-			<attribute name="test" value="true"/>
 			<attribute name="gradle.buildServer" value="true"/>
-			<attribute name="groupId" value="com.google.code.gson"/>
-			<attribute name="artifactId" value="gson"/>
-			<attribute name="version" value="2.6.2"/>
+			<attribute name="groupId" value="com.badlogicgames.gdx"/>
+			<attribute name="artifactId" value="gdx-backend-gwt"/>
+			<attribute name="version" value="1.14.0"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="C:/Users/theod/.gradle/caches/modules-2/files-2.1/net.sourceforge.htmlunit/htmlunit/2.55.0/19b993df433692899e82b63490a6792181b9ef51/htmlunit-2.55.0.jar" sourcepath="C:/Users/theod/.gradle/caches/modules-2/files-2.1/net.sourceforge.htmlunit/htmlunit/2.55.0/7e7bb618b8c0b40b977afff93491f13c247cba62/htmlunit-2.55.0-sources.jar">
+	<classpathentry kind="lib" path="/home/mleroy/.gradle/caches/modules-2/files-2.1/org.gwtproject/gwt-servlet-jakarta/2.11.0/a6507693fa954a98bbe41d4447cc48c563d098a8/gwt-servlet-jakarta-2.11.0.jar" sourcepath="/home/mleroy/.gradle/caches/modules-2/files-2.1/org.gwtproject/gwt-servlet-jakarta/2.11.0/1b0179bdc2c5c096ca889b15cf006f9bccc20d88/gwt-servlet-jakarta-2.11.0-sources.jar">
 		<attributes>
-			<attribute name="test" value="true"/>
 			<attribute name="gradle.buildServer" value="true"/>
-			<attribute name="groupId" value="net.sourceforge.htmlunit"/>
-			<attribute name="artifactId" value="htmlunit"/>
-			<attribute name="version" value="2.55.0"/>
+			<attribute name="groupId" value="org.gwtproject"/>
+			<attribute name="artifactId" value="gwt-servlet-jakarta"/>
+			<attribute name="version" value="2.11.0"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="C:/Users/theod/.gradle/caches/modules-2/files-2.1/org.eclipse.jetty.websocket/websocket-common/9.4.44.v20210927/ba1b2d2096f0bab85dda350d19e176cc3d049009/websocket-common-9.4.44.v20210927.jar" sourcepath="C:/Users/theod/.gradle/caches/modules-2/files-2.1/org.eclipse.jetty.websocket/websocket-common/9.4.44.v20210927/e39d11a699223af73a4392d14caa072064302458/websocket-common-9.4.44.v20210927-sources.jar">
+	<classpathentry kind="lib" path="/home/mleroy/.gradle/caches/modules-2/files-2.1/javax.validation/validation-api/1.0.0.GA/b6bd7f9d78f6fdaa3c37dae18a4bd298915f328e/validation-api-1.0.0.GA.jar" sourcepath="/home/mleroy/.gradle/caches/modules-2/files-2.1/javax.validation/validation-api/1.0.0.GA/7a561191db2203550fbfa40d534d4997624cd369/validation-api-1.0.0.GA-sources.jar">
 		<attributes>
-			<attribute name="test" value="true"/>
 			<attribute name="gradle.buildServer" value="true"/>
-			<attribute name="groupId" value="org.eclipse.jetty.websocket"/>
-			<attribute name="artifactId" value="websocket-common"/>
-			<attribute name="version" value="9.4.44.v20210927"/>
+			<attribute name="groupId" value="javax.validation"/>
+			<attribute name="artifactId" value="validation-api"/>
+			<attribute name="version" value="1.0.0.GA"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="C:/Users/theod/.gradle/caches/modules-2/files-2.1/org.mortbay.jasper/apache-jsp/8.5.70/67515d2ae96e9cb442659668b6a58423f112b5ed/apache-jsp-8.5.70.jar" sourcepath="C:/Users/theod/.gradle/caches/modules-2/files-2.1/org.mortbay.jasper/apache-jsp/8.5.70/5a1659eb4d149056d4daa4e5cbbf5d221a5a88ec/apache-jsp-8.5.70-sources.jar">
+	<classpathentry kind="lib" path="/home/mleroy/.gradle/caches/modules-2/files-2.1/com.badlogicgames.gdx/gdx-box2d/1.14.0/758e9c3f2cdb06f8fd8ff299fb8b1fcce07a8000/gdx-box2d-1.14.0-sources.jar" sourcepath="/home/mleroy/.gradle/caches/modules-2/files-2.1/com.badlogicgames.gdx/gdx-box2d/1.14.0/758e9c3f2cdb06f8fd8ff299fb8b1fcce07a8000/gdx-box2d-1.14.0-sources.jar">
 		<attributes>
-			<attribute name="test" value="true"/>
 			<attribute name="gradle.buildServer" value="true"/>
-			<attribute name="groupId" value="org.mortbay.jasper"/>
-			<attribute name="artifactId" value="apache-jsp"/>
-			<attribute name="version" value="8.5.70"/>
+			<attribute name="groupId" value="com.badlogicgames.gdx"/>
+			<attribute name="artifactId" value="gdx-box2d"/>
+			<attribute name="version" value="1.14.0"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="C:/Users/theod/.gradle/caches/modules-2/files-2.1/org.eclipse.jetty/jetty-xml/9.4.44.v20210927/da53a0fa775752cd4626539796bdb49e9b4cf23c/jetty-xml-9.4.44.v20210927.jar" sourcepath="C:/Users/theod/.gradle/caches/modules-2/files-2.1/org.eclipse.jetty/jetty-xml/9.4.44.v20210927/e48a839f2912aaf2c0eaf973db453cd3b06c92bc/jetty-xml-9.4.44.v20210927-sources.jar">
+	<classpathentry kind="lib" path="/home/mleroy/.gradle/caches/modules-2/files-2.1/com.badlogicgames.gdx/gdx-box2d-gwt/1.14.0/c9c84a5c373e3bb3842ce872d974014472f995c7/gdx-box2d-gwt-1.14.0-sources.jar" sourcepath="/home/mleroy/.gradle/caches/modules-2/files-2.1/com.badlogicgames.gdx/gdx-box2d-gwt/1.14.0/c9c84a5c373e3bb3842ce872d974014472f995c7/gdx-box2d-gwt-1.14.0-sources.jar">
 		<attributes>
-			<attribute name="test" value="true"/>
 			<attribute name="gradle.buildServer" value="true"/>
-			<attribute name="groupId" value="org.eclipse.jetty"/>
-			<attribute name="artifactId" value="jetty-xml"/>
-			<attribute name="version" value="9.4.44.v20210927"/>
+			<attribute name="groupId" value="com.badlogicgames.gdx"/>
+			<attribute name="artifactId" value="gdx-box2d-gwt"/>
+			<attribute name="version" value="1.14.0"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="C:/Users/theod/.gradle/caches/modules-2/files-2.1/xerces/xercesImpl/2.12.1/3a206b25679f598a03374afd4e0410d8849b088b/xercesImpl-2.12.1.jar" sourcepath="C:/Users/theod/.gradle/caches/modules-2/files-2.1/xerces/xercesImpl/2.12.1/1f04ff451cba8e02106473b67bfd6c6b7c75343c/xercesImpl-2.12.1-sources.jar">
+	<classpathentry kind="lib" path="/home/mleroy/.gradle/caches/modules-2/files-2.1/com.badlogicgames.gdx/gdx-jnigen-loader/2.5.2/f35e90affe07c46b4f5e5958a1a4c1820c4890e2/gdx-jnigen-loader-2.5.2.jar" sourcepath="/home/mleroy/.gradle/caches/modules-2/files-2.1/com.badlogicgames.gdx/gdx-jnigen-loader/2.5.2/2a21b103d03be8d1ed81a021981376615f481cf5/gdx-jnigen-loader-2.5.2-sources.jar">
 		<attributes>
-			<attribute name="test" value="true"/>
 			<attribute name="gradle.buildServer" value="true"/>
-			<attribute name="groupId" value="xerces"/>
-			<attribute name="artifactId" value="xercesImpl"/>
-			<attribute name="version" value="2.12.1"/>
+			<attribute name="groupId" value="com.badlogicgames.gdx"/>
+			<attribute name="artifactId" value="gdx-jnigen-loader"/>
+			<attribute name="version" value="2.5.2"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="C:/Users/theod/.gradle/caches/modules-2/files-2.1/org.ow2.asm/asm-tree/9.2/d96c99a30f5e1a19b0e609dbb19a44d8518ac01e/asm-tree-9.2.jar" sourcepath="C:/Users/theod/.gradle/caches/modules-2/files-2.1/org.ow2.asm/asm-tree/9.2/d7c4f2660898c227b2fb209f94ca15ae45722535/asm-tree-9.2-sources.jar">
-		<attributes>
-			<attribute name="test" value="true"/>
-			<attribute name="gradle.buildServer" value="true"/>
-			<attribute name="groupId" value="org.ow2.asm"/>
-			<attribute name="artifactId" value="asm-tree"/>
-			<attribute name="version" value="9.2"/>
-		</attributes>
-	</classpathentry>
-	<classpathentry kind="lib" path="C:/Users/theod/.gradle/caches/modules-2/files-2.1/javax.annotation/javax.annotation-api/1.3.2/934c04d3cfef185a8008e7bf34331b79730a9d43/javax.annotation-api-1.3.2.jar" sourcepath="C:/Users/theod/.gradle/caches/modules-2/files-2.1/javax.annotation/javax.annotation-api/1.3.2/65dfd2c47380bf72ec62a5b8c4ceb78a4eda1a53/javax.annotation-api-1.3.2-sources.jar">
-		<attributes>
-			<attribute name="test" value="true"/>
-			<attribute name="gradle.buildServer" value="true"/>
-			<attribute name="groupId" value="javax.annotation"/>
-			<attribute name="artifactId" value="javax.annotation-api"/>
-			<attribute name="version" value="1.3.2"/>
-		</attributes>
-	</classpathentry>
-	<classpathentry kind="lib" path="C:/Users/theod/.gradle/caches/modules-2/files-2.1/org.eclipse.jetty/jetty-util-ajax/9.4.44.v20210927/ed2f30e8eef939ab2825e607d83f82f85167e2c0/jetty-util-ajax-9.4.44.v20210927.jar" sourcepath="C:/Users/theod/.gradle/caches/modules-2/files-2.1/org.eclipse.jetty/jetty-util-ajax/9.4.44.v20210927/1a48ae7a45683d20afb90784d1db314be2c73c92/jetty-util-ajax-9.4.44.v20210927-sources.jar">
-		<attributes>
-			<attribute name="test" value="true"/>
-			<attribute name="gradle.buildServer" value="true"/>
-			<attribute name="groupId" value="org.eclipse.jetty"/>
-			<attribute name="artifactId" value="jetty-util-ajax"/>
-			<attribute name="version" value="9.4.44.v20210927"/>
-		</attributes>
-	</classpathentry>
-	<classpathentry kind="lib" path="C:/Users/theod/.gradle/caches/modules-2/files-2.1/org.eclipse.jetty/jetty-security/9.4.44.v20210927/ecb80b8e008daa46e95e5691b2611d4007922497/jetty-security-9.4.44.v20210927.jar" sourcepath="C:/Users/theod/.gradle/caches/modules-2/files-2.1/org.eclipse.jetty/jetty-security/9.4.44.v20210927/d67d4705a08d9b76592b3e177e2bb1aac968d832/jetty-security-9.4.44.v20210927-sources.jar">
-		<attributes>
-			<attribute name="test" value="true"/>
-			<attribute name="gradle.buildServer" value="true"/>
-			<attribute name="groupId" value="org.eclipse.jetty"/>
-			<attribute name="artifactId" value="jetty-security"/>
-			<attribute name="version" value="9.4.44.v20210927"/>
-		</attributes>
-	</classpathentry>
-	<classpathentry kind="lib" path="C:/Users/theod/.gradle/caches/modules-2/files-2.1/org.eclipse.jetty/jetty-continuation/9.4.44.v20210927/4ffc681d5b4cbbc340cb58b17d7ac66254ee5e62/jetty-continuation-9.4.44.v20210927.jar" sourcepath="C:/Users/theod/.gradle/caches/modules-2/files-2.1/org.eclipse.jetty/jetty-continuation/9.4.44.v20210927/5c19dbc045249ea15fc6895136ddaa81197d18f8/jetty-continuation-9.4.44.v20210927-sources.jar">
-		<attributes>
-			<attribute name="test" value="true"/>
-			<attribute name="gradle.buildServer" value="true"/>
-			<attribute name="groupId" value="org.eclipse.jetty"/>
-			<attribute name="artifactId" value="jetty-continuation"/>
-			<attribute name="version" value="9.4.44.v20210927"/>
-		</attributes>
-	</classpathentry>
-	<classpathentry kind="lib" path="C:/Users/theod/.gradle/caches/modules-2/files-2.1/org.apache.httpcomponents/httpclient/4.5.13/e5f6cae5ca7ecaac1ec2827a9e2d65ae2869cada/httpclient-4.5.13.jar" sourcepath="C:/Users/theod/.gradle/caches/modules-2/files-2.1/org.apache.httpcomponents/httpclient/4.5.13/9654e91a61d7662c36be6710ef8e720c0e3f9807/httpclient-4.5.13-sources.jar">
-		<attributes>
-			<attribute name="test" value="true"/>
-			<attribute name="gradle.buildServer" value="true"/>
-			<attribute name="groupId" value="org.apache.httpcomponents"/>
-			<attribute name="artifactId" value="httpclient"/>
-			<attribute name="version" value="4.5.13"/>
-		</attributes>
-	</classpathentry>
-	<classpathentry kind="lib" path="C:/Users/theod/.gradle/caches/modules-2/files-2.1/com.ibm.icu/icu4j/63.1/385682b7fff53cd5ac2cad0fdb4658a7b97e9475/icu4j-63.1.jar" sourcepath="C:/Users/theod/.gradle/caches/modules-2/files-2.1/com.ibm.icu/icu4j/63.1/58ff12717b076430cbbce4708d024adbafdad5/icu4j-63.1-sources.jar">
-		<attributes>
-			<attribute name="test" value="true"/>
-			<attribute name="gradle.buildServer" value="true"/>
-			<attribute name="groupId" value="com.ibm.icu"/>
-			<attribute name="artifactId" value="icu4j"/>
-			<attribute name="version" value="63.1"/>
-		</attributes>
-	</classpathentry>
-	<classpathentry kind="lib" path="C:/Users/theod/.gradle/caches/modules-2/files-2.1/org.eclipse.jetty/apache-jsp/9.4.44.v20210927/6cc73cb8ec63f2b4dabefb22e1a234d632752490/apache-jsp-9.4.44.v20210927.jar" sourcepath="C:/Users/theod/.gradle/caches/modules-2/files-2.1/org.eclipse.jetty/apache-jsp/9.4.44.v20210927/131995c827cbbd2964eda640664930cc2c10e616/apache-jsp-9.4.44.v20210927-sources.jar">
-		<attributes>
-			<attribute name="test" value="true"/>
-			<attribute name="gradle.buildServer" value="true"/>
-			<attribute name="groupId" value="org.eclipse.jetty"/>
-			<attribute name="artifactId" value="apache-jsp"/>
-			<attribute name="version" value="9.4.44.v20210927"/>
-		</attributes>
-	</classpathentry>
-	<classpathentry kind="lib" path="C:/Users/theod/.gradle/caches/modules-2/files-2.1/commons-net/commons-net/3.8.0/63ea56587c8aaf05adab5cb0397e056bac8a2db0/commons-net-3.8.0.jar" sourcepath="C:/Users/theod/.gradle/caches/modules-2/files-2.1/commons-net/commons-net/3.8.0/91695dcbcdc9d9ec9bed2533e26e13d9cc1a5499/commons-net-3.8.0-sources.jar">
-		<attributes>
-			<attribute name="test" value="true"/>
-			<attribute name="gradle.buildServer" value="true"/>
-			<attribute name="groupId" value="commons-net"/>
-			<attribute name="artifactId" value="commons-net"/>
-			<attribute name="version" value="3.8.0"/>
-		</attributes>
-	</classpathentry>
-	<classpathentry kind="lib" path="C:/Users/theod/.gradle/caches/modules-2/files-2.1/commons-collections/commons-collections/3.2.2/8ad72fe39fa8c91eaaf12aadb21e0c3661fe26d5/commons-collections-3.2.2.jar" sourcepath="C:/Users/theod/.gradle/caches/modules-2/files-2.1/commons-collections/commons-collections/3.2.2/78c50ebda5784937ca1615fc0e1d0cb35857d572/commons-collections-3.2.2-sources.jar">
-		<attributes>
-			<attribute name="test" value="true"/>
-			<attribute name="gradle.buildServer" value="true"/>
-			<attribute name="groupId" value="commons-collections"/>
-			<attribute name="artifactId" value="commons-collections"/>
-			<attribute name="version" value="3.2.2"/>
-		</attributes>
-	</classpathentry>
-	<classpathentry kind="lib" path="C:/Users/theod/.gradle/caches/modules-2/files-2.1/commons-logging/commons-logging/1.2/4bfc12adfe4842bf07b657f0369c4cb522955686/commons-logging-1.2.jar" sourcepath="C:/Users/theod/.gradle/caches/modules-2/files-2.1/commons-logging/commons-logging/1.2/ecf26c7507d67782a3bbd148d170b31dfad001aa/commons-logging-1.2-sources.jar">
-		<attributes>
-			<attribute name="test" value="true"/>
-			<attribute name="gradle.buildServer" value="true"/>
-			<attribute name="groupId" value="commons-logging"/>
-			<attribute name="artifactId" value="commons-logging"/>
-			<attribute name="version" value="1.2"/>
-		</attributes>
-	</classpathentry>
-	<classpathentry kind="lib" path="C:/Users/theod/.gradle/caches/modules-2/files-2.1/xml-apis/xml-apis/1.4.01/3789d9fada2d3d458c4ba2de349d48780f381ee3/xml-apis-1.4.01.jar" sourcepath="C:/Users/theod/.gradle/caches/modules-2/files-2.1/xml-apis/xml-apis/1.4.01/5502da0c4c0a7916a604356ef19394ccfa30cd4b/xml-apis-1.4.01-sources.jar">
-		<attributes>
-			<attribute name="test" value="true"/>
-			<attribute name="gradle.buildServer" value="true"/>
-			<attribute name="groupId" value="xml-apis"/>
-			<attribute name="artifactId" value="xml-apis"/>
-			<attribute name="version" value="1.4.01"/>
-		</attributes>
-	</classpathentry>
-	<classpathentry kind="lib" path="C:/Users/theod/.gradle/caches/modules-2/files-2.1/commons-io/commons-io/2.10.0/79384da84646660c57b89aa86a5a1eb98af50e00/commons-io-2.10.0.jar" sourcepath="C:/Users/theod/.gradle/caches/modules-2/files-2.1/commons-io/commons-io/2.10.0/f4ba6fd12ef5b0e1d0c6300f63369f5ae992fcb9/commons-io-2.10.0-sources.jar">
-		<attributes>
-			<attribute name="test" value="true"/>
-			<attribute name="gradle.buildServer" value="true"/>
-			<attribute name="groupId" value="commons-io"/>
-			<attribute name="artifactId" value="commons-io"/>
-			<attribute name="version" value="2.10.0"/>
-		</attributes>
-	</classpathentry>
-	<classpathentry kind="lib" path="C:/Users/theod/.gradle/caches/modules-2/files-2.1/org.apache.httpcomponents/httpcore/4.4.13/853b96d3afbb7bf8cc303fe27ee96836a10c1834/httpcore-4.4.13.jar" sourcepath="C:/Users/theod/.gradle/caches/modules-2/files-2.1/org.apache.httpcomponents/httpcore/4.4.13/d6e6365dac44108fb2cc0684daea0d40bc6609f5/httpcore-4.4.13-sources.jar">
+	<classpathentry kind="lib" path="/home/mleroy/.gradle/caches/modules-2/files-2.1/org.apache.httpcomponents/httpcore/4.4.13/853b96d3afbb7bf8cc303fe27ee96836a10c1834/httpcore-4.4.13.jar" sourcepath="/home/mleroy/.gradle/caches/modules-2/files-2.1/org.apache.httpcomponents/httpcore/4.4.13/d6e6365dac44108fb2cc0684daea0d40bc6609f5/httpcore-4.4.13-sources.jar">
 		<attributes>
 			<attribute name="test" value="true"/>
 			<attribute name="gradle.buildServer" value="true"/>
@@ -404,97 +206,7 @@
 			<attribute name="version" value="4.4.13"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="C:/Users/theod/.gradle/caches/modules-2/files-2.1/org.eclipse.jetty/jetty-servlets/9.4.44.v20210927/d22ec443ac9b983a8771a44ed258b47dc70108b6/jetty-servlets-9.4.44.v20210927.jar" sourcepath="C:/Users/theod/.gradle/caches/modules-2/files-2.1/org.eclipse.jetty/jetty-servlets/9.4.44.v20210927/8892ccfc27afb0bd5004cbfc7f19cb238a96447d/jetty-servlets-9.4.44.v20210927-sources.jar">
-		<attributes>
-			<attribute name="test" value="true"/>
-			<attribute name="gradle.buildServer" value="true"/>
-			<attribute name="groupId" value="org.eclipse.jetty"/>
-			<attribute name="artifactId" value="jetty-servlets"/>
-			<attribute name="version" value="9.4.44.v20210927"/>
-		</attributes>
-	</classpathentry>
-	<classpathentry kind="lib" path="C:/Users/theod/.gradle/caches/modules-2/files-2.1/org.brotli/dec/0.1.2/c26a897ae0d524809eef1c786cc6183b4ddcc3b/dec-0.1.2.jar" sourcepath="C:/Users/theod/.gradle/caches/modules-2/files-2.1/org.brotli/dec/0.1.2/c04c22a0f5a84e985bd04d2129638e590c1e5edc/dec-0.1.2-sources.jar">
-		<attributes>
-			<attribute name="test" value="true"/>
-			<attribute name="gradle.buildServer" value="true"/>
-			<attribute name="groupId" value="org.brotli"/>
-			<attribute name="artifactId" value="dec"/>
-			<attribute name="version" value="0.1.2"/>
-		</attributes>
-	</classpathentry>
-	<classpathentry kind="lib" path="C:/Users/theod/.gradle/caches/modules-2/files-2.1/org.eclipse.jetty.websocket/websocket-client/9.4.44.v20210927/77fe11eb5d7dacc10fd5644983877e8973d4e26d/websocket-client-9.4.44.v20210927.jar" sourcepath="C:/Users/theod/.gradle/caches/modules-2/files-2.1/org.eclipse.jetty.websocket/websocket-client/9.4.44.v20210927/9a6d13791138d1bc28eab262b29643153a02308d/websocket-client-9.4.44.v20210927-sources.jar">
-		<attributes>
-			<attribute name="test" value="true"/>
-			<attribute name="gradle.buildServer" value="true"/>
-			<attribute name="groupId" value="org.eclipse.jetty.websocket"/>
-			<attribute name="artifactId" value="websocket-client"/>
-			<attribute name="version" value="9.4.44.v20210927"/>
-		</attributes>
-	</classpathentry>
-	<classpathentry kind="lib" path="C:/Users/theod/.gradle/caches/modules-2/files-2.1/org.eclipse.jetty/jetty-http/9.4.44.v20210927/37f0e30cdc02128e40d095ad63cb18e10ecb7726/jetty-http-9.4.44.v20210927.jar" sourcepath="C:/Users/theod/.gradle/caches/modules-2/files-2.1/org.eclipse.jetty/jetty-http/9.4.44.v20210927/7f1a6e3ab54e541f33b8ed100d553d4034d2e3a9/jetty-http-9.4.44.v20210927-sources.jar">
-		<attributes>
-			<attribute name="test" value="true"/>
-			<attribute name="gradle.buildServer" value="true"/>
-			<attribute name="groupId" value="org.eclipse.jetty"/>
-			<attribute name="artifactId" value="jetty-http"/>
-			<attribute name="version" value="9.4.44.v20210927"/>
-		</attributes>
-	</classpathentry>
-	<classpathentry kind="lib" path="C:/Users/theod/.gradle/caches/modules-2/files-2.1/org.eclipse.jetty.toolchain/jetty-schemas/3.1.2/e4fb7fb14038a35ac135a784180f8a51a518eab1/jetty-schemas-3.1.2.jar" sourcepath="C:/Users/theod/.gradle/caches/modules-2/files-2.1/org.eclipse.jetty.toolchain/jetty-schemas/3.1.2/482eaf030d00071b84bd82513485de1d8825abb6/jetty-schemas-3.1.2-sources.jar">
-		<attributes>
-			<attribute name="test" value="true"/>
-			<attribute name="gradle.buildServer" value="true"/>
-			<attribute name="groupId" value="org.eclipse.jetty.toolchain"/>
-			<attribute name="artifactId" value="jetty-schemas"/>
-			<attribute name="version" value="3.1.2"/>
-		</attributes>
-	</classpathentry>
-	<classpathentry kind="lib" path="C:/Users/theod/.gradle/caches/modules-2/files-2.1/commons-codec/commons-codec/1.11/3acb4705652e16236558f0f4f2192cc33c3bd189/commons-codec-1.11.jar" sourcepath="C:/Users/theod/.gradle/caches/modules-2/files-2.1/commons-codec/commons-codec/1.11/bce4ba84fd527950e35040b20a991c63e90e2850/commons-codec-1.11-sources.jar">
-		<attributes>
-			<attribute name="test" value="true"/>
-			<attribute name="gradle.buildServer" value="true"/>
-			<attribute name="groupId" value="commons-codec"/>
-			<attribute name="artifactId" value="commons-codec"/>
-			<attribute name="version" value="1.11"/>
-		</attributes>
-	</classpathentry>
-	<classpathentry kind="lib" path="C:/Users/theod/.gradle/caches/modules-2/files-2.1/com.shapesecurity/salvation2/3.0.0/15f4d7969936bfd6d554227f11f5ae2c71e176b/salvation2-3.0.0.jar" sourcepath="C:/Users/theod/.gradle/caches/modules-2/files-2.1/com.shapesecurity/salvation2/3.0.0/77e288a89421c8423d8d2428fcdd4a894ca0360c/salvation2-3.0.0-sources.jar">
-		<attributes>
-			<attribute name="test" value="true"/>
-			<attribute name="gradle.buildServer" value="true"/>
-			<attribute name="groupId" value="com.shapesecurity"/>
-			<attribute name="artifactId" value="salvation2"/>
-			<attribute name="version" value="3.0.0"/>
-		</attributes>
-	</classpathentry>
-	<classpathentry kind="lib" path="C:/Users/theod/.gradle/caches/modules-2/files-2.1/xalan/xalan/2.7.2/d55d3f02a56ec4c25695fe67e1334ff8c2ecea23/xalan-2.7.2.jar" sourcepath="C:/Users/theod/.gradle/caches/modules-2/files-2.1/xalan/xalan/2.7.2/fe9c3d37a49238fac9d4d6c4f5bbd8c334da787a/xalan-2.7.2-sources.jar">
-		<attributes>
-			<attribute name="test" value="true"/>
-			<attribute name="gradle.buildServer" value="true"/>
-			<attribute name="groupId" value="xalan"/>
-			<attribute name="artifactId" value="xalan"/>
-			<attribute name="version" value="2.7.2"/>
-		</attributes>
-	</classpathentry>
-	<classpathentry kind="lib" path="C:/Users/theod/.gradle/caches/modules-2/files-2.1/colt/colt/1.2.0/abc984f3adc760684d49e0f11ddf167ba516d4f/colt-1.2.0.jar">
-		<attributes>
-			<attribute name="test" value="true"/>
-			<attribute name="gradle.buildServer" value="true"/>
-			<attribute name="groupId" value="colt"/>
-			<attribute name="artifactId" value="colt"/>
-			<attribute name="version" value="1.2.0"/>
-		</attributes>
-	</classpathentry>
-	<classpathentry kind="lib" path="C:/Users/theod/.gradle/caches/modules-2/files-2.1/org.eclipse.jetty/jetty-client/9.4.44.v20210927/d8b2c13ec103d12cdc575dc1bfea155dea59e1e/jetty-client-9.4.44.v20210927.jar" sourcepath="C:/Users/theod/.gradle/caches/modules-2/files-2.1/org.eclipse.jetty/jetty-client/9.4.44.v20210927/2263cf83fd7d1ccf64cd383c7e5fa0f4a753f32b/jetty-client-9.4.44.v20210927-sources.jar">
-		<attributes>
-			<attribute name="test" value="true"/>
-			<attribute name="gradle.buildServer" value="true"/>
-			<attribute name="groupId" value="org.eclipse.jetty"/>
-			<attribute name="artifactId" value="jetty-client"/>
-			<attribute name="version" value="9.4.44.v20210927"/>
-		</attributes>
-	</classpathentry>
-	<classpathentry kind="lib" path="C:/Users/theod/.gradle/caches/modules-2/files-2.1/org.eclipse.jetty.websocket/websocket-api/9.4.44.v20210927/afc5642bba238f43fec8b0841e20035786a2f13f/websocket-api-9.4.44.v20210927.jar" sourcepath="C:/Users/theod/.gradle/caches/modules-2/files-2.1/org.eclipse.jetty.websocket/websocket-api/9.4.44.v20210927/4fe8f80712c7f816079990a3fe299b12bf7c1f34/websocket-api-9.4.44.v20210927-sources.jar">
+	<classpathentry kind="lib" path="/home/mleroy/.gradle/caches/modules-2/files-2.1/org.eclipse.jetty.websocket/websocket-api/9.4.44.v20210927/afc5642bba238f43fec8b0841e20035786a2f13f/websocket-api-9.4.44.v20210927.jar" sourcepath="/home/mleroy/.gradle/caches/modules-2/files-2.1/org.eclipse.jetty.websocket/websocket-api/9.4.44.v20210927/4fe8f80712c7f816079990a3fe299b12bf7c1f34/websocket-api-9.4.44.v20210927-sources.jar">
 		<attributes>
 			<attribute name="test" value="true"/>
 			<attribute name="gradle.buildServer" value="true"/>
@@ -503,52 +215,7 @@
 			<attribute name="version" value="9.4.44.v20210927"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="C:/Users/theod/.gradle/caches/modules-2/files-2.1/xalan/serializer/2.7.2/24247f3bb052ee068971393bdb83e04512bb1c3c/serializer-2.7.2.jar" sourcepath="C:/Users/theod/.gradle/caches/modules-2/files-2.1/xalan/serializer/2.7.2/fe9c3d37a49238fac9d4d6c4f5bbd8c334da787a/serializer-2.7.2-sources.jar">
-		<attributes>
-			<attribute name="test" value="true"/>
-			<attribute name="gradle.buildServer" value="true"/>
-			<attribute name="groupId" value="xalan"/>
-			<attribute name="artifactId" value="serializer"/>
-			<attribute name="version" value="2.7.2"/>
-		</attributes>
-	</classpathentry>
-	<classpathentry kind="lib" path="C:/Users/theod/.gradle/caches/modules-2/files-2.1/org.apache.commons/commons-text/1.9/ba6ac8c2807490944a0a27f6f8e68fb5ed2e80e2/commons-text-1.9.jar" sourcepath="C:/Users/theod/.gradle/caches/modules-2/files-2.1/org.apache.commons/commons-text/1.9/ae5c56310246339ac93e96c576243689173142d4/commons-text-1.9-sources.jar">
-		<attributes>
-			<attribute name="test" value="true"/>
-			<attribute name="gradle.buildServer" value="true"/>
-			<attribute name="groupId" value="org.apache.commons"/>
-			<attribute name="artifactId" value="commons-text"/>
-			<attribute name="version" value="1.9"/>
-		</attributes>
-	</classpathentry>
-	<classpathentry kind="lib" path="C:/Users/theod/.gradle/caches/modules-2/files-2.1/org.gwtproject/gwt-codeserver/2.11.0/57f51e825ad97604c7535b18609d5880d5b3b2/gwt-codeserver-2.11.0.jar" sourcepath="C:/Users/theod/.gradle/caches/modules-2/files-2.1/org.gwtproject/gwt-codeserver/2.11.0/72625e79f31982ac117029a4a41efdffe2422265/gwt-codeserver-2.11.0-sources.jar">
-		<attributes>
-			<attribute name="test" value="true"/>
-			<attribute name="gradle.buildServer" value="true"/>
-			<attribute name="groupId" value="org.gwtproject"/>
-			<attribute name="artifactId" value="gwt-codeserver"/>
-			<attribute name="version" value="2.11.0"/>
-		</attributes>
-	</classpathentry>
-	<classpathentry kind="lib" path="C:/Users/theod/.gradle/caches/modules-2/files-2.1/org.ow2.asm/asm/9.2/81a03f76019c67362299c40e0ba13405f5467bff/asm-9.2.jar" sourcepath="C:/Users/theod/.gradle/caches/modules-2/files-2.1/org.ow2.asm/asm/9.2/51671fdebd3583f10254fab0e2077ed49c461650/asm-9.2-sources.jar">
-		<attributes>
-			<attribute name="test" value="true"/>
-			<attribute name="gradle.buildServer" value="true"/>
-			<attribute name="groupId" value="org.ow2.asm"/>
-			<attribute name="artifactId" value="asm"/>
-			<attribute name="version" value="9.2"/>
-		</attributes>
-	</classpathentry>
-	<classpathentry kind="lib" path="C:/Users/theod/.gradle/caches/modules-2/files-2.1/org.eclipse.jetty/jetty-servlet/9.4.44.v20210927/1cb43a0d74b7395c7207dbf3dc2ca97eac89f5fd/jetty-servlet-9.4.44.v20210927.jar" sourcepath="C:/Users/theod/.gradle/caches/modules-2/files-2.1/org.eclipse.jetty/jetty-servlet/9.4.44.v20210927/2bbc54fc1835c963744a4e82ba2541e94fcbcf9b/jetty-servlet-9.4.44.v20210927-sources.jar">
-		<attributes>
-			<attribute name="test" value="true"/>
-			<attribute name="gradle.buildServer" value="true"/>
-			<attribute name="groupId" value="org.eclipse.jetty"/>
-			<attribute name="artifactId" value="jetty-servlet"/>
-			<attribute name="version" value="9.4.44.v20210927"/>
-		</attributes>
-	</classpathentry>
-	<classpathentry kind="lib" path="C:/Users/theod/.gradle/caches/modules-2/files-2.1/com.google.code.findbugs/jsr305/1.3.9/40719ea6961c0cb6afaeb6a921eaa1f6afd4cfdf/jsr305-1.3.9.jar">
+	<classpathentry kind="lib" path="/home/mleroy/.gradle/caches/modules-2/files-2.1/com.google.code.findbugs/jsr305/1.3.9/40719ea6961c0cb6afaeb6a921eaa1f6afd4cfdf/jsr305-1.3.9.jar">
 		<attributes>
 			<attribute name="test" value="true"/>
 			<attribute name="gradle.buildServer" value="true"/>
@@ -557,70 +224,61 @@
 			<attribute name="version" value="1.3.9"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="C:/Users/theod/.gradle/caches/modules-2/files-2.1/org.eclipse.jetty/jetty-io/9.4.44.v20210927/a2ec01e2b5552b777a3d7085163f80756ef8c1ce/jetty-io-9.4.44.v20210927.jar" sourcepath="C:/Users/theod/.gradle/caches/modules-2/files-2.1/org.eclipse.jetty/jetty-io/9.4.44.v20210927/6262966b3cd10ff6b98f0bed428640bbbe4f7e79/jetty-io-9.4.44.v20210927-sources.jar">
+	<classpathentry kind="lib" path="/home/mleroy/.gradle/caches/modules-2/files-2.1/commons-collections/commons-collections/3.2.2/8ad72fe39fa8c91eaaf12aadb21e0c3661fe26d5/commons-collections-3.2.2.jar" sourcepath="/home/mleroy/.gradle/caches/modules-2/files-2.1/commons-collections/commons-collections/3.2.2/78c50ebda5784937ca1615fc0e1d0cb35857d572/commons-collections-3.2.2-sources.jar">
+		<attributes>
+			<attribute name="test" value="true"/>
+			<attribute name="gradle.buildServer" value="true"/>
+			<attribute name="groupId" value="commons-collections"/>
+			<attribute name="artifactId" value="commons-collections"/>
+			<attribute name="version" value="3.2.2"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="/home/mleroy/.gradle/caches/modules-2/files-2.1/org.eclipse.jetty.toolchain/jetty-schemas/3.1.2/e4fb7fb14038a35ac135a784180f8a51a518eab1/jetty-schemas-3.1.2.jar" sourcepath="/home/mleroy/.gradle/caches/modules-2/files-2.1/org.eclipse.jetty.toolchain/jetty-schemas/3.1.2/482eaf030d00071b84bd82513485de1d8825abb6/jetty-schemas-3.1.2-sources.jar">
+		<attributes>
+			<attribute name="test" value="true"/>
+			<attribute name="gradle.buildServer" value="true"/>
+			<attribute name="groupId" value="org.eclipse.jetty.toolchain"/>
+			<attribute name="artifactId" value="jetty-schemas"/>
+			<attribute name="version" value="3.1.2"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="/home/mleroy/.gradle/caches/modules-2/files-2.1/org.eclipse.jetty.websocket/websocket-common/9.4.44.v20210927/ba1b2d2096f0bab85dda350d19e176cc3d049009/websocket-common-9.4.44.v20210927.jar" sourcepath="/home/mleroy/.gradle/caches/modules-2/files-2.1/org.eclipse.jetty.websocket/websocket-common/9.4.44.v20210927/e39d11a699223af73a4392d14caa072064302458/websocket-common-9.4.44.v20210927-sources.jar">
+		<attributes>
+			<attribute name="test" value="true"/>
+			<attribute name="gradle.buildServer" value="true"/>
+			<attribute name="groupId" value="org.eclipse.jetty.websocket"/>
+			<attribute name="artifactId" value="websocket-common"/>
+			<attribute name="version" value="9.4.44.v20210927"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="/home/mleroy/.gradle/caches/modules-2/files-2.1/net.sourceforge.htmlunit/htmlunit/2.55.0/19b993df433692899e82b63490a6792181b9ef51/htmlunit-2.55.0.jar" sourcepath="/home/mleroy/.gradle/caches/modules-2/files-2.1/net.sourceforge.htmlunit/htmlunit/2.55.0/7e7bb618b8c0b40b977afff93491f13c247cba62/htmlunit-2.55.0-sources.jar">
+		<attributes>
+			<attribute name="test" value="true"/>
+			<attribute name="gradle.buildServer" value="true"/>
+			<attribute name="groupId" value="net.sourceforge.htmlunit"/>
+			<attribute name="artifactId" value="htmlunit"/>
+			<attribute name="version" value="2.55.0"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="/home/mleroy/.gradle/caches/modules-2/files-2.1/commons-io/commons-io/2.10.0/79384da84646660c57b89aa86a5a1eb98af50e00/commons-io-2.10.0.jar" sourcepath="/home/mleroy/.gradle/caches/modules-2/files-2.1/commons-io/commons-io/2.10.0/f4ba6fd12ef5b0e1d0c6300f63369f5ae992fcb9/commons-io-2.10.0-sources.jar">
+		<attributes>
+			<attribute name="test" value="true"/>
+			<attribute name="gradle.buildServer" value="true"/>
+			<attribute name="groupId" value="commons-io"/>
+			<attribute name="artifactId" value="commons-io"/>
+			<attribute name="version" value="2.10.0"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="/home/mleroy/.gradle/caches/modules-2/files-2.1/org.eclipse.jetty/jetty-http/9.4.44.v20210927/37f0e30cdc02128e40d095ad63cb18e10ecb7726/jetty-http-9.4.44.v20210927.jar" sourcepath="/home/mleroy/.gradle/caches/modules-2/files-2.1/org.eclipse.jetty/jetty-http/9.4.44.v20210927/7f1a6e3ab54e541f33b8ed100d553d4034d2e3a9/jetty-http-9.4.44.v20210927-sources.jar">
 		<attributes>
 			<attribute name="test" value="true"/>
 			<attribute name="gradle.buildServer" value="true"/>
 			<attribute name="groupId" value="org.eclipse.jetty"/>
-			<attribute name="artifactId" value="jetty-io"/>
+			<attribute name="artifactId" value="jetty-http"/>
 			<attribute name="version" value="9.4.44.v20210927"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="C:/Users/theod/.gradle/caches/modules-2/files-2.1/org.apache.commons/commons-lang3/3.12.0/c6842c86792ff03b9f1d1fe2aab8dc23aa6c6f0e/commons-lang3-3.12.0.jar" sourcepath="C:/Users/theod/.gradle/caches/modules-2/files-2.1/org.apache.commons/commons-lang3/3.12.0/198b882fdc2c72c89c63401d946f6ba46c3acea3/commons-lang3-3.12.0-sources.jar">
-		<attributes>
-			<attribute name="test" value="true"/>
-			<attribute name="gradle.buildServer" value="true"/>
-			<attribute name="groupId" value="org.apache.commons"/>
-			<attribute name="artifactId" value="commons-lang3"/>
-			<attribute name="version" value="3.12.0"/>
-		</attributes>
-	</classpathentry>
-	<classpathentry kind="lib" path="C:/Users/theod/.gradle/caches/modules-2/files-2.1/org.apache.httpcomponents/httpmime/4.5.13/efc110bad4a0d45cda7858e6beee1d8a8313da5a/httpmime-4.5.13.jar" sourcepath="C:/Users/theod/.gradle/caches/modules-2/files-2.1/org.apache.httpcomponents/httpmime/4.5.13/f4f989a08a1ec3c84ad0aa110cb55590ccf2525/httpmime-4.5.13-sources.jar">
-		<attributes>
-			<attribute name="test" value="true"/>
-			<attribute name="gradle.buildServer" value="true"/>
-			<attribute name="groupId" value="org.apache.httpcomponents"/>
-			<attribute name="artifactId" value="httpmime"/>
-			<attribute name="version" value="4.5.13"/>
-		</attributes>
-	</classpathentry>
-	<classpathentry kind="lib" path="C:/Users/theod/.gradle/caches/modules-2/files-2.1/org.ow2.asm/asm-analysis/9.2/7487dd756daf96cab9986e44b9d7bcb796a61c10/asm-analysis-9.2.jar" sourcepath="C:/Users/theod/.gradle/caches/modules-2/files-2.1/org.ow2.asm/asm-analysis/9.2/296a49fa21d815fc92eec1007ea2708983e8df2c/asm-analysis-9.2-sources.jar">
-		<attributes>
-			<attribute name="test" value="true"/>
-			<attribute name="gradle.buildServer" value="true"/>
-			<attribute name="groupId" value="org.ow2.asm"/>
-			<attribute name="artifactId" value="asm-analysis"/>
-			<attribute name="version" value="9.2"/>
-		</attributes>
-	</classpathentry>
-	<classpathentry kind="lib" path="C:/Users/theod/.gradle/caches/modules-2/files-2.1/org.eclipse.jetty/jetty-jndi/9.4.44.v20210927/8f4f459e38c78b5f6b021e4578acd7f6662f6553/jetty-jndi-9.4.44.v20210927.jar" sourcepath="C:/Users/theod/.gradle/caches/modules-2/files-2.1/org.eclipse.jetty/jetty-jndi/9.4.44.v20210927/430326e6a2249262966019025c41ccf3c11eb3f8/jetty-jndi-9.4.44.v20210927-sources.jar">
-		<attributes>
-			<attribute name="test" value="true"/>
-			<attribute name="gradle.buildServer" value="true"/>
-			<attribute name="groupId" value="org.eclipse.jetty"/>
-			<attribute name="artifactId" value="jetty-jndi"/>
-			<attribute name="version" value="9.4.44.v20210927"/>
-		</attributes>
-	</classpathentry>
-	<classpathentry kind="lib" path="C:/Users/theod/.gradle/caches/modules-2/files-2.1/org.gwtproject/gwt-dev/2.11.0/9832889f3ba33ea6127df852fe9b558bb4d30c80/gwt-dev-2.11.0.jar" sourcepath="C:/Users/theod/.gradle/caches/modules-2/files-2.1/org.gwtproject/gwt-dev/2.11.0/6f30e00c13d6aa3c9e23fb2d6bed2fb18ef9bf4f/gwt-dev-2.11.0-sources.jar">
-		<attributes>
-			<attribute name="test" value="true"/>
-			<attribute name="gradle.buildServer" value="true"/>
-			<attribute name="groupId" value="org.gwtproject"/>
-			<attribute name="artifactId" value="gwt-dev"/>
-			<attribute name="version" value="2.11.0"/>
-		</attributes>
-	</classpathentry>
-	<classpathentry kind="lib" path="C:/Users/theod/.gradle/caches/modules-2/files-2.1/org.eclipse.jetty/jetty-plus/9.4.44.v20210927/7ce435886161c4f1a9015168712e6df974eb016f/jetty-plus-9.4.44.v20210927.jar" sourcepath="C:/Users/theod/.gradle/caches/modules-2/files-2.1/org.eclipse.jetty/jetty-plus/9.4.44.v20210927/cba6b7f77abb8e5e025d3720121d88852f1b5a09/jetty-plus-9.4.44.v20210927-sources.jar">
-		<attributes>
-			<attribute name="test" value="true"/>
-			<attribute name="gradle.buildServer" value="true"/>
-			<attribute name="groupId" value="org.eclipse.jetty"/>
-			<attribute name="artifactId" value="jetty-plus"/>
-			<attribute name="version" value="9.4.44.v20210927"/>
-		</attributes>
-	</classpathentry>
-	<classpathentry kind="lib" path="C:/Users/theod/.gradle/caches/modules-2/files-2.1/net.sourceforge.htmlunit/htmlunit-core-js/2.55.0/edf682911ae555e4ac520207fbcab06dd2427cbb/htmlunit-core-js-2.55.0.jar" sourcepath="C:/Users/theod/.gradle/caches/modules-2/files-2.1/net.sourceforge.htmlunit/htmlunit-core-js/2.55.0/168be2c76011081d7207fb8ac0f6fad71153b079/htmlunit-core-js-2.55.0-sources.jar">
+	<classpathentry kind="lib" path="/home/mleroy/.gradle/caches/modules-2/files-2.1/net.sourceforge.htmlunit/htmlunit-core-js/2.55.0/edf682911ae555e4ac520207fbcab06dd2427cbb/htmlunit-core-js-2.55.0.jar" sourcepath="/home/mleroy/.gradle/caches/modules-2/files-2.1/net.sourceforge.htmlunit/htmlunit-core-js/2.55.0/168be2c76011081d7207fb8ac0f6fad71153b079/htmlunit-core-js-2.55.0-sources.jar">
 		<attributes>
 			<attribute name="test" value="true"/>
 			<attribute name="gradle.buildServer" value="true"/>
@@ -629,25 +287,34 @@
 			<attribute name="version" value="2.55.0"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="C:/Users/theod/.gradle/caches/modules-2/files-2.1/net.sourceforge.htmlunit/neko-htmlunit/2.55.0/357606d1648fe63f8bf159d357f54dfbf8611b08/neko-htmlunit-2.55.0.jar" sourcepath="C:/Users/theod/.gradle/caches/modules-2/files-2.1/net.sourceforge.htmlunit/neko-htmlunit/2.55.0/7866c54dde77e07b6d3f5b477b59beb701669102/neko-htmlunit-2.55.0-sources.jar">
+	<classpathentry kind="lib" path="/home/mleroy/.gradle/caches/modules-2/files-2.1/org.ow2.asm/asm/9.2/81a03f76019c67362299c40e0ba13405f5467bff/asm-9.2.jar" sourcepath="/home/mleroy/.gradle/caches/modules-2/files-2.1/org.ow2.asm/asm/9.2/51671fdebd3583f10254fab0e2077ed49c461650/asm-9.2-sources.jar">
 		<attributes>
 			<attribute name="test" value="true"/>
 			<attribute name="gradle.buildServer" value="true"/>
-			<attribute name="groupId" value="net.sourceforge.htmlunit"/>
-			<attribute name="artifactId" value="neko-htmlunit"/>
-			<attribute name="version" value="2.55.0"/>
+			<attribute name="groupId" value="org.ow2.asm"/>
+			<attribute name="artifactId" value="asm"/>
+			<attribute name="version" value="9.2"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="C:/Users/theod/.gradle/caches/modules-2/files-2.1/org.eclipse.jetty/jetty-annotations/9.4.44.v20210927/e05deafd17977c1cc19418ac09a7be28909c50ff/jetty-annotations-9.4.44.v20210927.jar" sourcepath="C:/Users/theod/.gradle/caches/modules-2/files-2.1/org.eclipse.jetty/jetty-annotations/9.4.44.v20210927/f99596f7148f8c0b2f40bec01f38c01e9550f90d/jetty-annotations-9.4.44.v20210927-sources.jar">
+	<classpathentry kind="lib" path="/home/mleroy/.gradle/caches/modules-2/files-2.1/org.eclipse.jetty/jetty-servlet/9.4.44.v20210927/1cb43a0d74b7395c7207dbf3dc2ca97eac89f5fd/jetty-servlet-9.4.44.v20210927.jar" sourcepath="/home/mleroy/.gradle/caches/modules-2/files-2.1/org.eclipse.jetty/jetty-servlet/9.4.44.v20210927/2bbc54fc1835c963744a4e82ba2541e94fcbcf9b/jetty-servlet-9.4.44.v20210927-sources.jar">
 		<attributes>
 			<attribute name="test" value="true"/>
 			<attribute name="gradle.buildServer" value="true"/>
 			<attribute name="groupId" value="org.eclipse.jetty"/>
-			<attribute name="artifactId" value="jetty-annotations"/>
+			<attribute name="artifactId" value="jetty-servlet"/>
 			<attribute name="version" value="9.4.44.v20210927"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="C:/Users/theod/.gradle/caches/modules-2/files-2.1/org.eclipse.jetty/jetty-util/9.4.44.v20210927/3c7151c5a04a93119988b48a1577a972d90f8990/jetty-util-9.4.44.v20210927.jar" sourcepath="C:/Users/theod/.gradle/caches/modules-2/files-2.1/org.eclipse.jetty/jetty-util/9.4.44.v20210927/f7f0420221772bc63ebae21571bb9925ca971a82/jetty-util-9.4.44.v20210927-sources.jar">
+	<classpathentry kind="lib" path="/home/mleroy/.gradle/caches/modules-2/files-2.1/org.eclipse.jetty/jetty-security/9.4.44.v20210927/ecb80b8e008daa46e95e5691b2611d4007922497/jetty-security-9.4.44.v20210927.jar" sourcepath="/home/mleroy/.gradle/caches/modules-2/files-2.1/org.eclipse.jetty/jetty-security/9.4.44.v20210927/d67d4705a08d9b76592b3e177e2bb1aac968d832/jetty-security-9.4.44.v20210927-sources.jar">
+		<attributes>
+			<attribute name="test" value="true"/>
+			<attribute name="gradle.buildServer" value="true"/>
+			<attribute name="groupId" value="org.eclipse.jetty"/>
+			<attribute name="artifactId" value="jetty-security"/>
+			<attribute name="version" value="9.4.44.v20210927"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="/home/mleroy/.gradle/caches/modules-2/files-2.1/org.eclipse.jetty/jetty-util/9.4.44.v20210927/3c7151c5a04a93119988b48a1577a972d90f8990/jetty-util-9.4.44.v20210927.jar" sourcepath="/home/mleroy/.gradle/caches/modules-2/files-2.1/org.eclipse.jetty/jetty-util/9.4.44.v20210927/f7f0420221772bc63ebae21571bb9925ca971a82/jetty-util-9.4.44.v20210927-sources.jar">
 		<attributes>
 			<attribute name="test" value="true"/>
 			<attribute name="gradle.buildServer" value="true"/>
@@ -656,16 +323,25 @@
 			<attribute name="version" value="9.4.44.v20210927"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="C:/Users/theod/.gradle/caches/modules-2/files-2.1/org.eclipse.jetty/jetty-webapp/9.4.44.v20210927/60c0ff88088b2eddb2a8e40d6cc4d4e963b72d6e/jetty-webapp-9.4.44.v20210927.jar" sourcepath="C:/Users/theod/.gradle/caches/modules-2/files-2.1/org.eclipse.jetty/jetty-webapp/9.4.44.v20210927/c34d740dd1038ce21939eb5150434a1470353a70/jetty-webapp-9.4.44.v20210927-sources.jar">
+	<classpathentry kind="lib" path="/home/mleroy/.gradle/caches/modules-2/files-2.1/org.eclipse.jetty/jetty-annotations/9.4.44.v20210927/e05deafd17977c1cc19418ac09a7be28909c50ff/jetty-annotations-9.4.44.v20210927.jar" sourcepath="/home/mleroy/.gradle/caches/modules-2/files-2.1/org.eclipse.jetty/jetty-annotations/9.4.44.v20210927/f99596f7148f8c0b2f40bec01f38c01e9550f90d/jetty-annotations-9.4.44.v20210927-sources.jar">
 		<attributes>
 			<attribute name="test" value="true"/>
 			<attribute name="gradle.buildServer" value="true"/>
 			<attribute name="groupId" value="org.eclipse.jetty"/>
-			<attribute name="artifactId" value="jetty-webapp"/>
+			<attribute name="artifactId" value="jetty-annotations"/>
 			<attribute name="version" value="9.4.44.v20210927"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="C:/Users/theod/.gradle/caches/modules-2/files-2.1/org.eclipse.jetty/jetty-server/9.4.44.v20210927/bf2de0d31925a8ca71ad80f721236850b636e0d/jetty-server-9.4.44.v20210927.jar" sourcepath="C:/Users/theod/.gradle/caches/modules-2/files-2.1/org.eclipse.jetty/jetty-server/9.4.44.v20210927/3582cbf081cf3652f6507093585c2a0f3b8738bb/jetty-server-9.4.44.v20210927-sources.jar">
+	<classpathentry kind="lib" path="/home/mleroy/.gradle/caches/modules-2/files-2.1/com.shapesecurity/salvation2/3.0.0/15f4d7969936bfd6d554227f11f5ae2c71e176b/salvation2-3.0.0.jar" sourcepath="/home/mleroy/.gradle/caches/modules-2/files-2.1/com.shapesecurity/salvation2/3.0.0/77e288a89421c8423d8d2428fcdd4a894ca0360c/salvation2-3.0.0-sources.jar">
+		<attributes>
+			<attribute name="test" value="true"/>
+			<attribute name="gradle.buildServer" value="true"/>
+			<attribute name="groupId" value="com.shapesecurity"/>
+			<attribute name="artifactId" value="salvation2"/>
+			<attribute name="version" value="3.0.0"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="/home/mleroy/.gradle/caches/modules-2/files-2.1/org.eclipse.jetty/jetty-server/9.4.44.v20210927/bf2de0d31925a8ca71ad80f721236850b636e0d/jetty-server-9.4.44.v20210927.jar" sourcepath="/home/mleroy/.gradle/caches/modules-2/files-2.1/org.eclipse.jetty/jetty-server/9.4.44.v20210927/3582cbf081cf3652f6507093585c2a0f3b8738bb/jetty-server-9.4.44.v20210927-sources.jar">
 		<attributes>
 			<attribute name="test" value="true"/>
 			<attribute name="gradle.buildServer" value="true"/>
@@ -674,7 +350,313 @@
 			<attribute name="version" value="9.4.44.v20210927"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="C:/Users/theod/.gradle/caches/modules-2/files-2.1/net.sourceforge.htmlunit/htmlunit-cssparser/1.10.0/6d601cb81693bdb1d239b162fc2bf52c02a5865c/htmlunit-cssparser-1.10.0.jar" sourcepath="C:/Users/theod/.gradle/caches/modules-2/files-2.1/net.sourceforge.htmlunit/htmlunit-cssparser/1.10.0/57d624714a7ecd5b2a864ce28671a161b0dfa0ca/htmlunit-cssparser-1.10.0-sources.jar">
+	<classpathentry kind="lib" path="/home/mleroy/.gradle/caches/modules-2/files-2.1/xalan/xalan/2.7.2/d55d3f02a56ec4c25695fe67e1334ff8c2ecea23/xalan-2.7.2.jar" sourcepath="/home/mleroy/.gradle/caches/modules-2/files-2.1/xalan/xalan/2.7.2/fe9c3d37a49238fac9d4d6c4f5bbd8c334da787a/xalan-2.7.2-sources.jar">
+		<attributes>
+			<attribute name="test" value="true"/>
+			<attribute name="gradle.buildServer" value="true"/>
+			<attribute name="groupId" value="xalan"/>
+			<attribute name="artifactId" value="xalan"/>
+			<attribute name="version" value="2.7.2"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="/home/mleroy/.gradle/caches/modules-2/files-2.1/org.eclipse.jetty/jetty-webapp/9.4.44.v20210927/60c0ff88088b2eddb2a8e40d6cc4d4e963b72d6e/jetty-webapp-9.4.44.v20210927.jar" sourcepath="/home/mleroy/.gradle/caches/modules-2/files-2.1/org.eclipse.jetty/jetty-webapp/9.4.44.v20210927/c34d740dd1038ce21939eb5150434a1470353a70/jetty-webapp-9.4.44.v20210927-sources.jar">
+		<attributes>
+			<attribute name="test" value="true"/>
+			<attribute name="gradle.buildServer" value="true"/>
+			<attribute name="groupId" value="org.eclipse.jetty"/>
+			<attribute name="artifactId" value="jetty-webapp"/>
+			<attribute name="version" value="9.4.44.v20210927"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="/home/mleroy/.gradle/caches/modules-2/files-2.1/javax.annotation/javax.annotation-api/1.3.2/934c04d3cfef185a8008e7bf34331b79730a9d43/javax.annotation-api-1.3.2.jar" sourcepath="/home/mleroy/.gradle/caches/modules-2/files-2.1/javax.annotation/javax.annotation-api/1.3.2/65dfd2c47380bf72ec62a5b8c4ceb78a4eda1a53/javax.annotation-api-1.3.2-sources.jar">
+		<attributes>
+			<attribute name="test" value="true"/>
+			<attribute name="gradle.buildServer" value="true"/>
+			<attribute name="groupId" value="javax.annotation"/>
+			<attribute name="artifactId" value="javax.annotation-api"/>
+			<attribute name="version" value="1.3.2"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="/home/mleroy/.gradle/caches/modules-2/files-2.1/commons-net/commons-net/3.8.0/63ea56587c8aaf05adab5cb0397e056bac8a2db0/commons-net-3.8.0.jar" sourcepath="/home/mleroy/.gradle/caches/modules-2/files-2.1/commons-net/commons-net/3.8.0/91695dcbcdc9d9ec9bed2533e26e13d9cc1a5499/commons-net-3.8.0-sources.jar">
+		<attributes>
+			<attribute name="test" value="true"/>
+			<attribute name="gradle.buildServer" value="true"/>
+			<attribute name="groupId" value="commons-net"/>
+			<attribute name="artifactId" value="commons-net"/>
+			<attribute name="version" value="3.8.0"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="/home/mleroy/.gradle/caches/modules-2/files-2.1/org.eclipse.jetty/jetty-client/9.4.44.v20210927/d8b2c13ec103d12cdc575dc1bfea155dea59e1e/jetty-client-9.4.44.v20210927.jar" sourcepath="/home/mleroy/.gradle/caches/modules-2/files-2.1/org.eclipse.jetty/jetty-client/9.4.44.v20210927/2263cf83fd7d1ccf64cd383c7e5fa0f4a753f32b/jetty-client-9.4.44.v20210927-sources.jar">
+		<attributes>
+			<attribute name="test" value="true"/>
+			<attribute name="gradle.buildServer" value="true"/>
+			<attribute name="groupId" value="org.eclipse.jetty"/>
+			<attribute name="artifactId" value="jetty-client"/>
+			<attribute name="version" value="9.4.44.v20210927"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="/home/mleroy/.gradle/caches/modules-2/files-2.1/org.apache.commons/commons-lang3/3.12.0/c6842c86792ff03b9f1d1fe2aab8dc23aa6c6f0e/commons-lang3-3.12.0.jar" sourcepath="/home/mleroy/.gradle/caches/modules-2/files-2.1/org.apache.commons/commons-lang3/3.12.0/198b882fdc2c72c89c63401d946f6ba46c3acea3/commons-lang3-3.12.0-sources.jar">
+		<attributes>
+			<attribute name="test" value="true"/>
+			<attribute name="gradle.buildServer" value="true"/>
+			<attribute name="groupId" value="org.apache.commons"/>
+			<attribute name="artifactId" value="commons-lang3"/>
+			<attribute name="version" value="3.12.0"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="/home/mleroy/.gradle/caches/modules-2/files-2.1/xerces/xercesImpl/2.12.1/3a206b25679f598a03374afd4e0410d8849b088b/xercesImpl-2.12.1.jar" sourcepath="/home/mleroy/.gradle/caches/modules-2/files-2.1/xerces/xercesImpl/2.12.1/1f04ff451cba8e02106473b67bfd6c6b7c75343c/xercesImpl-2.12.1-sources.jar">
+		<attributes>
+			<attribute name="test" value="true"/>
+			<attribute name="gradle.buildServer" value="true"/>
+			<attribute name="groupId" value="xerces"/>
+			<attribute name="artifactId" value="xercesImpl"/>
+			<attribute name="version" value="2.12.1"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="/home/mleroy/.gradle/caches/modules-2/files-2.1/org.eclipse.jetty/jetty-servlets/9.4.44.v20210927/d22ec443ac9b983a8771a44ed258b47dc70108b6/jetty-servlets-9.4.44.v20210927.jar" sourcepath="/home/mleroy/.gradle/caches/modules-2/files-2.1/org.eclipse.jetty/jetty-servlets/9.4.44.v20210927/8892ccfc27afb0bd5004cbfc7f19cb238a96447d/jetty-servlets-9.4.44.v20210927-sources.jar">
+		<attributes>
+			<attribute name="test" value="true"/>
+			<attribute name="gradle.buildServer" value="true"/>
+			<attribute name="groupId" value="org.eclipse.jetty"/>
+			<attribute name="artifactId" value="jetty-servlets"/>
+			<attribute name="version" value="9.4.44.v20210927"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="/home/mleroy/.gradle/caches/modules-2/files-2.1/org.ow2.asm/asm-tree/9.2/d96c99a30f5e1a19b0e609dbb19a44d8518ac01e/asm-tree-9.2.jar" sourcepath="/home/mleroy/.gradle/caches/modules-2/files-2.1/org.ow2.asm/asm-tree/9.2/d7c4f2660898c227b2fb209f94ca15ae45722535/asm-tree-9.2-sources.jar">
+		<attributes>
+			<attribute name="test" value="true"/>
+			<attribute name="gradle.buildServer" value="true"/>
+			<attribute name="groupId" value="org.ow2.asm"/>
+			<attribute name="artifactId" value="asm-tree"/>
+			<attribute name="version" value="9.2"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="/home/mleroy/.gradle/caches/modules-2/files-2.1/org.eclipse.jetty.websocket/websocket-client/9.4.44.v20210927/77fe11eb5d7dacc10fd5644983877e8973d4e26d/websocket-client-9.4.44.v20210927.jar" sourcepath="/home/mleroy/.gradle/caches/modules-2/files-2.1/org.eclipse.jetty.websocket/websocket-client/9.4.44.v20210927/9a6d13791138d1bc28eab262b29643153a02308d/websocket-client-9.4.44.v20210927-sources.jar">
+		<attributes>
+			<attribute name="test" value="true"/>
+			<attribute name="gradle.buildServer" value="true"/>
+			<attribute name="groupId" value="org.eclipse.jetty.websocket"/>
+			<attribute name="artifactId" value="websocket-client"/>
+			<attribute name="version" value="9.4.44.v20210927"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="/home/mleroy/.gradle/caches/modules-2/files-2.1/org.eclipse.jetty/jetty-xml/9.4.44.v20210927/da53a0fa775752cd4626539796bdb49e9b4cf23c/jetty-xml-9.4.44.v20210927.jar" sourcepath="/home/mleroy/.gradle/caches/modules-2/files-2.1/org.eclipse.jetty/jetty-xml/9.4.44.v20210927/e48a839f2912aaf2c0eaf973db453cd3b06c92bc/jetty-xml-9.4.44.v20210927-sources.jar">
+		<attributes>
+			<attribute name="test" value="true"/>
+			<attribute name="gradle.buildServer" value="true"/>
+			<attribute name="groupId" value="org.eclipse.jetty"/>
+			<attribute name="artifactId" value="jetty-xml"/>
+			<attribute name="version" value="9.4.44.v20210927"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="/home/mleroy/.gradle/caches/modules-2/files-2.1/org.ow2.asm/asm-analysis/9.2/7487dd756daf96cab9986e44b9d7bcb796a61c10/asm-analysis-9.2.jar" sourcepath="/home/mleroy/.gradle/caches/modules-2/files-2.1/org.ow2.asm/asm-analysis/9.2/296a49fa21d815fc92eec1007ea2708983e8df2c/asm-analysis-9.2-sources.jar">
+		<attributes>
+			<attribute name="test" value="true"/>
+			<attribute name="gradle.buildServer" value="true"/>
+			<attribute name="groupId" value="org.ow2.asm"/>
+			<attribute name="artifactId" value="asm-analysis"/>
+			<attribute name="version" value="9.2"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="/home/mleroy/.gradle/caches/modules-2/files-2.1/org.apache.httpcomponents/httpclient/4.5.13/e5f6cae5ca7ecaac1ec2827a9e2d65ae2869cada/httpclient-4.5.13.jar" sourcepath="/home/mleroy/.gradle/caches/modules-2/files-2.1/org.apache.httpcomponents/httpclient/4.5.13/9654e91a61d7662c36be6710ef8e720c0e3f9807/httpclient-4.5.13-sources.jar">
+		<attributes>
+			<attribute name="test" value="true"/>
+			<attribute name="gradle.buildServer" value="true"/>
+			<attribute name="groupId" value="org.apache.httpcomponents"/>
+			<attribute name="artifactId" value="httpclient"/>
+			<attribute name="version" value="4.5.13"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="/home/mleroy/.gradle/caches/modules-2/files-2.1/org.apache.commons/commons-text/1.9/ba6ac8c2807490944a0a27f6f8e68fb5ed2e80e2/commons-text-1.9.jar" sourcepath="/home/mleroy/.gradle/caches/modules-2/files-2.1/org.apache.commons/commons-text/1.9/ae5c56310246339ac93e96c576243689173142d4/commons-text-1.9-sources.jar">
+		<attributes>
+			<attribute name="test" value="true"/>
+			<attribute name="gradle.buildServer" value="true"/>
+			<attribute name="groupId" value="org.apache.commons"/>
+			<attribute name="artifactId" value="commons-text"/>
+			<attribute name="version" value="1.9"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="/home/mleroy/.gradle/caches/modules-2/files-2.1/commons-codec/commons-codec/1.11/3acb4705652e16236558f0f4f2192cc33c3bd189/commons-codec-1.11.jar" sourcepath="/home/mleroy/.gradle/caches/modules-2/files-2.1/commons-codec/commons-codec/1.11/bce4ba84fd527950e35040b20a991c63e90e2850/commons-codec-1.11-sources.jar">
+		<attributes>
+			<attribute name="test" value="true"/>
+			<attribute name="gradle.buildServer" value="true"/>
+			<attribute name="groupId" value="commons-codec"/>
+			<attribute name="artifactId" value="commons-codec"/>
+			<attribute name="version" value="1.11"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="/home/mleroy/.gradle/caches/modules-2/files-2.1/org.eclipse.jetty/jetty-util-ajax/9.4.44.v20210927/ed2f30e8eef939ab2825e607d83f82f85167e2c0/jetty-util-ajax-9.4.44.v20210927.jar" sourcepath="/home/mleroy/.gradle/caches/modules-2/files-2.1/org.eclipse.jetty/jetty-util-ajax/9.4.44.v20210927/1a48ae7a45683d20afb90784d1db314be2c73c92/jetty-util-ajax-9.4.44.v20210927-sources.jar">
+		<attributes>
+			<attribute name="test" value="true"/>
+			<attribute name="gradle.buildServer" value="true"/>
+			<attribute name="groupId" value="org.eclipse.jetty"/>
+			<attribute name="artifactId" value="jetty-util-ajax"/>
+			<attribute name="version" value="9.4.44.v20210927"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="/home/mleroy/.gradle/caches/modules-2/files-2.1/org.eclipse.jetty/jetty-jndi/9.4.44.v20210927/8f4f459e38c78b5f6b021e4578acd7f6662f6553/jetty-jndi-9.4.44.v20210927.jar" sourcepath="/home/mleroy/.gradle/caches/modules-2/files-2.1/org.eclipse.jetty/jetty-jndi/9.4.44.v20210927/430326e6a2249262966019025c41ccf3c11eb3f8/jetty-jndi-9.4.44.v20210927-sources.jar">
+		<attributes>
+			<attribute name="test" value="true"/>
+			<attribute name="gradle.buildServer" value="true"/>
+			<attribute name="groupId" value="org.eclipse.jetty"/>
+			<attribute name="artifactId" value="jetty-jndi"/>
+			<attribute name="version" value="9.4.44.v20210927"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="/home/mleroy/.gradle/caches/modules-2/files-2.1/org.eclipse.jdt/ecj/3.19.0/99ccdf7b2a75afb720270ab888bb21d6159ee631/ecj-3.19.0.jar" sourcepath="/home/mleroy/.gradle/caches/modules-2/files-2.1/org.eclipse.jdt/ecj/3.19.0/f0daa5335f1c2248e243cb88a40876e7f637a887/ecj-3.19.0-sources.jar">
+		<attributes>
+			<attribute name="test" value="true"/>
+			<attribute name="gradle.buildServer" value="true"/>
+			<attribute name="groupId" value="org.eclipse.jdt"/>
+			<attribute name="artifactId" value="ecj"/>
+			<attribute name="version" value="3.19.0"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="/home/mleroy/.gradle/caches/modules-2/files-2.1/org.ow2.asm/asm-util/9.2/fbc178fc5ba3dab50fd7e8a5317b8b647c8e8946/asm-util-9.2.jar" sourcepath="/home/mleroy/.gradle/caches/modules-2/files-2.1/org.ow2.asm/asm-util/9.2/f04d12daefcb3cf02ef27e67c1ccbac24d2f5c6f/asm-util-9.2-sources.jar">
+		<attributes>
+			<attribute name="test" value="true"/>
+			<attribute name="gradle.buildServer" value="true"/>
+			<attribute name="groupId" value="org.ow2.asm"/>
+			<attribute name="artifactId" value="asm-util"/>
+			<attribute name="version" value="9.2"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="/home/mleroy/.gradle/caches/modules-2/files-2.1/org.mortbay.jasper/apache-jsp/8.5.70/67515d2ae96e9cb442659668b6a58423f112b5ed/apache-jsp-8.5.70.jar" sourcepath="/home/mleroy/.gradle/caches/modules-2/files-2.1/org.mortbay.jasper/apache-jsp/8.5.70/5a1659eb4d149056d4daa4e5cbbf5d221a5a88ec/apache-jsp-8.5.70-sources.jar">
+		<attributes>
+			<attribute name="test" value="true"/>
+			<attribute name="gradle.buildServer" value="true"/>
+			<attribute name="groupId" value="org.mortbay.jasper"/>
+			<attribute name="artifactId" value="apache-jsp"/>
+			<attribute name="version" value="8.5.70"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="/home/mleroy/.gradle/caches/modules-2/files-2.1/colt/colt/1.2.0/abc984f3adc760684d49e0f11ddf167ba516d4f/colt-1.2.0.jar">
+		<attributes>
+			<attribute name="test" value="true"/>
+			<attribute name="gradle.buildServer" value="true"/>
+			<attribute name="groupId" value="colt"/>
+			<attribute name="artifactId" value="colt"/>
+			<attribute name="version" value="1.2.0"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="/home/mleroy/.gradle/caches/modules-2/files-2.1/org.gwtproject/gwt-codeserver/2.11.0/57f51e825ad97604c7535b18609d5880d5b3b2/gwt-codeserver-2.11.0.jar" sourcepath="/home/mleroy/.gradle/caches/modules-2/files-2.1/org.gwtproject/gwt-codeserver/2.11.0/72625e79f31982ac117029a4a41efdffe2422265/gwt-codeserver-2.11.0-sources.jar">
+		<attributes>
+			<attribute name="test" value="true"/>
+			<attribute name="gradle.buildServer" value="true"/>
+			<attribute name="groupId" value="org.gwtproject"/>
+			<attribute name="artifactId" value="gwt-codeserver"/>
+			<attribute name="version" value="2.11.0"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="/home/mleroy/.gradle/caches/modules-2/files-2.1/com.ibm.icu/icu4j/63.1/385682b7fff53cd5ac2cad0fdb4658a7b97e9475/icu4j-63.1.jar" sourcepath="/home/mleroy/.gradle/caches/modules-2/files-2.1/com.ibm.icu/icu4j/63.1/58ff12717b076430cbbce4708d024adbafdad5/icu4j-63.1-sources.jar">
+		<attributes>
+			<attribute name="test" value="true"/>
+			<attribute name="gradle.buildServer" value="true"/>
+			<attribute name="groupId" value="com.ibm.icu"/>
+			<attribute name="artifactId" value="icu4j"/>
+			<attribute name="version" value="63.1"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="/home/mleroy/.gradle/caches/modules-2/files-2.1/org.eclipse.jetty/apache-jsp/9.4.44.v20210927/6cc73cb8ec63f2b4dabefb22e1a234d632752490/apache-jsp-9.4.44.v20210927.jar" sourcepath="/home/mleroy/.gradle/caches/modules-2/files-2.1/org.eclipse.jetty/apache-jsp/9.4.44.v20210927/131995c827cbbd2964eda640664930cc2c10e616/apache-jsp-9.4.44.v20210927-sources.jar">
+		<attributes>
+			<attribute name="test" value="true"/>
+			<attribute name="gradle.buildServer" value="true"/>
+			<attribute name="groupId" value="org.eclipse.jetty"/>
+			<attribute name="artifactId" value="apache-jsp"/>
+			<attribute name="version" value="9.4.44.v20210927"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="/home/mleroy/.gradle/caches/modules-2/files-2.1/org.gwtproject/gwt-dev/2.11.0/9832889f3ba33ea6127df852fe9b558bb4d30c80/gwt-dev-2.11.0.jar" sourcepath="/home/mleroy/.gradle/caches/modules-2/files-2.1/org.gwtproject/gwt-dev/2.11.0/6f30e00c13d6aa3c9e23fb2d6bed2fb18ef9bf4f/gwt-dev-2.11.0-sources.jar">
+		<attributes>
+			<attribute name="test" value="true"/>
+			<attribute name="gradle.buildServer" value="true"/>
+			<attribute name="groupId" value="org.gwtproject"/>
+			<attribute name="artifactId" value="gwt-dev"/>
+			<attribute name="version" value="2.11.0"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="/home/mleroy/.gradle/caches/modules-2/files-2.1/org.apache.httpcomponents/httpmime/4.5.13/efc110bad4a0d45cda7858e6beee1d8a8313da5a/httpmime-4.5.13.jar" sourcepath="/home/mleroy/.gradle/caches/modules-2/files-2.1/org.apache.httpcomponents/httpmime/4.5.13/f4f989a08a1ec3c84ad0aa110cb55590ccf2525/httpmime-4.5.13-sources.jar">
+		<attributes>
+			<attribute name="test" value="true"/>
+			<attribute name="gradle.buildServer" value="true"/>
+			<attribute name="groupId" value="org.apache.httpcomponents"/>
+			<attribute name="artifactId" value="httpmime"/>
+			<attribute name="version" value="4.5.13"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="/home/mleroy/.gradle/caches/modules-2/files-2.1/xalan/serializer/2.7.2/24247f3bb052ee068971393bdb83e04512bb1c3c/serializer-2.7.2.jar" sourcepath="/home/mleroy/.gradle/caches/modules-2/files-2.1/xalan/serializer/2.7.2/fe9c3d37a49238fac9d4d6c4f5bbd8c334da787a/serializer-2.7.2-sources.jar">
+		<attributes>
+			<attribute name="test" value="true"/>
+			<attribute name="gradle.buildServer" value="true"/>
+			<attribute name="groupId" value="xalan"/>
+			<attribute name="artifactId" value="serializer"/>
+			<attribute name="version" value="2.7.2"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="/home/mleroy/.gradle/caches/modules-2/files-2.1/commons-logging/commons-logging/1.2/4bfc12adfe4842bf07b657f0369c4cb522955686/commons-logging-1.2.jar" sourcepath="/home/mleroy/.gradle/caches/modules-2/files-2.1/commons-logging/commons-logging/1.2/ecf26c7507d67782a3bbd148d170b31dfad001aa/commons-logging-1.2-sources.jar">
+		<attributes>
+			<attribute name="test" value="true"/>
+			<attribute name="gradle.buildServer" value="true"/>
+			<attribute name="groupId" value="commons-logging"/>
+			<attribute name="artifactId" value="commons-logging"/>
+			<attribute name="version" value="1.2"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="/home/mleroy/.gradle/caches/modules-2/files-2.1/org.brotli/dec/0.1.2/c26a897ae0d524809eef1c786cc6183b4ddcc3b/dec-0.1.2.jar" sourcepath="/home/mleroy/.gradle/caches/modules-2/files-2.1/org.brotli/dec/0.1.2/c04c22a0f5a84e985bd04d2129638e590c1e5edc/dec-0.1.2-sources.jar">
+		<attributes>
+			<attribute name="test" value="true"/>
+			<attribute name="gradle.buildServer" value="true"/>
+			<attribute name="groupId" value="org.brotli"/>
+			<attribute name="artifactId" value="dec"/>
+			<attribute name="version" value="0.1.2"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="/home/mleroy/.gradle/caches/modules-2/files-2.1/tapestry/tapestry/4.0.2/e855a807425d522e958cbce8697f21e9d679b1f7/tapestry-4.0.2.jar">
+		<attributes>
+			<attribute name="test" value="true"/>
+			<attribute name="gradle.buildServer" value="true"/>
+			<attribute name="groupId" value="tapestry"/>
+			<attribute name="artifactId" value="tapestry"/>
+			<attribute name="version" value="4.0.2"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="/home/mleroy/.gradle/caches/modules-2/files-2.1/com.google.code.gson/gson/2.6.2/f1bc476cc167b18e66c297df599b2377131a8947/gson-2.6.2.jar" sourcepath="/home/mleroy/.gradle/caches/modules-2/files-2.1/com.google.code.gson/gson/2.6.2/6d8591dcd32b4b97808d3ed78d76c6272299309c/gson-2.6.2-sources.jar">
+		<attributes>
+			<attribute name="test" value="true"/>
+			<attribute name="gradle.buildServer" value="true"/>
+			<attribute name="groupId" value="com.google.code.gson"/>
+			<attribute name="artifactId" value="gson"/>
+			<attribute name="version" value="2.6.2"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="/home/mleroy/.gradle/caches/modules-2/files-2.1/net.sourceforge.htmlunit/neko-htmlunit/2.55.0/357606d1648fe63f8bf159d357f54dfbf8611b08/neko-htmlunit-2.55.0.jar" sourcepath="/home/mleroy/.gradle/caches/modules-2/files-2.1/net.sourceforge.htmlunit/neko-htmlunit/2.55.0/7866c54dde77e07b6d3f5b477b59beb701669102/neko-htmlunit-2.55.0-sources.jar">
+		<attributes>
+			<attribute name="test" value="true"/>
+			<attribute name="gradle.buildServer" value="true"/>
+			<attribute name="groupId" value="net.sourceforge.htmlunit"/>
+			<attribute name="artifactId" value="neko-htmlunit"/>
+			<attribute name="version" value="2.55.0"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="/home/mleroy/.gradle/caches/modules-2/files-2.1/org.eclipse.jetty/jetty-continuation/9.4.44.v20210927/4ffc681d5b4cbbc340cb58b17d7ac66254ee5e62/jetty-continuation-9.4.44.v20210927.jar" sourcepath="/home/mleroy/.gradle/caches/modules-2/files-2.1/org.eclipse.jetty/jetty-continuation/9.4.44.v20210927/5c19dbc045249ea15fc6895136ddaa81197d18f8/jetty-continuation-9.4.44.v20210927-sources.jar">
+		<attributes>
+			<attribute name="test" value="true"/>
+			<attribute name="gradle.buildServer" value="true"/>
+			<attribute name="groupId" value="org.eclipse.jetty"/>
+			<attribute name="artifactId" value="jetty-continuation"/>
+			<attribute name="version" value="9.4.44.v20210927"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="/home/mleroy/.gradle/caches/modules-2/files-2.1/org.eclipse.jetty/jetty-io/9.4.44.v20210927/a2ec01e2b5552b777a3d7085163f80756ef8c1ce/jetty-io-9.4.44.v20210927.jar" sourcepath="/home/mleroy/.gradle/caches/modules-2/files-2.1/org.eclipse.jetty/jetty-io/9.4.44.v20210927/6262966b3cd10ff6b98f0bed428640bbbe4f7e79/jetty-io-9.4.44.v20210927-sources.jar">
+		<attributes>
+			<attribute name="test" value="true"/>
+			<attribute name="gradle.buildServer" value="true"/>
+			<attribute name="groupId" value="org.eclipse.jetty"/>
+			<attribute name="artifactId" value="jetty-io"/>
+			<attribute name="version" value="9.4.44.v20210927"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="/home/mleroy/.gradle/caches/modules-2/files-2.1/net.sourceforge.htmlunit/htmlunit-cssparser/1.10.0/6d601cb81693bdb1d239b162fc2bf52c02a5865c/htmlunit-cssparser-1.10.0.jar" sourcepath="/home/mleroy/.gradle/caches/modules-2/files-2.1/net.sourceforge.htmlunit/htmlunit-cssparser/1.10.0/57d624714a7ecd5b2a864ce28671a161b0dfa0ca/htmlunit-cssparser-1.10.0-sources.jar">
 		<attributes>
 			<attribute name="test" value="true"/>
 			<attribute name="gradle.buildServer" value="true"/>
@@ -683,21 +665,39 @@
 			<attribute name="version" value="1.10.0"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="C:/Users/theod/.gradle/caches/modules-2/files-2.1/org.ow2.asm/asm-commons/9.2/f4d7f0fc9054386f2893b602454d48e07d4fbead/asm-commons-9.2.jar" sourcepath="C:/Users/theod/.gradle/caches/modules-2/files-2.1/org.ow2.asm/asm-commons/9.2/acfb5bbdf1cd11aaff127233c641a176e1ebd473/asm-commons-9.2-sources.jar">
+	<classpathentry kind="lib" path="/home/mleroy/.gradle/caches/modules-2/files-2.1/org.mortbay.jasper/apache-el/8.5.70/e280d60a1b02f85babcc20ed53d603def113f853/apache-el-8.5.70.jar" sourcepath="/home/mleroy/.gradle/caches/modules-2/files-2.1/org.mortbay.jasper/apache-el/8.5.70/af128079d1e482d096b688e16f6ad0e383931afe/apache-el-8.5.70-sources.jar">
+		<attributes>
+			<attribute name="test" value="true"/>
+			<attribute name="gradle.buildServer" value="true"/>
+			<attribute name="groupId" value="org.mortbay.jasper"/>
+			<attribute name="artifactId" value="apache-el"/>
+			<attribute name="version" value="8.5.70"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="/home/mleroy/.gradle/caches/modules-2/files-2.1/xml-apis/xml-apis/1.4.01/3789d9fada2d3d458c4ba2de349d48780f381ee3/xml-apis-1.4.01.jar" sourcepath="/home/mleroy/.gradle/caches/modules-2/files-2.1/xml-apis/xml-apis/1.4.01/5502da0c4c0a7916a604356ef19394ccfa30cd4b/xml-apis-1.4.01-sources.jar">
+		<attributes>
+			<attribute name="test" value="true"/>
+			<attribute name="gradle.buildServer" value="true"/>
+			<attribute name="groupId" value="xml-apis"/>
+			<attribute name="artifactId" value="xml-apis"/>
+			<attribute name="version" value="1.4.01"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="/home/mleroy/.gradle/caches/modules-2/files-2.1/org.eclipse.jetty/jetty-plus/9.4.44.v20210927/7ce435886161c4f1a9015168712e6df974eb016f/jetty-plus-9.4.44.v20210927.jar" sourcepath="/home/mleroy/.gradle/caches/modules-2/files-2.1/org.eclipse.jetty/jetty-plus/9.4.44.v20210927/cba6b7f77abb8e5e025d3720121d88852f1b5a09/jetty-plus-9.4.44.v20210927-sources.jar">
+		<attributes>
+			<attribute name="test" value="true"/>
+			<attribute name="gradle.buildServer" value="true"/>
+			<attribute name="groupId" value="org.eclipse.jetty"/>
+			<attribute name="artifactId" value="jetty-plus"/>
+			<attribute name="version" value="9.4.44.v20210927"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="/home/mleroy/.gradle/caches/modules-2/files-2.1/org.ow2.asm/asm-commons/9.2/f4d7f0fc9054386f2893b602454d48e07d4fbead/asm-commons-9.2.jar" sourcepath="/home/mleroy/.gradle/caches/modules-2/files-2.1/org.ow2.asm/asm-commons/9.2/acfb5bbdf1cd11aaff127233c641a176e1ebd473/asm-commons-9.2-sources.jar">
 		<attributes>
 			<attribute name="test" value="true"/>
 			<attribute name="gradle.buildServer" value="true"/>
 			<attribute name="groupId" value="org.ow2.asm"/>
 			<attribute name="artifactId" value="asm-commons"/>
-			<attribute name="version" value="9.2"/>
-		</attributes>
-	</classpathentry>
-	<classpathentry kind="lib" path="C:/Users/theod/.gradle/caches/modules-2/files-2.1/org.ow2.asm/asm-util/9.2/fbc178fc5ba3dab50fd7e8a5317b8b647c8e8946/asm-util-9.2.jar" sourcepath="C:/Users/theod/.gradle/caches/modules-2/files-2.1/org.ow2.asm/asm-util/9.2/f04d12daefcb3cf02ef27e67c1ccbac24d2f5c6f/asm-util-9.2-sources.jar">
-		<attributes>
-			<attribute name="test" value="true"/>
-			<attribute name="gradle.buildServer" value="true"/>
-			<attribute name="groupId" value="org.ow2.asm"/>
-			<attribute name="artifactId" value="asm-util"/>
 			<attribute name="version" value="9.2"/>
 		</attributes>
 	</classpathentry>

@@ -57,12 +57,8 @@ public class LevelSystemTest {
 
     @Test
     public void testMultipleLevelUps() {
-        // Give enough EXP for multiple level-ups at once
-        // Level 1 -> 2: 100 exp
-        // Level 2 -> 3: 100 * 1.5 = 150 exp
-        // Total for 2 level-ups: 250 exp
         float expFor2Levels = GameConfig.BASE_EXP_TO_LEVEL +
-            GameConfig.BASE_EXP_TO_LEVEL * GameConfig.EXP_GROWTH_FACTOR;
+                GameConfig.BASE_EXP_TO_LEVEL * GameConfig.EXP_GROWTH_FACTOR;
         levelSystem.addExp(expFor2Levels);
         assertEquals(3, levelSystem.getLevel());
         assertEquals(0f, levelSystem.getCurrentExp(), 0.5f);
@@ -82,7 +78,6 @@ public class LevelSystemTest {
         assertTrue(expLevel3 > expLevel2);
         assertTrue(expLevel2 > expLevel1);
 
-        // Verify ratio is consistent
         float ratio1 = expLevel2 / expLevel1;
         float ratio2 = expLevel3 / expLevel2;
         assertEquals(ratio1, ratio2, 0.01f);
@@ -99,18 +94,15 @@ public class LevelSystemTest {
     @Test
     public void testNullListener() {
         LevelSystem noListener = new LevelSystem(null);
-        // Should not throw
         noListener.addExp(GameConfig.BASE_EXP_TO_LEVEL * 5);
         assertTrue(noListener.getLevel() > 1);
     }
 
     @Test
     public void testIncrementalExpGain() {
-        // Add EXP in small increments
         for (int i = 0; i < 10; i++) {
             levelSystem.addExp(10f);
         }
-        // 100 exp total = exactly 1 level-up
         assertEquals(2, levelSystem.getLevel());
         assertEquals(1, levelUpEvents.size());
     }
@@ -123,7 +115,7 @@ public class LevelSystemTest {
         float newExpRequired = levelSystem.getExpToNextLevel();
         assertTrue(newExpRequired > initialExpRequired);
         assertEquals(
-            GameConfig.BASE_EXP_TO_LEVEL * GameConfig.EXP_GROWTH_FACTOR,
-            newExpRequired, 0.01f);
+                GameConfig.BASE_EXP_TO_LEVEL * GameConfig.EXP_GROWTH_FACTOR,
+                newExpRequired, 0.01f);
     }
 }

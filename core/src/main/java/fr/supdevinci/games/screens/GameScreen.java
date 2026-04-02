@@ -10,7 +10,6 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import fr.supdevinci.games.ui.BoutonUI;
 import java.util.List;
-import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.utils.viewport.ExtendViewport;
 import fr.supdevinci.games.Difficulty;
 import fr.supdevinci.games.GameConfig;
@@ -29,6 +28,12 @@ public class GameScreen implements Screen {
     private GameInputHandler inputHandler;
     private CameraSystem cameraSystem;
     private HudRenderer hudRenderer;
+    private ShapeRenderer pauseRenderer;
+    private SpriteBatch pauseBatch;
+    private BitmapFont pauseFont;
+    private OrthographicCamera pauseCamera;
+    private BoutonUI resumeButton;
+    private BoutonUI menuButton;
 
     private OrthographicCamera camera;
     private ExtendViewport viewport;
@@ -49,7 +54,14 @@ public class GameScreen implements Screen {
         renderer = new GameRenderer(world);
         inputHandler = new GameInputHandler(world, camera);
         cameraSystem = new CameraSystem(camera);
-        hudRenderer = new HudRenderer(world.getEntityManager().getTank(), world.getLevelSystem(), world.getWaveManager());
+        hudRenderer = new HudRenderer(world.getEntityManager().getTank(), world.getLevelSystem(),
+                world.getWaveManager());
+        pauseRenderer = new ShapeRenderer();
+        pauseBatch = new SpriteBatch();
+        pauseFont = new BitmapFont();
+        pauseCamera = new OrthographicCamera();
+        resumeButton = new BoutonUI("Reprendre", "ESC", 0, 0, 260, 50);
+        menuButton = new BoutonUI("Menu Principal", "", 0, 0, 260, 50);
 
         Gdx.input.setInputProcessor(inputHandler);
     }
@@ -67,11 +79,13 @@ public class GameScreen implements Screen {
 
         // Vérifier la fin de partie / victoire
         if (tank != null && !tank.isAlive()) {
-            game.setScreen(new GameOverScreen(game, false, world.getWaveManager().getCurrentWave(), world.getLevelSystem().getLevel()));
+            game.setScreen(new GameOverScreen(game, false, world.getWaveManager().getCurrentWave(),
+                    world.getLevelSystem().getLevel()));
             return;
         }
         if (world.getVictoryTimer() > 2.0f) {
-            game.setScreen(new GameOverScreen(game, true, world.getWaveManager().getCurrentWave(), world.getLevelSystem().getLevel()));
+            game.setScreen(new GameOverScreen(game, true, world.getWaveManager().getCurrentWave(),
+                    world.getLevelSystem().getLevel()));
             return;
         }
 
@@ -95,7 +109,7 @@ public class GameScreen implements Screen {
 
             Tank tank = world.getEntityManager().getTank();
             List<BoutonUI> buttons = hudRenderer.getUpgradeButtons();
-            
+
             for (int i = 0; i < buttons.size(); i++) {
                 if (buttons.get(i).contient(mx, my)) {
                     if (i == 0) {
@@ -113,76 +127,63 @@ public class GameScreen implements Screen {
     private void renderPauseMenu() {
         float w = Gdx.graphics.getWidth();
         float h = Gdx.graphics.getHeight();
+        float panW = 320f;
+        float panH = 200f;
+        float panX = w / 2f - panW / 2f;
+        float panY = h / 2f - panH / 2f;
+        float mx = Gdx.input.getX();
+        float my = h - Gdx.input.getY();
 
-        // Utiliser un batch/caméra temporaire pour l'UI si nécessaire
-        // ou simplement utiliser une superposition ShapeRenderer comme avant.
-        // Pour plus de concision et pour garder GameScreen propre, je garde le rendu du menu pause ici pour le moment mais simplifié.
-        
+        pauseCamera.setToOrtho(false, w, h);
+        pauseCamera.update();
+        resumeButton.setBounds(panX + 30, panY + 90, 260, 50);
+        menuButton.setBounds(panX + 30, panY + 25, 260, 50);
+
         Gdx.gl.glEnable(GL20.GL_BLEND);
         Gdx.gl.glBlendFunc(GL20.GL_SRC_ALPHA, GL20.GL_ONE_MINUS_SRC_ALPHA);
-        
-        ShapeRenderer uiRenderer = new ShapeRenderer();
-        OrthographicCamera uiCam = new OrthographicCamera();
-        uiCam.setToOrtho(false, w, h);
-        uiCam.update();
-        
-        uiRenderer.setProjectionMatrix(uiCam.combined);
-        uiRenderer.begin(ShapeRenderer.ShapeType.Filled);
-        uiRenderer.setColor(0, 0, 0, 0.65f);
-        uiRenderer.rect(0, 0, w, h);
-        
-        float panW = 320, panH = 200;
-        float panX = w / 2f - panW / 2f, panY = h / 2f - panH / 2f;
-        uiRenderer.setColor(0.12f, 0.14f, 0.20f, 1f);
-        uiRenderer.rect(panX, panY, panW, panH);
-        
-        Rectangle btnResume = new Rectangle(panX + 30, panY + 90, 260, 50);
-        Rectangle btnMenu = new Rectangle(panX + 30, panY + 25, 260, 50);
-        
-        uiRenderer.setColor(0.2f, 0.55f, 0.2f, 1f);
-        uiRenderer.rect(btnResume.x, btnResume.y, btnResume.width, btnResume.height);
-        uiRenderer.setColor(0.55f, 0.15f, 0.15f, 1f);
-        uiRenderer.rect(btnMenu.x, btnMenu.y, btnMenu.width, btnMenu.height);
-        uiRenderer.end();
+        pauseRenderer.setProjectionMatrix(pauseCamera.combined);
+        pauseRenderer.begin(ShapeRenderer.ShapeType.Filled);
+        pauseRenderer.setColor(0, 0, 0, 0.65f);
+        pauseRenderer.rect(0, 0, w, h);
+        pauseRenderer.setColor(0.12f, 0.14f, 0.20f, 1f);
+        pauseRenderer.rect(panX, panY, panW, panH);
+        pauseRenderer.end();
         Gdx.gl.glDisable(GL20.GL_BLEND);
 
-        SpriteBatch uiBatch = new SpriteBatch();
-        BitmapFont pauseFont = new BitmapFont();
-        uiBatch.setProjectionMatrix(uiCam.combined);
-        uiBatch.begin();
+        pauseBatch.setProjectionMatrix(pauseCamera.combined);
+        pauseBatch.begin();
         pauseFont.getData().setScale(2.5f);
-        pauseFont.draw(uiBatch, "PAUSE", panX + 95, panY + 185);
+        pauseFont.draw(pauseBatch, "PAUSE", panX + 95, panY + 185);
         pauseFont.getData().setScale(1.5f);
-        pauseFont.draw(uiBatch, "Reprendre   (ESC)", panX + 45, panY + 123);
-        pauseFont.draw(uiBatch, "Menu Principal", panX + 65, panY + 58);
-        uiBatch.end();
+        pauseBatch.end();
+        pauseFont.getData().setScale(1f);
+
+        resumeButton.render(pauseRenderer, pauseBatch, pauseFont, resumeButton.contient(mx, my));
+        menuButton.render(pauseRenderer, pauseBatch, pauseFont, menuButton.contient(mx, my));
 
         if (Gdx.input.isButtonJustPressed(Input.Buttons.LEFT)) {
-            float mx = Gdx.input.getX();
-            float my = h - Gdx.input.getY();
-            if (btnResume.contains(mx, my)) {
+            if (resumeButton.contient(mx, my)) {
                 world.setPaused(false);
-            } else if (btnMenu.contains(mx, my)) {
+            } else if (menuButton.contient(mx, my)) {
                 game.setScreen(new MainMenuScreen(game));
             }
         }
-        
-        uiRenderer.dispose();
-        uiBatch.dispose();
-        pauseFont.dispose();
     }
 
     @Override
     public void resize(int width, int height) {
-        if (width <= 0 || height <= 0) return;
+        if (width <= 0 || height <= 0)
+            return;
         viewport.update(width, height);
     }
 
     @Override
-    public void pause() {}
+    public void pause() {
+    }
 
     @Override
-    public void resume() {}
+    public void resume() {
+    }
 
     @Override
     public void hide() {
@@ -191,8 +192,17 @@ public class GameScreen implements Screen {
 
     @Override
     public void dispose() {
-        if (renderer != null) renderer.dispose();
-        if (world != null) world.dispose();
-        if (hudRenderer != null) hudRenderer.dispose();
+        if (renderer != null)
+            renderer.dispose();
+        if (world != null)
+            world.dispose();
+        if (hudRenderer != null)
+            hudRenderer.dispose();
+        if (pauseRenderer != null)
+            pauseRenderer.dispose();
+        if (pauseBatch != null)
+            pauseBatch.dispose();
+        if (pauseFont != null)
+            pauseFont.dispose();
     }
 }

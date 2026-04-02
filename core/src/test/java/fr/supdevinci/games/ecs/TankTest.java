@@ -11,7 +11,6 @@ public class TankTest {
 
     @Before
     public void setUp() {
-        // Create tank with null body for pure unit testing of stats
         tank = new Tank(null);
     }
 
@@ -36,7 +35,6 @@ public class TankTest {
 
     @Test
     public void testTakeDamageWithArmor() {
-        // Apply one level-up to gain armor
         tank.applyLevelUp(2);
         float armorBefore = tank.getArmor();
         assertTrue(armorBefore > 0);
@@ -69,8 +67,6 @@ public class TankTest {
     @Test
     public void testFireCooldown() {
         tank.resetFireCooldown();
-        // Tank should not be able to fire immediately after resetting cooldown
-        // canFire checks fireCooldown <= 0; after reset, fireCooldown = fireRate > 0
         assertFalse(tank.canFire());
     }
 
@@ -87,7 +83,7 @@ public class TankTest {
         assertTrue(tank.getMaxHealth() > prevMaxHealth);
         assertTrue(tank.getSpeed() > prevSpeed);
         assertTrue(tank.getDamage() > prevDamage);
-        assertTrue(tank.getFireRate() < prevFireRate); // fire rate decreases (faster)
+        assertTrue(tank.getFireRate() < prevFireRate);
         assertTrue(tank.getArmor() > prevArmor);
     }
 
@@ -107,17 +103,15 @@ public class TankTest {
         tank.applyLevelUp(3);
         tank.applyLevelUp(4);
 
-        // After 3 level-ups, maxHealth should have increased 3 times
         float expected = initialMaxHealth
-            * (1f + GameConfig.LEVEL_HEALTH_BONUS)
-            * (1f + GameConfig.LEVEL_HEALTH_BONUS)
-            * (1f + GameConfig.LEVEL_HEALTH_BONUS);
+                * (1f + GameConfig.LEVEL_HEALTH_BONUS)
+                * (1f + GameConfig.LEVEL_HEALTH_BONUS)
+                * (1f + GameConfig.LEVEL_HEALTH_BONUS);
         assertEquals(expected, tank.getMaxHealth(), 0.5f);
     }
 
     @Test
     public void testArmorCap() {
-        // Apply many level-ups to test armor never exceeds 0.75
         for (int i = 0; i < 50; i++) {
             tank.applyLevelUp(i + 2);
         }

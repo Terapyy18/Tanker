@@ -42,15 +42,23 @@ public class HudRenderer {
     }
 
     private void initUpgradeMenu() {
-        float w = Gdx.graphics.getWidth(); // This might change on resize, but usually HUD is static or updated
-        float h = Gdx.graphics.getHeight();
-        upgradeButtons.add(new BoutonUI("Rafale", "Tir continu (Hold Left Click)", w / 2f - 250, h / 2f - 50, 200, 100));
-        upgradeButtons.add(new BoutonUI("Blindage Lourd", "+200 HP Max", w / 2f + 50, h / 2f - 50, 200, 100));
+        upgradeButtons.add(new BoutonUI("Rafale", "Tir continu (Hold Left Click)", 0, 0, 200, 100));
+        upgradeButtons.add(new BoutonUI("Blindage Lourd", "+200 HP Max", 0, 0, 200, 100));
+    }
+
+    private void layoutUpgradeMenu(float w, float h) {
+        upgradeButtons.get(0).setBounds(w / 2f - 250, h / 2f - 50, 200, 100);
+        upgradeButtons.get(1).setBounds(w / 2f + 50, h / 2f - 50, 200, 100);
     }
 
     public void renderUpgradeMenu() {
         float w = Gdx.graphics.getWidth();
         float h = Gdx.graphics.getHeight();
+        float mx = Gdx.input.getX();
+        float my = h - Gdx.input.getY();
+        layoutUpgradeMenu(w, h);
+        hudCamera.setToOrtho(false, w, h);
+        hudCamera.update();
         
         // Dessiner la superposition
         Gdx.gl.glEnable(com.badlogic.gdx.graphics.GL20.GL_BLEND);
@@ -70,7 +78,7 @@ public class HudRenderer {
         batch.end();
 
         for (BoutonUI btn : upgradeButtons) {
-            btn.render(shapeRenderer, batch, font);
+            btn.render(shapeRenderer, batch, font, btn.contient(mx, my));
         }
     }
 

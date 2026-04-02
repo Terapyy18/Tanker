@@ -3,6 +3,8 @@ package fr.supdevinci.games.systems;
 import com.badlogic.gdx.physics.box2d.*;
 import fr.supdevinci.games.ecs.*;
 
+import java.util.function.BiConsumer;
+
 public class CollisionHandler implements ContactListener {
     private final CollisionListener listener;
 
@@ -15,27 +17,40 @@ public class CollisionHandler implements ContactListener {
         Object dataA = contact.getFixtureA().getBody().getUserData();
         Object dataB = contact.getFixtureB().getBody().getUserData();
 
-        // Une balle touche un mur (userData null)
-        if (dataA instanceof Bullet && dataB == null) { listener.onBulletHitWall((Bullet) dataA); return; }
-        if (dataB instanceof Bullet && dataA == null) { listener.onBulletHitWall((Bullet) dataB); return; }
-
-        if (!(dataA instanceof Entity) || !(dataB instanceof Entity)) return;
-
-        // Une balle touche un Damageable
-        if (dataA instanceof Bullet && dataB instanceof Damageable) { bulletHitDamageable((Bullet) dataA, (Damageable) dataB); return; }
-        if (dataB instanceof Bullet && dataA instanceof Damageable) { bulletHitDamageable((Bullet) dataB, (Damageable) dataA); return; }
-
-        // Un ennemi touche le joueur
-        if (dataA instanceof Enemy && dataB instanceof Tank) { listener.onEnemyHitTank((Enemy) dataA, (Tank) dataB); return; }
-        if (dataB instanceof Enemy && dataA instanceof Tank) { listener.onEnemyHitTank((Enemy) dataB, (Tank) dataA); return; }
-
-        // Le joueur touche une orbe d'expérience
-        if (dataA instanceof Tank && dataB instanceof ExpOrb) { listener.onOrbCollected((ExpOrb) dataB); return; }
-        if (dataB instanceof Tank && dataA instanceof ExpOrb) { listener.onOrbCollected((ExpOrb) dataA); return; }
+        if (handleBulletWallCollision(dataA, dataB)) return;
+        if (handleCollision(dataA, dataB, Bullet.class, Damageable.class, listener::onBulletHit)) return;
+        if (handleCollision(dataA, dataB, ContactDamageSource.class, ContactDamageTarget.class, listener::onContactDamage)) return;
+        handleCollision(dataA, dataB, Collector.class, Collectible.class, listener::onCollected);
     }
 
-    private void bulletHitDamageable(Bullet bullet, Damageable target) {
-         listener.onBulletHit(bullet, target);
+    private boolean handleBulletWallCollision(Object dataA, Object dataB) {
+        if (dataA instanceof Bullet && dataB == null) {
+            listener.onBulletHitWall((Bullet) dataA);
+            return true;
+        }
+        if (dataB instanceof Bullet && dataA == null) {
+            listener.onBulletHitWall((Bullet) dataB);
+            return true;
+        }
+        return false;
+    }
+
+    private <TFirst, TSecond> boolean handleCollision(
+        Object dataA,
+        Object dataB,
+        Class<TFirst> firstType,
+        Class<TSecond> secondType,
+        BiConsumer<TFirst, TSecond> collisionConsumer
+    ) {
+        if (firstType.isInstance(dataA) && secondType.isInstance(dataB)) {
+            collisionConsumer.accept(firstType.cast(dataA), secondType.cast(dataB));
+            return true;
+        }
+        if (firstType.isInstance(dataB) && secondType.isInstance(dataA)) {
+            collisionConsumer.accept(firstType.cast(dataB), secondType.cast(dataA));
+            return true;
+        }
+        return false;
     }
 
     @Override

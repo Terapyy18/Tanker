@@ -7,7 +7,7 @@ import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.physics.box2d.Body;
 import fr.supdevinci.games.GameConfig;
 
-public class Tank extends Entity implements Damageable {
+public class Tank extends Entity implements ContactDamageTarget, Collector {
     private float health;
     private float maxHealth;
     private float armor;

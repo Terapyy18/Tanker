@@ -6,7 +6,7 @@ import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.Body;
 
-public class Enemy extends Entity implements Damageable {
+public class Enemy extends Entity implements Damageable, ContactDamageSource {
     private final EnemyType type;
     private float health;
     private float shootTimer;
@@ -88,4 +88,6 @@ public class Enemy extends Entity implements Damageable {
     public float getHealth() { return health; }
     public boolean wantsToShoot() { return wantsToShoot; }
     public void clearShootFlag() { wantsToShoot = false; }
+    @Override
+    public float getContactDamage() { return type.getContactDamage(); }
 }

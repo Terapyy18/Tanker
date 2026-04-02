@@ -5,7 +5,7 @@ import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.Body;
 import fr.supdevinci.games.GameConfig;
 
-public class ExpOrb extends Entity {
+public class ExpOrb extends Entity implements Collectible {
     private final int expValue;
 
     public ExpOrb(Body body, int expValue) {
